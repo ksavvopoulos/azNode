@@ -11,7 +11,8 @@ var express = require('express')
   , azure = require('azure')
   , unzip = require('unzip')
   , mimeTypes = require('./mimeTypes.js')
-  , fs = require('fs');
+  , fs = require('fs')
+  , format = require('util').format;
 
 var app = express();
 
@@ -43,7 +44,14 @@ app.get('/', function (req, res) {
 
 
 app.post('/upload', function (req, res, next) {
-    res.send('Uploading');
+
+    res.send(format('\nuploaded %s (%d Kb) to %s as %s'
+        , req.files.file.name
+        , req.files.file.size / 1024 | 0
+        , req.files.file.path
+        , req.body.title));
+
+    
     var blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
     log('Blob Service has been created...');
@@ -116,5 +124,5 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 function log(mes) {
-    console.log(mes);
+    res.send(mes);
 }
