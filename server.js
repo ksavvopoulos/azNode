@@ -2,8 +2,8 @@
 var express = require('express'),
     fs = require('fs'),
     azure = require('azure'),
-    unzip = require('unzip'),
-    mimeTypes = require('./mimeTypes.js');
+    unzip = require('unzip');
+   // mimeTypes = require('./mimeTypes.js');
 
 
 var port = process.env.PORT || 1337;
