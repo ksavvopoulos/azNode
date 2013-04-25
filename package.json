@@ -1,6 +1,9 @@
 {
-  "name": "application-name",
+  "name": "nodeapi",
   "version": "0.0.1",
+  "engine":{
+	"node":"0.8.2"
+  },
   "private": true,
   "scripts": {
     "start": "node app.js"
