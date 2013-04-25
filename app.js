@@ -83,7 +83,7 @@ app.post('/upload', function (req, res, next) {
         log('Mime Type : ' + contentType);
 
         if (entry.type == 'File') {
-            blobService.createBlockBlobFromStream('lesson1',
+            blobService.createBlockBlobFromStream('lesson2',
            path,
            entry,
          entry.size,
@@ -114,7 +114,7 @@ app.post('/upload', function (req, res, next) {
         }
     });
 
-
+    
     next();
 });
 
@@ -124,5 +124,5 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 function log(mes) {
-    res.send(mes);
+    console.log(mes);
 }
