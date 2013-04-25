@@ -10,6 +10,8 @@ var port = process.env.PORT || 1337;
 
 var app = express();
 
+app.listen(port);
+
 app.use(express.bodyParser());
 
 app.get('/', function (req, res) {
@@ -86,7 +88,7 @@ app.post('/upload', function (req, res, next) {
     next();
 });
 
-app.listen(port);
+
 
 function log(mes) {
     console.log(mes);
