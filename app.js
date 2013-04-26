@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
     process.stdout.write('stdout test');
 });
 
-app.get('/test', function (req, res) {
+app.get('/custom', function (req, res) {
     res.send('Glu');
     var ext = 'xml';
    // res.send(ext +' has mime '+mimeTypes[ext]);
