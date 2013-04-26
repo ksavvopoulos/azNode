@@ -46,7 +46,7 @@ function logErrors(err, req, res, next) {
 
 function clientErrorHandler(err, req, res, next) {
     if (req.xhr) {
-        res.send(500, { error: err });
+        res.send(500, { error: 'egine ' });
     } else {
         next(err);
     }
