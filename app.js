@@ -79,24 +79,24 @@ app.post('/upload', function (req, res) {
         parsedZip.on('entry', function (entry) {
             var path = entry.path;
             var ext = path.split('.').pop();
-            var contentType = mimeTypes[ext];
-            if (!contentType) {
-                unKnownExtensions.push(ext);
-            }
+          //  var contentType = mimeTypes[ext];
+            //if (!contentType) {
+            //    unKnownExtensions.push(ext);
+            //}
 
             log('Entry size :' + entry.size);
             log('Entry type: ' + entry.type);
             log('Entry readable:' + entry.readable);
             log('Entry path:' + path);
             log('Extension :' + ext);
-            log('Mime Type : ' + contentType);
+           // log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
                 blobService.createBlockBlobFromStream('lesson1',
                path,
                entry,
              entry.size,
-             { contentTypeHeader: contentType },
+            // { contentTypeHeader: contentType },
                   function (error) {
                       if (!error) {
                           log('Blob ' + path + ' created!');
