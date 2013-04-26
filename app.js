@@ -42,6 +42,7 @@ app.get('/', function (req, res) {
       + '<input type="file" name="file" />'
       + '<p><input type="submit" value="Upload" /></p>'
       + '</form><p><a href="test">Visit Test Page</a></p>');
+    process.stdout.write('stdout test');
 });
 
 app.get('/test', function (req, res) {
@@ -61,67 +62,67 @@ app.post('/upload', function (req, res) {
     log('Initialized Read Stream');
 
     res.send('Uploading...');
-    //var unKnownExtensions = [];
+    var unKnownExtensions = [];
     //ws = fs.createWriteStream(__dirname+'/Downloads');
-    //form.onPart = function (part) {
-    //    log('Received Part');
-    //    if (!part.filename) {
-    //         let formidable handle all non-file parts
-    //        return this.handlePart(part);
-    //    }
+    form.onPart = function (part) {
+        log('Received Part');
+        if (!part.filename) {
+           //let formidable handle all non-file parts
+            return this.handlePart(part);
+        }
         
-    //    var parsedZip = part.pipe(unzip.Parse(), {end:false});
+        var parsedZip = part.pipe(unzip.Parse(), {end:false});
       
-    //    log('Data unziped');
+        log('Data unziped');
 
-    //    parsedZip.on('entry', function (entry) {
-    //        var path = entry.path;
-    //        var ext = path.split('.').pop();
-    //        var contentType = mimeTypes[ext];
-    //        if (!contentType) {
-    //            unKnownExtensions.push(ext);
-    //        }
+        parsedZip.on('entry', function (entry) {
+            var path = entry.path;
+            var ext = path.split('.').pop();
+            var contentType = mimeTypes[ext];
+            if (!contentType) {
+                unKnownExtensions.push(ext);
+            }
 
-    //        log('Entry size :' + entry.size);
-    //        log('Entry type: ' + entry.type);
-    //        log('Entry readable:' + entry.readable);
-    //        log('Entry path:' + path);
-    //        log('Extension :' + ext);
-    //        log('Mime Type : ' + contentType);
+            log('Entry size :' + entry.size);
+            log('Entry type: ' + entry.type);
+            log('Entry readable:' + entry.readable);
+            log('Entry path:' + path);
+            log('Extension :' + ext);
+            log('Mime Type : ' + contentType);
 
-    //        if (entry.type == 'File') {
-    //            blobService.createBlockBlobFromStream('lesson1',
-    //           path,
-    //           entry,
-    //         entry.size,
-    //         { contentTypeHeader: contentType },
-    //              function (error) {
-    //                  if (!error) {
-    //                      log('Blob ' + path + ' created!');
-    //                  } else {
-    //                      log(error);
-    //                      log('------------------');
-    //                  }
-    //              }
-    //           );
-    //        } else {
-    //            count += 1;
-    //            log('Folder' + count);
-    //        }
-    //    });
+            if (entry.type == 'File') {
+                blobService.createBlockBlobFromStream('lesson1',
+               path,
+               entry,
+             entry.size,
+             { contentTypeHeader: contentType },
+                  function (error) {
+                      if (!error) {
+                          log('Blob ' + path + ' created!');
+                      } else {
+                          log(error);
+                          log('------------------');
+                      }
+                  }
+               );
+            } else {
+                count += 1;
+                log('Folder' + count);
+            }
+        });
 
-    //    parsedZip.on('end', function (entry) {
-    //        var len = unKnownExtensions.length;
-    //        if (len) {
-    //            for (var i = 0; i < len; i++) {
-    //                log('Unknown Extension: ' + unKnownExtensions[i]);
-    //            }
-    //        } else {
-    //            log('I knew all the extensions mime type');
-    //        }
-    //    });
+        parsedZip.on('end', function (entry) {
+            var len = unKnownExtensions.length;
+            if (len) {
+                for (var i = 0; i < len; i++) {
+                    log('Unknown Extension: ' + unKnownExtensions[i]);
+                }
+            } else {
+                log('I knew all the extensions mime type');
+            }
+        });
 
-    //};
+    };
    
     
    
@@ -133,5 +134,5 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 function log(mes) {
-    console.log(mes);
+    process.stdout.write(mes+'\n');
 }
