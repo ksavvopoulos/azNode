@@ -12,6 +12,7 @@ var express = require('express')
   , unzip = require('unzip')
   , mimeTypes = require('./mimeTypes.js')
   , fs = require('fs')
+  , formidable = require('formidable')
   , format = require('util').format;
 
 var app = express();
@@ -22,7 +23,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser({ uploadDir: __dirname + '/tmp' }));
+//app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,79 +44,87 @@ app.get('/', function (req, res) {
 });
 
 
-app.post('/upload', function (req, res, next) {
+app.post('/upload', function (req, res) {
 
-    res.send(format('\nuploaded %s (%d Kb) to %s as %s'
-        , req.files.file.name
-        , req.files.file.size / 1024 | 0
-        , req.files.file.path
-        , req.body.title));
+    var form = new formidable.IncomingForm();
+    form.parse(req);
+    //res.send(format('\nuploaded %s (%d Kb) to %s as %s'
+    //    , req.files.file.name
+    //    , req.files.file.size / 1024 | 0
+    //    , req.files.file.path
+    //    , req.body.title));
 
     
     var blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
     log('Blob Service has been created...');
 
-    var name = req.files.file.name;
-    var path = req.files.file.path;
-    var rs = fs.createReadStream(path);
-
     log('Initialized Read Stream');
 
-    var parsedZip = rs.pipe(unzip.Parse());
-
+    res.send('Uploading...');
     var unKnownExtensions = [];
-
-
-    parsedZip.on('entry', function (entry) {
-        var path = entry.path;
-        var ext = path.split('.').pop();
-        var contentType = mimeTypes[ext];
-        if (!contentType) {
-            unKnownExtensions.push(ext);
-        }
-
-        log('Entry size :' + entry.size);
-        log('Entry type: ' + entry.type);
-        log('Entry readable:' + entry.readable);
-        log('Entry path:' + path);
-        log('Extension :' + ext);
-        log('Mime Type : ' + contentType);
-
-        if (entry.type == 'File') {
-            blobService.createBlockBlobFromStream('lesson2',
-           path,
-           entry,
-         entry.size,
-         { contentTypeHeader: contentType },
-              function (error) {
-                  if (!error) {
-                      log('Blob ' + path + ' created!');
-                  } else {
-                      log(error);
-                      log('------------------');
-                  }
-              }
-           );
-        } else {
-            count += 1;
-            log('Folder' + count);
-        }
-    });
-
-    parsedZip.on('end', function () {
-        var len = unKnownExtensions.length;
-        if (len) {
-            for (var i = 0; i < len; i++) {
-                log('Unknown Extension: ' + unKnownExtensions[i]);
-            }
-        } else {
-            log('I knew all the extensions mime type');
-        }
-    });
-
     
-    next();
+    form.onPart = function (part) {
+        log('Received Part');
+        if (!part.filename) {
+            // let formidable handle all non-file parts
+            return this.handlePart(part);
+        }
+
+        var parsedZip = part.pipe(unzip.Parse());
+        log('Data unziped');
+
+        parsedZip.on('entry', function (entry) {
+            var path = entry.path;
+            var ext = path.split('.').pop();
+            var contentType = mimeTypes[ext];
+            if (!contentType) {
+                unKnownExtensions.push(ext);
+            }
+
+            log('Entry size :' + entry.size);
+            log('Entry type: ' + entry.type);
+            log('Entry readable:' + entry.readable);
+            log('Entry path:' + path);
+            log('Extension :' + ext);
+            log('Mime Type : ' + contentType);
+
+            if (entry.type == 'File') {
+                blobService.createBlockBlobFromStream('lesson1',
+               path,
+               entry,
+             entry.size,
+             { contentTypeHeader: contentType },
+                  function (error) {
+                      if (!error) {
+                          log('Blob ' + path + ' created!');
+                      } else {
+                          log(error);
+                          log('------------------');
+                      }
+                  }
+               );
+            } else {
+                count += 1;
+                log('Folder' + count);
+            }
+        });
+
+        parsedZip.on('end', function (entry) {
+            var len = unKnownExtensions.length;
+            if (len) {
+                for (var i = 0; i < len; i++) {
+                    log('Unknown Extension: ' + unKnownExtensions[i]);
+                }
+            } else {
+                log('I knew all the extensions mime type');
+            }
+        });
+
+    };
+   
+    
+   
 });
 
 http.createServer(app).listen(app.get('port'), function(){
