@@ -42,9 +42,12 @@ app.get('/', function (req, res) {
     res.send('<form method="post" action="/upload" enctype="multipart/form-data">'
       + '<input type="file" name="file" />'
       + '<p><input type="submit" value="Upload" /></p>'
-      + '</form>');
+      + '</form><p><a href="test">Visit Test Page</a></p>');
 });
 
+app.get('/test', function (req, res) {
+    res.send('Test Page');
+});
 
 app.post('/upload', function (req, res) {
 
