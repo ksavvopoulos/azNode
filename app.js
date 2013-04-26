@@ -32,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+//TO BE DELETED !!!!!!!!!!!!
+app.use(express.errorHandler());
 
 //app.get('/', routes.index);
 app.get('/users', user.list);
@@ -48,30 +50,26 @@ app.post('/upload', function (req, res) {
 
     var form = new formidable.IncomingForm();
     form.parse(req);
-    //res.send(format('\nuploaded %s (%d Kb) to %s as %s'
-    //    , req.files.file.name
-    //    , req.files.file.size / 1024 | 0
-    //    , req.files.file.path
-    //    , req.body.title));
-
-    
+   
     var blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+
     log('Blob Service has been created...');
 
     log('Initialized Read Stream');
 
     res.send('Uploading...');
     var unKnownExtensions = [];
-    
+    ws = fs.createWriteStream(__dirname+'/Downloads');
     form.onPart = function (part) {
         log('Received Part');
         if (!part.filename) {
             // let formidable handle all non-file parts
             return this.handlePart(part);
         }
-
-        var parsedZip = part.pipe(unzip.Parse());
+        
+        var parsedZip = part.pipe(unzip.Parse(), {end:false});
+      
         log('Data unziped');
 
         parsedZip.on('entry', function (entry) {
