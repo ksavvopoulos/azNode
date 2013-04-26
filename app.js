@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //}
 
 function logErrors(err, req, res, next) {
+    res.send(err.stack);
     console.error(err.stack);
     next(err);
 }
@@ -52,8 +53,9 @@ function clientErrorHandler(err, req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
-    res.status(500);
-    res.render('error', { error: err });
+    //res.status(500);
+   // res.render('error', { error: err });
+    res.send(err);
 }
 
 //app.get('/', routes.index);
