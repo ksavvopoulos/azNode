@@ -46,8 +46,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
+    res.send('Glu');
     var ext = 'xml';
-    res.send(ext +' has mime '+mimeTypes[ext]);
+   // res.send(ext +' has mime '+mimeTypes[ext]);
 });
 
 app.post('/upload', function (req, res) {
