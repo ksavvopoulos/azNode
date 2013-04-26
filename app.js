@@ -83,15 +83,15 @@ app.post('/upload', function (req, res) {
     var blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
-    log('Blob Service has been created...');
+    //log('Blob Service has been created...');
 
-    log('Initialized Read Stream');
+    //log('Initialized Read Stream');
 
     res.send('Uploading...');
     var unKnownExtensions = [];
     //ws = fs.createWriteStream(__dirname+'/Downloads');
     form.onPart = function (part) {
-        log('Received Part');
+       // log('Received Part');
         if (!part.filename) {
            //let formidable handle all non-file parts
             return this.handlePart(part);
@@ -99,7 +99,7 @@ app.post('/upload', function (req, res) {
         
         var parsedZip = part.pipe(unzip.Parse(), {end:false});
       
-        log('Data unziped');
+      //  log('Data unziped');
 
         parsedZip.on('entry', function (entry) {
             var path = entry.path;
@@ -109,11 +109,11 @@ app.post('/upload', function (req, res) {
             //    unKnownExtensions.push(ext);
             //}
 
-            log('Entry size :' + entry.size);
-            log('Entry type: ' + entry.type);
-            log('Entry readable:' + entry.readable);
-            log('Entry path:' + path);
-            log('Extension :' + ext);
+            //log('Entry size :' + entry.size);
+            //log('Entry type: ' + entry.type);
+            //log('Entry readable:' + entry.readable);
+            //log('Entry path:' + path);
+            //log('Extension :' + ext);
            // log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
@@ -124,16 +124,17 @@ app.post('/upload', function (req, res) {
             // { contentTypeHeader: contentType },
                   function (error) {
                       if (!error) {
-                          log('Blob ' + path + ' created!');
+                          res.send('eskaase');
+                          //log('Blob ' + path + ' created!');
                       } else {
-                          log(error);
-                          log('------------------');
+                          //log(error);
+                          //log('------------------');
                       }
                   }
                );
             } else {
                 count += 1;
-                log('Folder' + count);
+              //  log('Folder' + count);
             }
         });
 
@@ -141,10 +142,10 @@ app.post('/upload', function (req, res) {
             var len = unKnownExtensions.length;
             if (len) {
                 for (var i = 0; i < len; i++) {
-                    log('Unknown Extension: ' + unKnownExtensions[i]);
+                  //  log('Unknown Extension: ' + unKnownExtensions[i]);
                 }
             } else {
-                log('I knew all the extensions mime type');
+               // log('I knew all the extensions mime type');
             }
         });
 
@@ -155,7 +156,7 @@ app.post('/upload', function (req, res) {
 });
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+ // console.log('Express server listening on port ' + app.get('port'));
 });
 
 
