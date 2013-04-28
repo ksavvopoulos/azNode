@@ -76,7 +76,7 @@ app.get('/custom', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-    res.send('i received the file');
+    res.send('Received File ...\n Creating Blobs');
     var form = new formidable.IncomingForm();
     form.parse(req);
    
