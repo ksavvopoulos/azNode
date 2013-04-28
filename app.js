@@ -77,86 +77,86 @@ app.get('/custom', function (req, res) {
 
 app.post('/upload', function (req, res) {
     res.send('i received the file');
-  //  var form = new formidable.IncomingForm();
-  //  form.parse(req);
+    var form = new formidable.IncomingForm();
+    form.parse(req);
    
-  //  var blobService = azure.createBlobService('indtestblob',
-  //     'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+    var blobService = azure.createBlobService('indtestblob',
+       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
-  //  log('Blob Service has been created...');
+    log('Blob Service has been created...');
 
-  //  log('Initialized Read Stream');
+    log('Initialized Read Stream');
 
-  //  res.send('Uploading...');
-  //  var unKnownExtensions = [];
-  ////  ws = fs.createWriteStream(__dirname+'/Downloads');
-  //  form.onPart = function (part) {
-  //      log('Received Part');
-  //      if (!part.filename) {
-  //         //let formidable handle all non-file parts
-  //          return this.handlePart(part);
-  //      }
+    res.send('Uploading...');
+    var unKnownExtensions = [];
+  //  ws = fs.createWriteStream(__dirname+'/Downloads');
+    form.onPart = function (part) {
+        log('Received Part');
+        if (!part.filename) {
+           //let formidable handle all non-file parts
+            return this.handlePart(part);
+        }
         
-  //      var parsedZip = part.pipe(unzip.Parse(), {end:false});
+        var parsedZip = part.pipe(unzip.Parse(), {end:false});
       
-  //      log('Data unziped');
+        log('Data unziped');
 
-  //      parsedZip.on('entry', function (entry) {
-  //          var path = entry.path;
-  //          var ext = path.split('.').pop();
-  //          var contentType = mimeTypes[ext];
-  //          if (!contentType) {
-  //              unKnownExtensions.push(ext);
-  //          }
+        parsedZip.on('entry', function (entry) {
+            var path = entry.path;
+            var ext = path.split('.').pop();
+            var contentType = mimeTypes[ext];
+            if (!contentType) {
+                unKnownExtensions.push(ext);
+            }
 
-  //          log('Entry size :' + entry.size);
-  //          log('Entry type: ' + entry.type);
-  //          log('Entry readable:' + entry.readable);
-  //          log('Entry path:' + path);
-  //          log('Extension :' + ext);
-  //          log('Mime Type : ' + contentType);
+            log('Entry size :' + entry.size);
+            log('Entry type: ' + entry.type);
+            log('Entry readable:' + entry.readable);
+            log('Entry path:' + path);
+            log('Extension :' + ext);
+            log('Mime Type : ' + contentType);
 
-  //          if (entry.type == 'File') {
-  //              blobService.createBlockBlobFromStream('lesson2',
-  //             path,
-  //             entry,
-  //           entry.size,
-  //           { contentTypeHeader: contentType },
-  //                function (error) {
-  //                    if (!error) {
-  //                        res.send('eskaase');
-  //                        log('Blob ' + path + ' created!');
-  //                    } else {
-  //                        log(error);
-  //                        log('------------------');
-  //                    }
-  //                }
-  //             );
-  //          } else {
-  //              count += 1;
-  //              log('Folder' + count);
-  //          }
-  //      });
+            if (entry.type == 'File') {
+                blobService.createBlockBlobFromStream('lesson2',
+               path,
+               entry,
+             entry.size,
+             { contentTypeHeader: contentType },
+                  function (error) {
+                      if (!error) {
+                          res.send('eskaase');
+                          log('Blob ' + path + ' created!');
+                      } else {
+                          log(error);
+                          log('------------------');
+                      }
+                  }
+               );
+            } else {
+                count += 1;
+                log('Folder' + count);
+            }
+        });
 
-  //      parsedZip.on('end', function (entry) {
-  //          var len = unKnownExtensions.length;
-  //          if (len) {
-  //              for (var i = 0; i < len; i++) {
-  //                  log('Unknown Extension: ' + unKnownExtensions[i]);
-  //              }
-  //          } else {
-  //              log('I knew all the extensions mime type');
-  //          }
-  //      });
+        parsedZip.on('end', function (entry) {
+            var len = unKnownExtensions.length;
+            if (len) {
+                for (var i = 0; i < len; i++) {
+                    log('Unknown Extension: ' + unKnownExtensions[i]);
+                }
+            } else {
+                log('I knew all the extensions mime type');
+            }
+        });
 
-  //  };
+    };
    
     
    
 });
 
-http.createServer(app).listen(app.get('port'), function(){
- // console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
 });
 
 
