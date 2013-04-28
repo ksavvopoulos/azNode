@@ -76,9 +76,10 @@ app.get('/custom', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-    res.send('Received File ...\n Creating Blobs');
-    var form = new formidable.IncomingForm();
-    //res.send('form created');
+    //res.send('Received File ...\n Creating Blobs');
+    var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
+    log(form.uploadDir);
+    res.send('form created');
     form.parse(req);
    
     var blobService = azure.createBlobService('indtestblob',
