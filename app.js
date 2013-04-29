@@ -76,10 +76,9 @@ app.get('/custom', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-    //res.send('Received File ...\n Creating Blobs');
+    var counter = 0;
     var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
     log(form.uploadDir);
-    res.send('form created');
     form.parse(req);
    
     var blobService = azure.createBlobService('indtestblob',
@@ -89,9 +88,8 @@ app.post('/upload', function (req, res) {
 
     log('Initialized Read Stream');
 
-    //res.send('Uploading...');
     var unKnownExtensions = [];
-  //  ws = fs.createWriteStream(__dirname+'/Downloads');
+
     form.onPart = function (part) {
         log('Received Part');
         if (!part.filename) {
@@ -104,6 +102,7 @@ app.post('/upload', function (req, res) {
         log('Data unziped');
 
         parsedZip.on('entry', function (entry) {
+            counter += 1;
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
@@ -126,11 +125,16 @@ app.post('/upload', function (req, res) {
              { contentTypeHeader: contentType },
                   function (error) {
                       if (!error) {
-                          res.send('eskaase');
+                          counter -= 1;
                           log('Blob ' + path + ' created!');
+                          if (!counter) {
+                              res.send('Blobs have been created');
+                              log('Blobs have been created');
+                          }
                       } else {
                           log(error);
                           log('------------------');
+                          res.send(error);
                       }
                   }
                );
@@ -149,6 +153,11 @@ app.post('/upload', function (req, res) {
             } else {
                 log('I knew all the extensions mime type');
             }
+        });
+
+        parsedZip.on('error', function (err) {
+            res.send(err);
+            log('ZIP ERROR: ' + err);
         });
 
     };
