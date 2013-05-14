@@ -76,7 +76,8 @@ app.get('/custom', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-    var counter = 0;
+    var counter = 0,
+        count=0;
     var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
     log(form.uploadDir);
     form.parse(req);
@@ -87,6 +88,8 @@ app.post('/upload', function (req, res) {
     log('Blob Service has been created...');
 
     log('Initialized Read Stream');
+
+   
 
     var unKnownExtensions = [];
 
@@ -118,10 +121,10 @@ app.post('/upload', function (req, res) {
             log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
-                blobService.createBlockBlobFromStream('lesson2',
-               path,
-               entry,
-             entry.size,
+                blobService.createBlockBlobFromStream('repository',
+                path,
+                entry,
+                entry.size,
              { contentTypeHeader: contentType },
                   function (error) {
                       if (!error) {
@@ -161,6 +164,17 @@ app.post('/upload', function (req, res) {
         });
 
     };
+    res.send('Upload completed!');
+    //form.on('progress', function (bytesReceived, bytesExpected) {
+    //    var progress = {
+    //        type: 'progress',
+    //        bytesReceived: bytesReceived,
+    //        bytesExpected: bytesExpected
+    //    };
+
+    //    socket.broadcast(JSON.stringify(progress));
+    //});
+
    
     
    
