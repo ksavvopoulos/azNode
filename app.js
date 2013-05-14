@@ -99,7 +99,7 @@ app.post('/upload', function (req, res) {
            //let formidable handle all non-file parts
             return this.handlePart(part);
         }
-        var lessonfolder = part.filename;
+        var lessonfolder = part.filename.replace('.zip','');
         var parsedZip = part.pipe(unzip.Parse(), {end:false});
       
         log('Data unziped');
