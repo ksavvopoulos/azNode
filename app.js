@@ -99,7 +99,7 @@ app.post('/upload', function (req, res) {
            //let formidable handle all non-file parts
             return this.handlePart(part);
         }
-        
+        var lessonfolder = part.filename;
         var parsedZip = part.pipe(unzip.Parse(), {end:false});
       
         log('Data unziped');
@@ -122,25 +122,25 @@ app.post('/upload', function (req, res) {
 
             if (entry.type == 'File') {
                 blobService.createBlockBlobFromStream('repository',
-                path,
+                lessonfolder + '/' + path,
                 entry,
                 entry.size,
-             { contentTypeHeader: contentType },
-                  function (error) {
-                      if (!error) {
-                          counter -= 1;
-                          log('Blob ' + path + ' created!');
-                          if (!counter) {
-                              res.send('Blobs have been created');
-                              log('Blobs have been created');
-                          }
-                      } else {
-                          log(error);
-                          log('------------------');
-                          res.send(error);
-                      }
-                  }
-               );
+                { contentTypeHeader: contentType },
+                    function (error) {
+                        if (!error) {
+                            counter -= 1;
+                            log('Blob ' + path + ' created!');
+                            if (!counter) {
+                                res.send('Blobs have been created');
+                                log('Blobs have been created');
+                            }
+                        } else {
+                            log(error);
+                            log('------------------');
+                            res.send(error);
+                        }
+                    }
+                );
             } else {
                 count += 1;
                 log('Folder' + count);
