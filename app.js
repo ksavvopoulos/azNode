@@ -1,4 +1,4 @@
-
+ 
 /**
  * Module dependencies.
  */
@@ -53,35 +53,40 @@ function clientErrorHandler(err, req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
-    //res.status(500);
-   // res.render('error', { error: err });
+ 
     res.send(err);
 }
 
-//app.get('/', routes.index);
 app.get('/users', user.list);
 
 app.get('/', function (req, res) {
-    res.send('<form method="post" action="/upload" enctype="multipart/form-data">'
-      + '<input type="file" name="file" />'
-      + '<p><input type="submit" value="Upload" /></p>'
-      + '</form><p><a href="test">Visit Test Page</a></p>');
+    res.send('<form method="post" action="/upload" enctype="multipart/form-data">'+
+                '<input type="file" name="file" />' +
+                '<input type="text" name="container" value="repository" style="display:none;" />' +
+                '<input type="submit" value="Upload" />'+
+            '</form>'+
+            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
+            '<script>' +
+                'window.onload=function(){InitListener();}'+
+            '</script>');
+
     process.stdout.write('stdout test');
 });
 
-app.get('/custom', function (req, res) {
-    res.send('Glu');
-    var ext = 'xml';
-   // res.send(ext +' has mime '+mimeTypes[ext]);
-});
+//app.get('/custom', function (req, res) {
+//    res.send('Glu');
+//    var ext = 'xml';
+//   // res.send(ext +' has mime '+mimeTypes[ext]);
+//});
 
 app.post('/upload', function (req, res) {
     var counter = 0,
-        count=0;
+        count = 0,
+        container;
     var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
     log(form.uploadDir);
-    form.parse(req);
-   
+    //form.parse(req);
+
     var blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
@@ -89,19 +94,19 @@ app.post('/upload', function (req, res) {
 
     log('Initialized Read Stream');
 
-   
-
     var unKnownExtensions = [];
 
     form.onPart = function (part) {
+
         log('Received Part');
         if (!part.filename) {
-           //let formidable handle all non-file parts
             return this.handlePart(part);
         }
-        var lessonfolder = part.filename.replace('.zip','');
-        var parsedZip = part.pipe(unzip.Parse(), {end:false});
-      
+
+
+        var lessonfolder = part.filename.replace('.zip', '');
+        var parsedZip = part.pipe(unzip.Parse(), { end: false });
+
         log('Data unziped');
 
         parsedZip.on('entry', function (entry) {
@@ -121,7 +126,7 @@ app.post('/upload', function (req, res) {
             log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
-                blobService.createBlockBlobFromStream('repository',
+                blobService.createBlockBlobFromStream(container,
                 lessonfolder + '/' + path,
                 entry,
                 entry.size,
@@ -131,7 +136,8 @@ app.post('/upload', function (req, res) {
                             counter -= 1;
                             log('Blob ' + path + ' created!');
                             if (!counter) {
-                                res.send('Blobs have been created');
+                                res.send('<h3>Blobs have been created</h3>' +
+                                          '<p>Container Name : ' + container + '</p>');
                                 log('Blobs have been created');
                             }
                         } else {
@@ -164,7 +170,15 @@ app.post('/upload', function (req, res) {
         });
 
     };
-    res.send('Upload completed!');
+    form.on('field', function (name, value) {
+        log('===================================================================');
+        log(name + ' ' + value);
+        if (name == 'container') {
+            container = value;
+        }
+    });
+    form.parse(req);
+    // res.send('Upload completed!');
     //form.on('progress', function (bytesReceived, bytesExpected) {
     //    var progress = {
     //        type: 'progress',
@@ -175,9 +189,6 @@ app.post('/upload', function (req, res) {
     //    socket.broadcast(JSON.stringify(progress));
     //});
 
-   
-    
-   
 });
 
 http.createServer(app).listen(app.get('port'), function () {
