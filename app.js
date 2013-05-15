@@ -61,9 +61,9 @@ app.get('/users', user.list);
 
 app.get('/', function (req, res) {
     res.send('<form method="post" action="/upload" enctype="multipart/form-data">'+
-                '<input type="file" name="file" />' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
-                '<input type="submit" value="Upload" />'+
+                '<input type="file" name="file" />' +
+                '<input type="submit" value="Upload" />' +
             '</form>'+
             '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
             '<script>' +
@@ -96,13 +96,21 @@ app.post('/upload', function (req, res) {
 
     var unKnownExtensions = [];
 
+    form.on('field', function (name, value) {
+        log('===================================================================');
+        log(name + ' ' + value);
+        if (name == 'container') {
+            container = value;
+        }
+    });
+
+
     form.onPart = function (part) {
 
         log('Received Part');
         if (!part.filename) {
             return this.handlePart(part);
         }
-
 
         var lessonfolder = part.filename.replace('.zip', '');
         var parsedZip = part.pipe(unzip.Parse(), { end: false });
@@ -170,13 +178,7 @@ app.post('/upload', function (req, res) {
         });
 
     };
-    form.on('field', function (name, value) {
-        log('===================================================================');
-        log(name + ' ' + value);
-        if (name == 'container') {
-            container = value;
-        }
-    });
+    
     form.parse(req);
     // res.send('Upload completed!');
     //form.on('progress', function (bytesReceived, bytesExpected) {
