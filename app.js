@@ -60,7 +60,7 @@ function errorHandler(err, req, res, next) {
 app.get('/users', user.list);
 
 app.get('/', function (req, res) {
-    res.send('<form method="post" action="/upload" enctype="multipart/form-data">'+
+    res.send('<body style="background-color: rgb(239, 239, 239);"><form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
                 '<input type="submit" value="Upload" />' +
@@ -68,7 +68,7 @@ app.get('/', function (req, res) {
             '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
             '<script>' +
                 'window.onload=function(){InitListener();}'+
-            '</script>');
+            '</script></body>');
 
     process.stdout.write('stdout test');
 });
@@ -144,8 +144,9 @@ app.post('/upload', function (req, res) {
                             counter -= 1;
                             log('Blob ' + path + ' created!');
                             if (!counter) {
-                                res.send('<h3>Blobs have been created</h3>' +
-                                          '<p>Container Name : ' + container + '</p>');
+                                res.send('<body style="background-color: rgb(239, 239, 239);">' +
+                                            '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
+                                         '</body>');
                                 log('Blobs have been created');
                             }
                         } else {
