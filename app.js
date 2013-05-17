@@ -88,7 +88,7 @@ app.post('/upload', function (req, res) {
     //form.parse(req);
 
     var blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==');//.withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
 
