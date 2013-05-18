@@ -166,7 +166,8 @@ app.post('/upload', function (req, res) {
             }
         });
 
-        parsedZip.on('end', function (entry) {
+        parsedZip.once('end', function () {
+            log('---------------------------Unzipinng Stream completed------------------------------');
             var len = unKnownExtensions.length;
             if (len) {
                 for (var i = 0; i < len; i++) {
