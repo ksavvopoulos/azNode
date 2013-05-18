@@ -60,6 +60,7 @@ function errorHandler(err, req, res, next) {
 app.get('/users', user.list);
 
 app.get('/', function (req, res) {
+    log('---------------------Request to / ------------------------------');
     res.send('<body style="background-color: rgb(239, 239, 239);"><form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
@@ -70,25 +71,23 @@ app.get('/', function (req, res) {
                 'window.onload=function(){InitListener();}'+
             '</script></body>');
 
-    process.stdout.write('stdout test');
+  
+    log('--------------------Response from / -------------------------');
 });
 
-//app.get('/custom', function (req, res) {
-//    res.send('Glu');
-//    var ext = 'xml';
-//   // res.send(ext +' has mime '+mimeTypes[ext]);
-//});
+
 
 app.post('/upload', function (req, res) {
+    log('---------------------Request to /upload ------------------------------');
     var counter = 0,
         count = 0,
         container;
     var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
     log(form.uploadDir);
-    //form.parse(req);
+ 
 
     var blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==');//.withFilter(new azure.ExponentialRetryPolicyFilter());
+       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
 
@@ -99,6 +98,7 @@ app.post('/upload', function (req, res) {
     form.on('field', function (name, value) {
         log('===================================================================');
         log(name + ' ' + value);
+        log('===================================================================');
         if (name == 'container') {
             container = value;
         }
@@ -147,11 +147,12 @@ app.post('/upload', function (req, res) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
                                          '</body>');
-                                log('Blobs have been created');
+                                log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
                             }
                         } else {
+                            log('------------------------Blob Error------------------------------');
                             log(error);
-                            log('------------------');
+                            log('------------------------Error End-------------------------------');
                             res.send(error);
                         }
                     }
@@ -179,7 +180,7 @@ app.post('/upload', function (req, res) {
         });
 
     };
-    
+  
     form.parse(req);
     // res.send('Upload completed!');
     //form.on('progress', function (bytesReceived, bytesExpected) {
