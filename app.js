@@ -104,6 +104,9 @@ app.post('/upload', function (req, res) {
         }
     });
 
+    form.on('end', function () {
+        log('--------------------Completed Parsing the Form----------------------------');
+    });
 
     form.onPart = function (part) {
 
