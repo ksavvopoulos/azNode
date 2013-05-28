@@ -57,30 +57,34 @@ function errorHandler(err, req, res, next) {
     res.send(err);
 }
 
-//app.get('/users', user.list);
 
 app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
-    res.send('<body style="background-color: rgb(239, 239, 239);"><form  method="post" action="/upload" enctype="multipart/form-data">' +
+    res.send('<body style="background-color: rgb(239, 239, 239);">' +
+            '<img style="display:none;" src="/images/ajaxLoader.gif" />' +
+            '<form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
-                '<input type="submit" value="Upload" />' +
+                '<input id="submit" type="submit" value="Upload" />' +
             '</form>' +
-            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
-            '<script>' +
-                'window.onload=function(){InitListener();}'+
-            '</script></body>');
+            '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
+            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
+            '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
+            '<script>window.onload=function(){InitListener();}</scipt>'+
+            '</body>');
 
-  
     log('--------------------Response from / -------------------------');
 });
 
-
 app.get('/updateScorm', function (req, res) {
-    res.send('<body style="background-color: rgb(239, 239, 239);"><form  method="post" action="/scormUpdated" enctype="multipart/form-data">' +
-               '<input type="file" name="file" />' +
-               '<input type="submit" value="Upload" />' +
+    res.send('<body style="background-color: rgb(239, 239, 239);">' +
+            '<img style="display:none;" src="/images/ajaxLoader.gif" />' +
+            '<form  method="post" action="/scormUpdated" enctype="multipart/form-data">' +
+                '<input type="file" name="file" />' +
+                '<input type="submit" id="submit" value="Upload" />' +
            '</form>' +
+           '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
+           '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
            '<br/><br/><br/><br/>' +
            '<a href="/clear">Clear Scorm Folder</a>'+
            '</body>');
