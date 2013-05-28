@@ -141,10 +141,10 @@ app.post('/scormUpdated', function (req, res) {
             return this.handlePart(part);
         }
 
-        var parsedZip = part.pipe(unzip.Parse());//, { end: false }
+        var parsedZip = part.pipe(unzip.Parse(),{ end: false });//, { end: false }
 
         parsedZip.on('entry', function (entry) {
-            counter += 1;
+            
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
@@ -160,6 +160,7 @@ app.post('/scormUpdated', function (req, res) {
             log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
+                counter += 1;
                 blobService.createBlockBlobFromStream('scorm',
                 path,
                 entry,
@@ -169,6 +170,7 @@ app.post('/scormUpdated', function (req, res) {
                         if (!error) {
                             counter -= 1;
                             log('Blob ' + path + ' created!');
+                            log('counter: ' + counter);
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Scorm uploaded </p>' +
@@ -258,7 +260,7 @@ app.post('/upload', function (req, res) {
             parsedZip = part.pipe(unzip.Parse());//, { end: false }
 
         parsedZip.on('entry', function (entry) {
-            counter += 1;
+            
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
@@ -274,6 +276,7 @@ app.post('/upload', function (req, res) {
             log('Mime Type : ' + contentType);
 
             if (entry.type == 'File') {
+                counter += 1;
                 blobService.createBlockBlobFromStream(container,
                 lessonfolder + '/' + path,
                 entry,
