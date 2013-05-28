@@ -66,7 +66,6 @@ app.get('/', function (req, res) {
                 '<input type="file" name="file" />' +
                 '<input type="submit" value="Upload" />' +
             '</form>' +
-            '<a href="/updateScorm">Update Scorm Player</a>'+
             '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
             '<script>' +
                 'window.onload=function(){InitListener();}'+
