@@ -57,7 +57,7 @@ function errorHandler(err, req, res, next) {
     res.send(err);
 }
 
-app.get('/users', user.list);
+//app.get('/users', user.list);
 
 app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
@@ -65,7 +65,8 @@ app.get('/', function (req, res) {
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
                 '<input type="submit" value="Upload" />' +
-            '</form>'+
+            '</form>' +
+            '<a href="/updateScorm">Update Scorm Player</a>'+
             '<script type="text/javascript" src="/javascripts/postMessages.js"></script>'+
             '<script>' +
                 'window.onload=function(){InitListener();}'+
@@ -76,24 +77,162 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/updateScorm', function (req, res) {
+    res.send('<body style="background-color: rgb(239, 239, 239);"><form  method="post" action="/scormUpdated" enctype="multipart/form-data">' +
+               '<input type="file" name="file" />' +
+               '<input type="submit" value="Upload" />' +
+           '</form>' +
+           '<br/><br/><br/><br/>' +
+           '<a href="/clear">Clear Scorm Folder</a>'+
+           '</body>');
 
-app.post('/upload', function (req, res) {
+});
+
+app.get('/clear', function (req, res) {
+    blobService = azure.createBlobService('indtestblob',
+      'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+
+    blobService.listBlobs('scorm', function (error, blobs) {
+        if (!error) {
+            for (var index in blobs) {
+
+                blobService.deleteBlob('scorm'
+                     , blobs[index].name
+                     , function (error) {
+                         if (!error) {
+                             res.send('clear failed');
+                         }
+                     });
+
+                console.log(blobs[index].name);
+            }
+            res.send('clear is completed');
+        } else {
+            res.send('clear failed');
+        }
+    });
+
+});
+
+app.post('/scormUpdated', function (req, res) {
     log('---------------------Request to /upload ------------------------------');
     var counter = 0,
         count = 0,
-        container;
-    var form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' });
-    log(form.uploadDir);
- 
-
-    var blobService = azure.createBlobService('indtestblob',
+        container,
+        unKnownExtensions = [],
+        form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
+        blobService = azure.createBlobService('indtestblob',
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
 
     log('Initialized Read Stream');
 
-    var unKnownExtensions = [];
+   
+
+    form.on('end', function () {
+        log('--------------------Completed Parsing the Form----------------------------');
+    });
+
+    form.onPart = function (part) {
+
+        log('Received Part');
+
+        if (!part.filename) {
+            return this.handlePart(part);
+        }
+
+        var parsedZip = part.pipe(unzip.Parse());//, { end: false }
+
+        parsedZip.on('entry', function (entry) {
+            counter += 1;
+            var path = entry.path;
+            var ext = path.split('.').pop();
+            var contentType = mimeTypes[ext];
+            if (!contentType) {
+                unKnownExtensions.push(ext);
+            }
+
+            log('Entry size :' + entry.size);
+            log('Entry type: ' + entry.type);
+            log('Entry readable:' + entry.readable);
+            log('Entry path:' + path);
+            log('Extension :' + ext);
+            log('Mime Type : ' + contentType);
+
+            if (entry.type == 'File') {
+                blobService.createBlockBlobFromStream('scorm',
+                path,
+                entry,
+                entry.size,
+                { contentTypeHeader: contentType },
+                    function (error) {
+                        if (!error) {
+                            counter -= 1;
+                            log('Blob ' + path + ' created!');
+                            if (!counter) {
+                                res.send('<body style="background-color: rgb(239, 239, 239);">' +
+                                            '<p>Scorm uploaded </p>' +
+                                         '</body>');
+                                log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
+                            }
+                        } else {
+                            log('------------------------Blob Error------------------------------');
+                            log(error);
+                            log('------------------------Error End-------------------------------');
+                            res.send(error);
+                        }
+                    }
+                );
+            } else {
+                count += 1;
+                log('Folder' + count);
+            }
+        });
+
+        parsedZip.on('end', function () {
+            log('---------------------------Unzipinng Stream completed------------------------------');
+            var len = unKnownExtensions.length;
+            if (len) {
+                for (var i = 0; i < len; i++) {
+                    log('Unknown Extension: ' + unKnownExtensions[i]);
+                }
+            } else {
+                log('I knew all the extensions mime type');
+            }
+        });
+
+        parsedZip.on('error', function (err) {
+            res.send(err);
+            log('ZIP ERROR: ' + err);
+        });
+
+        for (key in parsedZip) {
+            log(key + ' : ' + parsedZip[key]);
+        }
+
+        for (key in parsedZip._events) {
+            log(key + ' : ' + parsedZip._events[key]);
+        }
+    };
+
+    form.parse(req);
+
+});
+
+app.post('/upload', function (req, res) {
+    log('---------------------Request to /upload ------------------------------');
+    var counter = 0,
+        count = 0,
+        container,
+        unKnownExtensions = [],
+        form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
+        blobService = azure.createBlobService('indtestblob',
+       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+
+    log('Blob Service has been created...');
+
+    log('Initialized Read Stream');
 
     form.on('field', function (name, value) {
         log('===================================================================');
@@ -111,14 +250,13 @@ app.post('/upload', function (req, res) {
     form.onPart = function (part) {
 
         log('Received Part');
+
         if (!part.filename) {
             return this.handlePart(part);
         }
 
-        var lessonfolder = part.filename.replace('.zip', '');
-        var parsedZip = part.pipe(unzip.Parse(), { end: false });
-
-        log('Data unziped');
+        var lessonfolder = part.filename.replace('.zip', ''),
+            parsedZip = part.pipe(unzip.Parse());//, { end: false }
 
         parsedZip.on('entry', function (entry) {
             counter += 1;
@@ -166,7 +304,7 @@ app.post('/upload', function (req, res) {
             }
         });
 
-        parsedZip.once('end', function () {
+        parsedZip.on('end', function () {
             log('---------------------------Unzipinng Stream completed------------------------------');
             var len = unKnownExtensions.length;
             if (len) {
@@ -183,6 +321,13 @@ app.post('/upload', function (req, res) {
             log('ZIP ERROR: ' + err);
         });
 
+        for (key in parsedZip) {
+            log(key + ' : ' + parsedZip[key]);
+        }
+
+        for (key in parsedZip._events) {
+            log(key + ' : ' + parsedZip._events[key]);
+        }
     };
   
     form.parse(req);
@@ -200,9 +345,8 @@ app.post('/upload', function (req, res) {
 });
 
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+    log('Express server listening on port ' + app.get('port'));
 });
-
 
 function log(mes) {
     process.stdout.write(mes+'\n');
