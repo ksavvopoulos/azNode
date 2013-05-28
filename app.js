@@ -208,13 +208,7 @@ app.post('/scormUpdated', function (req, res) {
             log('ZIP ERROR: ' + err);
         });
 
-        for (key in parsedZip) {
-            log(key + ' : ' + parsedZip[key]);
-        }
-
-        for (key in parsedZip._events) {
-            log(key + ' : ' + parsedZip._events[key]);
-        }
+      
     };
 
     form.parse(req);
@@ -323,13 +317,6 @@ app.post('/upload', function (req, res) {
             log('ZIP ERROR: ' + err);
         });
 
-        for (key in parsedZip) {
-            log(key + ' : ' + parsedZip[key]);
-        }
-
-        for (key in parsedZip._events) {
-            log(key + ' : ' + parsedZip._events[key]);
-        }
     };
   
     form.parse(req);
