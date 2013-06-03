@@ -8,6 +8,8 @@ function InitListener() {
     }
 }
 
+// function ReadMessage MUST return. We need to send Container name from LMS
+
 function SendMessage(theMessage) {
     try {
         var where = window.parent  // to talk to parent frame

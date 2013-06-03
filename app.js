@@ -61,8 +61,8 @@ app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
 	/* lms bg color // style="background-color: rgb(239, 239, 239);" */
     res.send('<body >' +
-			'<div id="img" style="display:none;"> Uploading. Please wait...' +
-            '<img src="/images/ajaxLoader.gif" />' +
+			'<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
+            '<img src="/images/ajaxLoader.gif" /> </table>' +
 			'</div>' +
             '<form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
@@ -288,6 +288,7 @@ app.post('/upload', function (req, res) {
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
+											'<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
 											'<script type="text/javascript">' + 
 											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' + 
 											lessonfolder +
