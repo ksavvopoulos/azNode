@@ -53,16 +53,17 @@ function clientErrorHandler(err, req, res, next) {
     }
 }
 
-function errorHandler(err, req, res, next) {
- 
+function errorHandler(err, req, res, next) { 
     res.send(err);
 }
 
-
 app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
-    res.send('<body style="background-color: rgb(239, 239, 239);">' +
-            '<img style="display:none;" src="/images/ajaxLoader.gif" />' +
+	/* lms bg color // style="background-color: rgb(239, 239, 239);" */
+    res.send('<body >' +
+			'<div id="img" style="display:none;"> Uploading. Please wait...' +
+            '<img src="/images/ajaxLoader.gif" />' +
+			'</div>' +
             '<form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
@@ -231,7 +232,6 @@ app.post('/upload', function (req, res) {
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
-
     log('Initialized Read Stream');
 
     form.on('field', function (name, value) {
@@ -288,6 +288,11 @@ app.post('/upload', function (req, res) {
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
+											'<script type="text/javascript">' + 
+											' SendMessage( { "theFunction" : "zipUploaded", "theData" : ' + 
+											lessonfolder +
+											' });'+
+											'</script>'+
                                          '</body>');
                                 log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
                             }
