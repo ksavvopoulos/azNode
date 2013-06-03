@@ -13,7 +13,7 @@ function InitListener() {
 function SendMessage(theMessage) {
     try {
         var where = window.parent  // to talk to parent frame
-        var myMsg = window.JSON.stringify(theMessage);
+        var myMsg = this.JSON.stringify(theMessage);
         where.postMessage(myMsg, '*');
     } catch (err) {
         alert("SendMessage - Error description: " + err.message);
