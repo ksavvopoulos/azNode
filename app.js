@@ -288,6 +288,7 @@ app.post('/upload', function (req, res) {
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
+											'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
 											'<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
 											'<script type="text/javascript">' + 
 											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' + 
@@ -350,4 +351,5 @@ http.createServer(app).listen(app.get('port'), function () {
 
 function log(mes) {
     process.stdout.write(mes+'\n');
+	if (console) {console.log(mes);}
 }
