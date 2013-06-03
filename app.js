@@ -289,9 +289,9 @@ app.post('/upload', function (req, res) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                             '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
 											'<script type="text/javascript">' + 
-											' SendMessage( { "theFunction" : "zipUploaded", "theData" : ' + 
+											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' + 
 											lessonfolder +
-											' });'+
+											'" });'+
 											'</script>'+
                                          '</body>');
                                 log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
