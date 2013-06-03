@@ -301,7 +301,7 @@ app.post('/upload', function (req, res) {
                             log('------------------------Blob Error------------------------------');
                             log(error);
                             log('------------------------Error End-------------------------------');
-                            res.send(error);
+                            res.send('<body style="background-color: rgb(239, 239, 239);"><p> There was an error: ' + error + error.message + '</p></body>');
                         }
                     }
                 );
