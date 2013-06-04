@@ -71,6 +71,7 @@ app.get('/', function (req, res) {
             '</form>' +
             '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
             '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
+			'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
             '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
             '<script>window.onload=function(){InitListener();}</scipt>'+
             '</body>');
@@ -287,12 +288,12 @@ app.post('/upload', function (req, res) {
                             log('Blob ' + path + ' created!');
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
-                                            '<p>Lesson uploaded in '+container+'/'+lessonfolder+'</p>'+
+                                            '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '</p>'+
 											'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
 											'<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
 											'<script type="text/javascript">' + 
 											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' + 
-											lessonfolder +
+											    lessonfolder +
 											'" });'+
 											'</script>'+
                                          '</body>');

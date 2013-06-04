@@ -1,14 +1,12 @@
 function InitListener() {
     if (window.addEventListener) {
-        window.addEventListener("message", ReceiveMessage, false);
+        window.addEventListener("message", ReceiveMessage, false);		
     } else if (window.attachEvent) {
-        window.attachEvent("onmessage", ReceiveMessage);
+        window.attachEvent("onmessage", ReceiveMessage);		
     } else {
         alert("could not attach event listener");
     }
 }
-
-// function ReadMessage MUST return. We need to send Container name from LMS
 
 function SendMessage(theMessage) {
     try {
@@ -17,5 +15,27 @@ function SendMessage(theMessage) {
         where.postMessage(myMsg, '*');
     } catch (err) {
         alert("SendMessage - Error description: " + err.message);
+    }
+}
+
+function ReceiveMessage(event) {
+    try {
+        var eventObjData = JSON.parse(event.data);
+        var theFunction = eventObjData.theFunction;
+        var theData = eventObjData.theData;
+        //
+        if (theFunction == "replyWithContainerName") {           
+            // got the Container name from LMS 
+			var theContainer = theData;
+			say("iFrame got the container name: " + container);	
+			// jQuery change form input 'container' value from 'repository' to theContainer
+        }   
+        // go on checking for function names here... 
+        if (theFunction == "doSomething"){
+            // do something
+        }
+        // You may even eval(theFunction + "(" + theData + ")") and call the original function
+    } catch (err) {
+        alert("ReceiveMessage - Error description: " + err.message);        
     }
 }
