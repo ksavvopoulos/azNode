@@ -65,7 +65,7 @@ app.get('/', function (req, res) {
             '<img src="/images/ajaxLoader.gif" /> </table>' +
 			'</div>' +
             '<form  method="post" action="/upload" enctype="multipart/form-data">' +
-                '<input type="text" name="container" value="repository" style="display:none;" />' +
+                '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
                 '<input type="file" name="file" />' +
                 '<input id="submit" type="submit" value="Upload" />' +
             '</form>' +
