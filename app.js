@@ -70,10 +70,12 @@ app.get('/', function (req, res) {
                 '<input id="submit" type="submit" value="Upload" />' +
             '</form>' +
             '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
-            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
 			'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
+            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +			
             '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
-            '<script>window.onload=function(){InitListener();}</scipt>'+
+			'<script type="text/javascript">' +
+				'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
+			'</script>' +
             '</body>');
 
     log('--------------------Response from / -------------------------');
@@ -131,10 +133,8 @@ app.post('/scormUpdated', function (req, res) {
        'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
-
     log('Initialized Read Stream');
-
-   
+	
 
     form.on('end', function () {
         log('--------------------Completed Parsing the Form----------------------------');
@@ -340,7 +340,6 @@ app.post('/upload', function (req, res) {
     //        bytesReceived: bytesReceived,
     //        bytesExpected: bytesExpected
     //    };
-
     //    socket.broadcast(JSON.stringify(progress));
     //});
 
@@ -352,5 +351,9 @@ http.createServer(app).listen(app.get('port'), function () {
 
 function log(mes) {
     process.stdout.write(mes+'\n');
-	if (console) {console.log(mes);}
+	if (window.top != window) {
+        SendMessage({ "theFunction": "say", "theData": mes });       
+    } else if (window.console) {
+        console.log(mes);
+    } 
 }

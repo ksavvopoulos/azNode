@@ -1,3 +1,5 @@
+InitListener();
+
 function InitListener() {
     if (window.addEventListener) {
         window.addEventListener("message", ReceiveMessage, false);		
@@ -14,7 +16,7 @@ function SendMessage(theMessage) {
         var myMsg = JSON.stringify(theMessage);
         where.postMessage(myMsg, '*');
     } catch (err) {
-        alert("SendMessage - Error description: " + err.message);
+        say("SendMessage - Error description: " + err.message);
     }
 }
 
@@ -37,6 +39,6 @@ function ReceiveMessage(event) {
         }
         // You may even eval(theFunction + "(" + theData + ")") and call the original function
     } catch (err) {
-        alert("ReceiveMessage - Error description: " + err.message);        
+        say("ReceiveMessage - Error description: " + err.message);        
     }
 }
