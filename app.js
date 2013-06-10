@@ -59,8 +59,7 @@ function errorHandler(err, req, res, next) {
 
 app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
-	/* lms bg color // style="background-color: rgb(239, 239, 239);" */
-    res.send('<body >' +
+    res.send('<body style="background-color: rgb(239, 239, 239);">' +
 			'<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
             '<img src="/images/ajaxLoader.gif" /> </table>' +
 			'</div>' +
