@@ -350,9 +350,10 @@ http.createServer(app).listen(app.get('port'), function () {
 
 function log(mes) {
     process.stdout.write(mes+'\n');
-	res.send('	<script type="text/javascript">' + 
+	/*res.send('	<script type="text/javascript">' + 
 	'try { if (window.top != window) { SendMessage({ "theFunction": "say", "theData": mes });   }'+ 
 	'else if (window.console) { console.log(mes); } '+
 	'} catch (e) { alert("error while logging. " +e.Message); }'+
 	'</script>');
+	*/
 }
