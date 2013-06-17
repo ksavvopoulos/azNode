@@ -65,7 +65,7 @@ app.get('/', function (req, res) {
 			'</div>' +
             '<form  method="post" action="/upload" enctype="multipart/form-data">' +
                 '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
-                '<input type="file" name="file" required/>' +
+                '<input type="file" name="file"/>' +
                 '<input id="submit" type="submit" value="Upload" />' +
             '</form>' +
             '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
