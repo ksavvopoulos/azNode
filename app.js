@@ -255,6 +255,11 @@ app.post('/upload', function (req, res) {
             return this.handlePart(part);
         }
 
+		if ( part.filename.indexOf('.zip')<0 ) {
+			res.send('<script>alert ("not a zip file");</script>');
+			return;
+		}
+		
         var lessonfolder = part.filename.replace('.zip', ''),
             parsedZip = part.pipe(unzip.Parse());//, { end: false }
 
