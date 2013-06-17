@@ -256,7 +256,7 @@ app.post('/upload', function (req, res) {
         }
 
 		if ( part.filename.indexOf('.zip')<0 ) {
-			res.send('<script>alert ("not a zip file"); history.back() ;</script>');			 		
+			res.send('<script>alert ("Scorm package must be a zip file"); history.back() ;</script>');			 		
 			return;
 		}
 		
