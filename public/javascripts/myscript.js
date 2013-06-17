@@ -1,7 +1,12 @@
  
 $('#submit').click(function () {
-	$('form').hide();
-	$('#img').show();
+	if(!$("form input[type=file]").val()) {
+        alert('You must select a file!');
+        return false;
+    } else {
+		$('form').hide();
+		$('#img').show();
+	}
 });	
  
 function say(what) {
