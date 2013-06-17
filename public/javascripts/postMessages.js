@@ -28,7 +28,7 @@ function ReceiveMessage(event) {
         //
         if (theFunction == "replyWithContainerName") {           
             // got the Container name from LMS 
-			var theContainer = theData;
+			var theContainer = theData.toLowerCase();
 			say("iFrame got the container name: " + theContainer);	
 			// jQuery change form input 'container' value from 'repository' to theContainer
 			$("#container").val(theContainer);
