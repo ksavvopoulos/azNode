@@ -256,8 +256,7 @@ app.post('/upload', function (req, res) {
         }
 
 		if ( part.filename.indexOf('.zip')<0 ) {
-			res.send('<script>alert ("not a zip file");</script>');
-			res.send('<script> location.reload() ;</script>');			
+			res.send('<script>alert ("not a zip file"); history.back() ;</script>');			 		
 			return;
 		}
 		
@@ -338,15 +337,6 @@ app.post('/upload', function (req, res) {
     };
   
     form.parse(req);
-    // res.send('Upload completed!');
-    //form.on('progress', function (bytesReceived, bytesExpected) {
-    //    var progress = {
-    //        type: 'progress',
-    //        bytesReceived: bytesReceived,
-    //        bytesExpected: bytesExpected
-    //    };
-    //    socket.broadcast(JSON.stringify(progress));
-    //});
 
 });
 
@@ -356,10 +346,4 @@ http.createServer(app).listen(app.get('port'), function () {
 
 function log(mes) {
     process.stdout.write(mes+'\n');
-	/*res.send('	<script type="text/javascript">' + 
-	'try { if (window.top != window) { SendMessage({ "theFunction": "say", "theData": mes });   }'+ 
-	'else if (window.console) { console.log(mes); } '+
-	'} catch (e) { alert("error while logging. " +e.Message); }'+
-	'</script>');
-	*/
 }
