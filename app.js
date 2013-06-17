@@ -257,7 +257,7 @@ app.post('/upload', function (req, res) {
 
 		if ( part.filename.indexOf('.zip')<0 ) {
 			res.send('<script>alert ("not a zip file");</script>');
-			res.send('<script> document.location = document.location ;</script>');			
+			res.send('<script> location.reload() ;</script>');			
 			return;
 		}
 		
