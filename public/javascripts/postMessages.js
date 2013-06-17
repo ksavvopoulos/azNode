@@ -31,7 +31,7 @@ function ReceiveMessage(event) {
 			var theContainer = theData;
 			say("iFrame got the container name: " + theContainer);	
 			// jQuery change form input 'container' value from 'repository' to theContainer
-			$("#container").val('theContainer');
+			$("#container").val(theContainer);
         }   
         // go on checking for function names here... 
         if (theFunction == "doSomething"){
