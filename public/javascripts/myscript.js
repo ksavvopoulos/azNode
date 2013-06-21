@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  $(document).ready(
     function(){
         $('input:submit').attr('disabled',true);
@@ -53,6 +54,9 @@ $('#submit').click(function () {
 =======
  
 >>>>>>> parent of eca586d... submit 2
+=======
+ 
+>>>>>>> parent of eca586d... submit 2
 $('#submit').click(function () {
 	if(!$("form input[type=file]").val()) {
         alert('You must select a file!');
@@ -65,8 +69,12 @@ $('#submit').click(function () {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 
 >>>>>>> parent of 988466d... ready to move to new azure, static vars for service
+=======
+	}
+>>>>>>> parent of eca586d... submit 2
 =======
 	}
 >>>>>>> parent of eca586d... submit 2
