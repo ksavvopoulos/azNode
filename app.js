@@ -2,7 +2,7 @@
  * Module dependencies. johnpan
  */
 var STATIC_blobName = "indtestblob";
-var STATIC_blobKey = "M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==";
+var STATIC_blobKey = 'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==';
  
 var express = require('express')
   , routes = require('./routes')
@@ -184,8 +184,8 @@ app.post('/scormUpdated', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-	res.send('<script>alert ("STATIC_blobName:  ' + STATIC_blobName + '");</script>');	
-	res.send('<script>alert ("STATIC_blobKey:  ' + STATIC_blobKey + '");</script>');	
+	//res.send('<script>alert ("STATIC_blobName:  ' + STATIC_blobName + '");</script>');	
+	//res.send('<script>alert ("STATIC_blobKey:  ' + STATIC_blobKey + '");</script>');	
     log('---------------------Request to /upload ------------------------------');
     var counter = 0,
         count = 0,
