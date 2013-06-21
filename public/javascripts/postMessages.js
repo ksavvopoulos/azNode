@@ -33,11 +33,6 @@ function ReceiveMessage(event) {
 			// jQuery change form input 'container' value from 'repository' to theContainer
 			$("#container").val(theContainer);
         }   
-        // go on checking for function names here... 
-        if (theFunction == "doSomething"){
-            // do something
-        }
-        // You may even eval(theFunction + "(" + theData + ")") and call the original function
     } catch (err) {
         say("ReceiveMessage - Error description: " + err.message);        
     }

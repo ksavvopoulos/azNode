@@ -221,8 +221,6 @@ app.post('/scormUpdated', function (req, res) {
 });
 
 app.post('/upload', function (req, res) {
-	//res.send('<script>alert ("STATIC_blobName:  ' + STATIC_blobName + '");</script>');	
-	//res.send('<script>alert ("STATIC_blobKey:  ' + STATIC_blobKey + '");</script>');	
     log('---------------------Request to /upload ------------------------------');
     var counter = 0,
         count = 0,
