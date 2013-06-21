@@ -7,11 +7,9 @@
                 else { $('input:submit').attr('disabled',true); }
             });
     });	
-$('#submit').click(function () {
-	 
+$('#submit').click(function () {	 
 		$('form').hide();
-		$('#img').show();
-	 
+		$('#img').show();	 
 });	 
 function say(what) { 
     if (window.top != window) { SendMessage({ "theFunction": "say", "theData": what });       

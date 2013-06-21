@@ -272,7 +272,7 @@ app.post('/upload', function (req, res) {
             } else {  log('I knew all the extensions mime type');  }
         });
         parsedZip.on('error', function (err) {
-            res.send(err);
+            res.send("<script type='text/javascript'>say(" + err+ "); alert('Please try upload again');");
             log('ZIP ERROR: ' + err);
         });
     };  
