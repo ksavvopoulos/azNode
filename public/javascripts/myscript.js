@@ -4,9 +4,14 @@
         $('input:submit').attr('disabled',true);
         $('input:file').change(
             function(){
-                if ($(this).val()){  $('input:submit').removeAttr('disabled');   }
-                else { $('input:submit').attr('disabled',true); }
+                if ($(this).val()){
+                    $('input:submit').removeAttr('disabled'); 
+                }
+                else {
+                    $('input:submit').attr('disabled',true);
+                }
             });
+<<<<<<< HEAD
     });	
 $('#submit').click(function () {	 
 		$('form').hide();
@@ -25,6 +30,15 @@ $('#submit').click(function () {
 		$('form').hide();
 		$('#img').show();
 	}
+=======
+    });
+	
+$('#submit').click(function () {
+	 
+		$('form').hide();
+		$('#img').show();
+	 
+>>>>>>> parent of 988466d... ready to move to new azure, static vars for service
 });	
  
 function say(what) {
@@ -34,5 +48,8 @@ function say(what) {
     } else if (window.console) {
         console.log(what);
     } 
+<<<<<<< HEAD
 >>>>>>> parent of eca586d... submit 2
+=======
+>>>>>>> parent of 988466d... ready to move to new azure, static vars for service
 }
