@@ -1,12 +1,3 @@
-<<<<<<< HEAD
- /**
- * Module dependencies. johnpan
- */
-var STATIC_blobName = "indtestblob";
-var STATIC_blobKey = 'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==';
-=======
->>>>>>> parent of 988466d... ready to move to new azure, static vars for service
- 
 /**
  * Module dependencies.
  johnpan
