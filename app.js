@@ -1,9 +1,9 @@
- 
-/**
- * Module dependencies.
- johnpan
+ /**
+ * Module dependencies. johnpan
  */
-
+var STATIC_blobName = "indtestblob";
+var STATIC_blobKey = "M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==";
+ 
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
@@ -17,7 +17,6 @@ var express = require('express')
   , format = require('util').format;
 
 var app = express();
-
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -34,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.errorHandler());
 // development only
-
 //if ('development' == app.get('env')) {
 //  app.use(express.errorHandler());
 //}
@@ -46,16 +44,11 @@ function logErrors(err, req, res, next) {
 }
 
 function clientErrorHandler(err, req, res, next) {
-    if (req.xhr) {
-        res.send(500, { error: 'egine ' });
-    } else {
-        next(err);
-    }
+    if (req.xhr) {  res.send(500, { error: 'egine ' });  } 
+	else { next(err); }
 }
 
-function errorHandler(err, req, res, next) { 
-    res.send(err);
-}
+function errorHandler(err, req, res, next) { res.send(err);}
 
 app.get('/', function (req, res) {
     log('---------------------Request to / ------------------------------');
@@ -76,7 +69,6 @@ app.get('/', function (req, res) {
 				'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
 			'</script>' +
             '</body>');
-
     log('--------------------Response from / -------------------------');
 });
 
@@ -92,17 +84,13 @@ app.get('/updateScorm', function (req, res) {
            '<br/><br/><br/><br/>' +
            '<a href="/clear">Clear Scorm Folder</a>'+
            '</body>');
-
 });
 
 app.get('/clear', function (req, res) {
-    blobService = azure.createBlobService('indtestblob',
-      'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
-
+    blobService = azure.createBlobService(STATIC_blobName, STATIC_blobKey).withFilter(new azure.ExponentialRetryPolicyFilter());
     blobService.listBlobs('scorm', function (error, blobs) {
         if (!error) {
             for (var index in blobs) {
-
                 blobService.deleteBlob('scorm'
                      , blobs[index].name
                      , function (error) {
@@ -110,15 +98,11 @@ app.get('/clear', function (req, res) {
                              res.send('clear failed');
                          }
                      });
-
                 console.log(blobs[index].name);
             }
             res.send('clear is completed');
-        } else {
-            res.send('clear failed');
-        }
+        } else { res.send('clear failed'); }
     });
-
 });
 
 app.post('/scormUpdated', function (req, res) {
@@ -128,35 +112,23 @@ app.post('/scormUpdated', function (req, res) {
         container,
         unKnownExtensions = [],
         form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
-        blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
-
+        blobService = azure.createBlobService(STATIC_blobName, STATIC_blobKey).withFilter(new azure.ExponentialRetryPolicyFilter());
     log('Blob Service has been created...');
-    log('Initialized Read Stream');
-	
+    log('Initialized Read Stream');	
 
-    form.on('end', function () {
-        log('--------------------Completed Parsing the Form----------------------------');
-    });
+    form.on('end', function () {  log('--------Completed Parsing the Form-----------');});
 
     form.onPart = function (part) {
-
         log('Received Part');
+        if (!part.filename) { return this.handlePart(part); }
 
-        if (!part.filename) {
-            return this.handlePart(part);
-        }
+        var parsedZip = part.pipe(unzip.Parse(),{ end: false });
 
-        var parsedZip = part.pipe(unzip.Parse(),{ end: false });//, { end: false }
-
-        parsedZip.on('entry', function (entry) {
-            
+        parsedZip.on('entry', function (entry) {            
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
-            if (!contentType) {
-                unKnownExtensions.push(ext);
-            }
+            if (!contentType) {  unKnownExtensions.push(ext); }
 
             log('Entry size :' + entry.size);
             log('Entry type: ' + entry.type);
@@ -168,9 +140,7 @@ app.post('/scormUpdated', function (req, res) {
             if (entry.type == 'File') {
                 counter += 1;
                 blobService.createBlockBlobFromStream('scorm',
-                path,
-                entry,
-                entry.size,
+                path,  entry,  entry.size,
                 { contentTypeHeader: contentType },
                     function (error) {
                         if (!error) {
@@ -201,24 +171,16 @@ app.post('/scormUpdated', function (req, res) {
             log('---------------------------Unzipinng Stream completed------------------------------');
             var len = unKnownExtensions.length;
             if (len) {
-                for (var i = 0; i < len; i++) {
-                    log('Unknown Extension: ' + unKnownExtensions[i]);
-                }
-            } else {
-                log('I knew all the extensions mime type');
-            }
+                for (var i = 0; i < len; i++) { log('Unknown Extension: ' + unKnownExtensions[i]); }
+            } else {  log('I knew all the extensions mime type'); }
         });
 
         parsedZip.on('error', function (err) {
             res.send(err);
             log('ZIP ERROR: ' + err);
-        });
-
-      
+        });      
     };
-
     form.parse(req);
-
 });
 
 app.post('/upload', function (req, res) {
@@ -228,9 +190,7 @@ app.post('/upload', function (req, res) {
         container,
         unKnownExtensions = [],
         form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
-        blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
-
+        blobService = azure.createBlobService(STATIC_blobName, STATIC_blobKey).withFilter(new azure.ExponentialRetryPolicyFilter());
     log('Blob Service has been created...');
     log('Initialized Read Stream');
 
@@ -238,39 +198,27 @@ app.post('/upload', function (req, res) {
         log('===================================================================');
         log(name + ' ' + value);
         log('===================================================================');
-        if (name == 'container') {
-            container = value;
-        }
+        if (name == 'container') { container = value; }
     });
 
-    form.on('end', function () {
-        log('--------------------Completed Parsing the Form----------------------------');
-    });
+    form.on('end', function () {log('---------Completed Parsing the Form--------------'); });
 
     form.onPart = function (part) {
-
         log('Received Part');
-
-        if (!part.filename) {
-            return this.handlePart(part);
-        }
+        if (!part.filename) { return this.handlePart(part);}
 
 		if ( part.filename.indexOf('.zip')<0 ) {
-			res.send('<script>alert ("Scorm package must be a zip file"); history.back() ;</script>');			 		
-			return;
+			res.send('<script>alert ("Scorm package must be a zip file"); history.back() ;</script>');	return;
 		}
 		
         var lessonfolder = part.filename.replace('.zip', ''),
             parsedZip = part.pipe(unzip.Parse());//, { end: false }
 
-        parsedZip.on('entry', function (entry) {
-            
+        parsedZip.on('entry', function (entry) {            
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
-            if (!contentType) {
-                unKnownExtensions.push(ext);
-            }
+            if (!contentType) {  unKnownExtensions.push(ext); }
 
             log('Entry size :' + entry.size);
             log('Entry type: ' + entry.type);
@@ -283,8 +231,7 @@ app.post('/upload', function (req, res) {
                 counter += 1;
                 blobService.createBlockBlobFromStream(container,
                 lessonfolder + '/' + path,
-                entry,
-                entry.size,
+                entry,  entry.size,
                 { contentTypeHeader: contentType },
                     function (error) {
                         if (!error) {
@@ -321,29 +268,15 @@ app.post('/upload', function (req, res) {
             log('---------------------------Unzipinng Stream completed------------------------------');
             var len = unKnownExtensions.length;
             if (len) {
-                for (var i = 0; i < len; i++) {
-                    log('Unknown Extension: ' + unKnownExtensions[i]);
-                }
-            } else {
-                log('I knew all the extensions mime type');
-            }
+                for (var i = 0; i < len; i++) { log('Unknown Extension: ' + unKnownExtensions[i]); }
+            } else {  log('I knew all the extensions mime type');  }
         });
-
         parsedZip.on('error', function (err) {
             res.send(err);
             log('ZIP ERROR: ' + err);
         });
-
-    };
-  
+    };  
     form.parse(req);
-
 });
-
-http.createServer(app).listen(app.get('port'), function () {
-    log('Express server listening on port ' + app.get('port'));
-});
-
-function log(mes) {
-    process.stdout.write(mes+'\n');
-}
+http.createServer(app).listen(app.get('port'), function () {    log('Express server listening on port ' + app.get('port'));});
+function log(mes) {    process.stdout.write(mes+'\n');}
