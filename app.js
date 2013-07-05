@@ -344,5 +344,5 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 
 function log(mes) {
-    process.stdout.write(mes+'\n');
+   process.stdout.write(mes+'\n');
 }
