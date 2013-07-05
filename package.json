@@ -2,7 +2,7 @@
   "name": "nodeapi",
   "version": "0.0.1",
   "engines":{
-	"node":"0.8.x"
+	"node":"0.8.2"
   },
   "private": true,
   "scripts": {
