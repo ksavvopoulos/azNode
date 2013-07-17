@@ -278,7 +278,7 @@ app.post('/upload', function (req, res) {
             log('Extension :' + ext);
             log('Mime Type : ' + contentType);
 
-            if (entry.type == 'File') {
+            if (entry.type === 'File') {
                 counter += 1;
                 blobService.createBlockBlobFromStream(container,
                 lessonfolder + '/' + path,
@@ -310,8 +310,10 @@ app.post('/upload', function (req, res) {
                         }
                     }
                 );
+   
             } else {
                 count += 1;
+                entry.autodrain();
                 log('Folder' + count);
             }
         });
