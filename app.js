@@ -96,7 +96,7 @@ app.get('/updateScorm', function (req, res) {
 
 app.get('/clear', function (req, res) {
     blobService = azure.createBlobService('indtestblob',
-      'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+      '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     blobService.listBlobs('scorm', function (error, blobs) {
         if (!error) {
@@ -128,7 +128,7 @@ app.post('/scormUpdated', function (req, res) {
         unKnownExtensions = [],
         form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
         blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+       '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
     log('Initialized Read Stream');
@@ -228,7 +228,7 @@ app.post('/upload', function (req, res) {
         unKnownExtensions = [],
         form = new formidable.IncomingForm({ uploadDir: __dirname + '/upload' }),
         blobService = azure.createBlobService('indtestblob',
-       'M8TWMLNJ8AEwHen0uovkytvp+irTDC5V9AxaX/cas24mNypPEZ9zJcKIjxCO/S0imB+JrztyFi2cIBJ5lC1GhQ==').withFilter(new azure.ExponentialRetryPolicyFilter());
+       '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
     log('Blob Service has been created...');
     log('Initialized Read Stream');
