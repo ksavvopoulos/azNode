@@ -1,21 +1,27 @@
+// JavaScript Document
+
 /**
  * Module dependencies.
  johnpan
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path')
-  , azure = require('azure')
-  , unzip = require('unzip')
-  , mimeTypes = require('./mimeTypes.js')
-  , fs = require('fs')
-  , formidable = require('formidable')
-  , format = require('util').format;
+var express = require('express'),
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    http = require('http'),
+    path = require('path'),
+    azure = require('azure'),
+    unzip = require('unzip'),
+    mimeTypes = require('./mimeTypes.js'),
+    fs = require('fs'),
+    formidable = require('formidable'),
+    format = require('util').format,
+    longjohn = require('longjohn');
 
 var app = express();
+
+longjohn.async_trace_limit = 5;   // defaults to 10
+longjohn.empty_frame = 'ASYNC CALLBACK';
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -52,7 +58,7 @@ function clientErrorHandler(err, req, res, next) {
     }
 }
 
-function errorHandler(err, req, res, next) { 
+function errorHandler(err, req, res, next) {
     res.send(err);
 }
 
@@ -69,7 +75,7 @@ app.get('/', function (req, res) {
             '</form>' +
             '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
 			'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
-            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +			
+            '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
             '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
 			'<script type="text/javascript">' +
 				'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
@@ -89,7 +95,7 @@ app.get('/updateScorm', function (req, res) {
            '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
            '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
            '<br/><br/><br/><br/>' +
-           '<a href="/clear">Clear Scorm Folder</a>'+
+           '<a href="/clear">Clear Scorm Folder</a>' +
            '</body>');
 
 });
@@ -102,13 +108,9 @@ app.get('/clear', function (req, res) {
         if (!error) {
             for (var index in blobs) {
 
-                blobService.deleteBlob('scorm'
-                     , blobs[index].name
-                     , function (error) {
-                         if (!error) {
-                             res.send('clear failed');
-                         }
-                     });
+                blobService.deleteBlob('scorm',
+                      blobs[index].name,
+                      clearError);
 
                 console.log(blobs[index].name);
             }
@@ -118,7 +120,15 @@ app.get('/clear', function (req, res) {
         }
     });
 
+    function clearError(error) {
+        if (!error) {
+            res.send('clear failed');
+        }
+    }
+
 });
+
+
 
 app.post('/scormUpdated', function (req, res) {
     log('---------------------Request to /upload ------------------------------');
@@ -132,7 +142,7 @@ app.post('/scormUpdated', function (req, res) {
 
     log('Blob Service has been created...');
     log('Initialized Read Stream');
-	
+
 
     form.on('end', function () {
         log('--------------------Completed Parsing the Form----------------------------');
@@ -146,10 +156,10 @@ app.post('/scormUpdated', function (req, res) {
             return this.handlePart(part);
         }
 
-        var parsedZip = part.pipe(unzip.Parse(),{ end: false });//, { end: false }
+        var parsedZip = part.pipe(unzip.Parse(), { end: false });//, { end: false }
 
         parsedZip.on('entry', function (entry) {
-            
+
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
@@ -164,7 +174,7 @@ app.post('/scormUpdated', function (req, res) {
             log('Extension :' + ext);
             log('Mime Type : ' + contentType);
 
-            if (entry.type == 'File') {
+            if (entry.type === 'File') {
                 counter += 1;
                 blobService.createBlockBlobFromStream('scorm',
                 path,
@@ -213,7 +223,7 @@ app.post('/scormUpdated', function (req, res) {
             log('ZIP ERROR: ' + err);
         });
 
-      
+
     };
 
     form.parse(req);
@@ -237,7 +247,7 @@ app.post('/upload', function (req, res) {
         log('===================================================================');
         log(name + ' ' + value);
         log('===================================================================');
-        if (name == 'container') {
+        if (name === 'container') {
             container = value;
         }
     });
@@ -254,16 +264,16 @@ app.post('/upload', function (req, res) {
             return this.handlePart(part);
         }
 
-		if ( part.filename.indexOf('.zip')<0 ) {
-			res.send('<script>alert ("Scorm package must be a zip file"); history.back() ;</script>');			 		
-			return;
-		}
-		
+        if (part.filename.indexOf('.zip') < 0) {
+            res.send('<script>alert ("Scorm package must be a zip file"); history.back() ;</script>');
+            return;
+        }
+
         var lessonfolder = part.filename.replace('.zip', ''),
             parsedZip = part.pipe(unzip.Parse());//, { end: false }
 
         parsedZip.on('entry', function (entry) {
-            
+
             var path = entry.path;
             var ext = path.split('.').pop();
             var contentType = mimeTypes[ext];
@@ -280,6 +290,7 @@ app.post('/upload', function (req, res) {
 
             if (entry.type === 'File') {
                 counter += 1;
+
                 blobService.createBlockBlobFromStream(container,
                 lessonfolder + '/' + path,
                 entry,
@@ -291,14 +302,14 @@ app.post('/upload', function (req, res) {
                             log('Blob ' + path + ' created!');
                             if (!counter) {
                                 res.send('<body style="background-color: rgb(239, 239, 239);">' +
-                                            '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '</p>'+
+                                            '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '</p>' +
 											'<script type="text/javascript" src="/javascripts/json2.js"></script>' +
 											'<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
-											'<script type="text/javascript">' + 
-											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' + 
+											'<script type="text/javascript">' +
+											' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' +
 											    lessonfolder +
-											'" });'+
-											'</script>'+
+											'" });' +
+											'</script>' +
                                          '</body>');
                                 log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
                             }
@@ -310,7 +321,7 @@ app.post('/upload', function (req, res) {
                         }
                     }
                 );
-   
+
             } else {
                 count += 1;
                 entry.autodrain();
@@ -331,12 +342,12 @@ app.post('/upload', function (req, res) {
         });
 
         parsedZip.on('error', function (err) {
-            res.send("<script type='text/javascript'>say(" + err+ "); alert('Please try upload again');");
+            res.send("<script type='text/javascript'>say(" + err + "); alert('Please try upload again');");
             log('ZIP ERROR: ' + err);
         });
 
     };
-  
+
     form.parse(req);
 
 });
@@ -346,5 +357,5 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 
 function log(mes) {
-   process.stdout.write(mes+'\n');
+    process.stdout.write(mes + '\n');
 }
