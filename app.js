@@ -107,7 +107,6 @@ app.get('/clear', function (req, res) {
     blobService.listBlobs('scorm', function (error, blobs) {
         if (!error) {
             for (var index in blobs) {
-
                 blobService.deleteBlob('scorm',
                       blobs[index].name,
                       clearError);
@@ -127,8 +126,6 @@ app.get('/clear', function (req, res) {
     }
 
 });
-
-
 
 app.post('/scormUpdated', function (req, res) {
     log('---------------------Request to /upload ------------------------------');
@@ -222,8 +219,6 @@ app.post('/scormUpdated', function (req, res) {
             res.send(err);
             log('ZIP ERROR: ' + err);
         });
-
-
     };
 
     form.parse(req);
