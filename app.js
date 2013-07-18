@@ -15,8 +15,8 @@ var express = require('express'),
     mimeTypes = require('./mimeTypes.js'),
     fs = require('fs'),
     formidable = require('formidable'),
-    format = require('util').format,
-    longjohn = require('longjohn');
+    format = require('util').format;
+    require('longjohn');
 
 var app = express();
 
