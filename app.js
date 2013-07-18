@@ -15,13 +15,9 @@ var express = require('express'),
     mimeTypes = require('./mimeTypes.js'),
     fs = require('fs'),
     formidable = require('formidable'),
-    format = require('util').format,
-    longjohn=require('longjohn');
+    format = require('util').format;
 
 var app = express();
-
-longjohn.async_trace_limit = 5;   // defaults to 10
-longjohn.empty_frame = 'ASYNC CALLBACK';
 
 // all environments
 app.set('port', process.env.PORT || 3000);
