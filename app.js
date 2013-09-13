@@ -268,7 +268,6 @@ app.post('/upload', function(req, res) {
 
     form.onPart = function(part) {
         var blobService, lessonfolder, parsedZip, paused = false;
-
         log('Received Part');
 
         if (!part.filename) {
@@ -315,10 +314,8 @@ app.post('/upload', function(req, res) {
             if (entry.type === 'File') {
                 counter += 1;
 
-                parsedZip.pause();
-                
                 setImmediate(function() {
-                    parsedZip.resume();
+                   // req.resume();
 
                     blobService.createBlockBlobFromStream(container,
                         lessonfolder + '/' + path,
@@ -360,6 +357,7 @@ app.post('/upload', function(req, res) {
                 log('Folder' + count);
             }
         });
+
         parsedZip.on('end', function() {
             log('---------------------------Unzipinng Stream completed------------------------------');
             var len = unKnownExtensions.length,
@@ -372,6 +370,7 @@ app.post('/upload', function(req, res) {
                 log('I knew all the extensions mime type');
             }
         });
+
         parsedZip.on('error', function(err) {
             res.send("<script type='text/javascript'>say(" + err + "); alert('Please try upload again');");
             log('ZIP ERROR: ' + err);
@@ -380,6 +379,16 @@ app.post('/upload', function(req, res) {
 
     form.on('error', function(error) {
         log("Error in Processing the Form : " + error);
+    });
+
+    form.on('progress', function(bytesReceived, bytesExpected) {
+        log("bytesReceived, bytesExpected : " + bytesReceived +" "+ bytesExpected);
+        req.pause();
+        log("req paused");
+        setTimeout(function(){
+            req.resume();
+            log("req resumed");
+        },500);
     });
 
     form.parse(req);
