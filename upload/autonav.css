@@ -1,0 +1,12 @@
+body {background-color:#e0e0e0;}
+P {cursor:default;margin-top:0;margin-bottom:0;font-family:Candara,Calibri,Verdana,Arial;font-size:14px;color:#000000;font-weight:normal;font-style:normal;}
+.fullbody {background-color:#aeacac;border-right-style:solid;border-right-color:#878787;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#878787;border-bottom-width:1px;border-top-style:solid;border-top-color:#878787;border-top-width:1px;border-left-style:solid;border-left-color:#878787;border-left-width:1px;}
+.wideheading {background-color:#f0f0f0;}
+.wideheadingindex {background-color:#f0f0f0;}
+.widehead {font-weight:bold;margin-left:3px;margin-right:3px;font-size:14px;color:#000000;}
+.menuselectover {color:#000000;background-color:#aeacac;font-family:Candara,Calibri,Verdana,Arial;font-size:8pt;width:200px;vertical-align:middle;}
+.menuselect {color:#000000;background-color:#f0f0f0;font-family:Candara,Calibri,Verdana,Arial;font-size:8pt;width:200px;vertical-align:middle;}
+.slidescreens {background-color:#aeacac;}
+.menutext {color:#000000}
+.mainhead {font-size:14px;color:#000000}
+

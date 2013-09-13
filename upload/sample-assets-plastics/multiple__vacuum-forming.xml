@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<quiz>
+<title value="Focus on Plastics: Vacuum Forming" />
+<imagesize value="250" />
+<question>
+<qtext value="Which type of plastic is normally vacuum formed?"/>
+<correct value="1"/>
+<picture pfile=""/>
+<answer value="A : thermosetting plastic"/>
+<answer value="B : thermoplastic"/>
+</question>
+<question>
+<qtext value="Vacuum forming moulds are usually made from how many parts?"/>
+<correct value="0"/>
+<picture pfile=""/>
+<answer value="A : 1"/>
+<answer value="B : 2"/>
+<answer value="C : 3"/>
+<answer value="D : 4"/>
+</question>
+<question>
+<qtext value="In vacuum forming what does the mould sit on?"/>
+<correct value="2"/>
+<picture pfile=""/>
+<answer value="A : chair"/>
+<answer value="B : floor"/>
+<answer value="C : platen"/>
+<answer value="D : heater"/>
+</question>
+<question>
+<qtext value="Which of the folowing products is most likely to be made by vacuum forming?"/>
+<correct value="3"/>
+<picture pfile=""/>
+<answer value="A : electric plug"/>
+<answer value="B : telephone receiver"/>
+<answer value="C : calculator"/>
+<answer value="D : seed tray"/>
+</question>
+<question>
+<qtext value="Which of these materials cannot normally be vacuum formed?"/>
+<correct value="2"/>
+<picture pfile=""/>
+<answer value="A : ABS"/>
+<answer value="B : HIPS"/>
+<answer value="C : phenol formaldehyde"/>
+<answer value="D : HDPE"/>
+</question>
+<question>
+<qtext value="In vacuum forming what is it done to the sides of the mould to ensure easy release from the moulding?  "/>
+<correct value="1"/>
+<picture pfile=""/>
+<answer value="A : roughened"/>
+<answer value="B : tapered"/>
+<answer value="C : cleaned"/>
+<answer value="D : washed"/>
+</question>
+<question>
+<qtext value="In vacuum forming what is the purpose of vent holes in the mould?"/>
+<correct value="2"/>
+<picture pfile=""/>
+<answer value="A : to stop the mould overheating"/>
+<answer value="B : to allow fresh air into the building"/>
+<answer value="C : to prevent air being trapped in mould cavities"/>
+<answer value="D : to speed up the process"/>
+</question>
+<question>
+<qtext value="Why are heater systems used in vacuum forming machines normally arranged in independently controlled zones? "/>
+<correct value="3"/>
+<picture pfile=""/>
+<answer value="A : to speed up the process"/>
+<answer value="B : to stop the operator getting bored"/>
+<answer value="C : to reduce the electricity bill"/>
+<answer value="D : to allow for fine adjustment of temperature when heating the thermoplastic sheet"/>
+</question>
+<question>
+<qtext value="Why is it necessary to pre-dry some types of thermoplastic before vacuum forming?"/>
+<correct value="1"/>
+<picture pfile=""/>
+<answer value="A : to prevent the machine getting wet"/>
+<answer value="B : to prevent surface blisters appearing on the plastic"/>
+<answer value="C : to stop the plastic from shrinking"/>
+<answer value="D : to speed up the heating process"/>
+</question>
+<question>
+<qtext value="Which of the following machines  can be used to trim mouldings after vacuum forming?"/>
+<correct value="2"/>
+<picture pfile=""/>
+<answer value="A : fly press"/>
+<answer value="B : trouser press"/>
+<answer value="C : clipping press"/>
+<answer value="D : printing press"/>
+</question>
+<question>
+<qtext value="Which material could be used to manufacture the product shown in the picture?"/>
+<correct value="0"/>
+<picture pfile="q153.png"/>
+<answer value="HIPS (high impact polystyrene)"/>
+<answer value="Epxoxy resin (ER)"/>
+<answer value="Polyester resin (PR)"/>
+<answer value="HDPE (high density polyethylene)"/>
+</question>
+<question>
+<qtext value="Which material could be used to manufacture the product shown in the picture?"/>
+<correct value="0"/>
+<picture pfile="q154.png"/>
+<answer value="HIPS (high impact polystyrene)"/>
+<answer value="PVC (polyvinyl chloride)plasticised"/>
+<answer value="HDPE (high density polyethylene)"/>
+<answer value="Urea formaldehyde (UF)"/>
+</question>
+<question>
+<qtext value="Which material could be used to manufacture the product shown in the picture?"/>
+<correct value="0"/>
+<picture pfile="q155.png"/>
+<answer value="HIPS (high impact polystyrene)"/>
+<answer value="Acrylic (polymethyl methacrylate)"/>
+<answer value="Epxoxy resin (ER)"/>
+<answer value="HDPE (high density polyethylene)"/>
+</question>
+</quiz>

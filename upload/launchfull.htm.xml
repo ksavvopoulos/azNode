@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+<general>
+<title>
+<langstring>Saltwater Crocodiles</langstring>
+</title>
+<language>en</language>
+<description>
+<langstring>Saltwater Crocodiles</langstring>
+</description>
+<aggregationlevel>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">2</langstring>
+</value>
+</aggregationlevel>
+<keyword>
+<langstring>Saltwater Crocodiles</langstring>
+</keyword>
+<catalogentry>
+<catalog>JS Courses Catalog</catalog>
+<entry>
+<langstring>Saltwater Crocodiles</langstring>
+</entry>
+</catalogentry>
+</general>
+<lifecycle>
+<version>
+<langstring>1</langstring>
+</version>
+<status>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">Final</langstring>
+</value>
+</status>
+<contribute>
+<role>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">Publisher</langstring>
+</value>
+</role>
+<centity>
+<vcard>BEGIN:vCard ORG:JS END:vCard</vcard>
+</centity>
+</contribute>
+</lifecycle>
+<metametadata>
+<metadatascheme>ADL SCORM 1.2</metadatascheme>
+</metametadata>
+<technical>
+<format>text/html</format>
+<location type="URI">launchfull.htm</location>
+</technical>
+
+<educational>
+<interactivitytype>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">Active</langstring>
+</value>
+</interactivitytype>
+<learningresourcetype>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">Exercise</langstring>
+</value>
+</learningresourcetype>
+</educational>
+<rights>
+<cost>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">no</langstring>
+</value>
+</cost>
+<copyrightandotherrestrictions>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">no</langstring>
+</value>
+</copyrightandotherrestrictions>
+</rights>
+<classification>
+<purpose>
+<source>
+<langstring xml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstring xml:lang="x-none">Educational Objective</langstring>
+</value>
+</purpose>
+<description>
+<langstring>Saltwater Crocodiles</langstring>
+</description>
+<keyword>
+<langstring>Saltwater Crocodiles</langstring>
+</keyword>
+</classification>
+</lom>

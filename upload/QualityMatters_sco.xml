@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+
+	<general>
+		<title>
+			<langstring>QualityMatters</langstring>
+		</title>
+		<catalogentry>
+			<catalog>SoftChalk Lesson</catalog>
+			<entry>
+				<langstring>0001</langstring>
+			</entry>
+		</catalogentry>
+		<language>en</language>
+		<description>
+			<langstring>This lesson is the first module in the Qualtiy Mattesr Applying the Quality Matters Rubric workshop This is QMs flagship workshop on the QM Rubric and its use in evaluating online courses</langstring>
+		</description>
+		<keyword>
+			<langstring>Publishers</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Applying the Quality Matters Rubric</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Instructional Designers</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Administrators</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Faculty</langstring>
+		</keyword>
+		<keyword>
+			<langstring>QM Process</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Peer Reviewers</langstring>
+		</keyword>
+		<keyword>
+			<langstring>K12</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Applying the Quality Matters Rubric</langstring>
+		</keyword>
+		<keyword>
+			<langstring>Applying the Quality Matters Rubric</langstring>
+		</keyword>
+	</general>
+
+	<lifecycle>
+		<version>
+			<langstring>1</langstring>
+		</version>
+		<status>
+			<source>
+				<langstring xml:lang="x-none">LOMv1.0</langstring>
+			</source>
+			<value>
+				<langstring xml:lang="x-none">Final</langstring>
+			</value>
+		</status>
+	</lifecycle>
+	<metametadata>
+		<metadatascheme>ADL SCORM(TM) 1.2</metadatascheme>
+	</metametadata>
+	<technical>
+		<format>text/html</format>
+		<location>index.html</location>
+	</technical>
+	<rights>
+		<cost>
+			<source>
+				<langstring xml:lang="x-none">LOMv1.0</langstring>
+			</source>
+			<value>
+				<langstring xml:lang="x-none">no</langstring>
+			</value>
+		</cost>
+		<copyrightandotherrestrictions>
+			<source>
+				<langstring xml:lang="x-none">LOMv1.0</langstring>
+			</source>
+			<value>
+				<langstring xml:lang="x-none">yes</langstring>
+			</value>
+		</copyrightandotherrestrictions>
+	</rights>
+	<classification>
+		<purpose>
+			<source>
+				<langstring xml:lang="x-none">LOMv1.0</langstring>
+			</source>
+			<value>
+				<langstring xml:lang="x-none">Educational Objective</langstring>
+			</value>
+		</purpose>
+		<description>
+			<langstring>Lesson module</langstring>
+		</description>
+		<keyword>
+			<langstring>Created with SoftChalk LessonBuilder</langstring>
+		</keyword>
+	</classification>
+</lom>

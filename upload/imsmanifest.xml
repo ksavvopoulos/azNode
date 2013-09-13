@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:imsss="http://www.imsglobal.org/xsd/imsss" xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" identifier="MANIFEST-AECEF15E-06B8-1FAB-5289-73A0B058E2DD" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd http://www.imsglobal.org/xsd/imsmd_v1p2 imsmd_v1p2p2.xsd http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd" version="1.3">
+	<metadata>
+		<schema>ADL SCORM</schema>
+		<schemaversion>CAM 1.3</schemaversion>
+	</metadata>
+	<organizations default="SC">
+		<organization identifier="SC">
+			<title>QualityMatters</title>
+			<item identifier="SC-Lesson" identifierref="L1">
+				<title>QualityMatters</title>
+			</item>
+			<imsss:sequencing>
+				<imsss:controlMode choice="true" choiceExit="true" flow="true" />
+				<imsss:sequencingRules>
+					<imsss:exitConditionRule>
+						<imsss:ruleConditions conditionCombination="all">
+							<imsss:ruleCondition operator="noOp" condition="satisfied" />
+						</imsss:ruleConditions>
+						<imsss:ruleAction action="exit" />
+					</imsss:exitConditionRule>
+				</imsss:sequencingRules>
+			</imsss:sequencing>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="L1" type="webcontent" href="index.html" adlcp:scormType="sco">
+			<file href="activityApplet1.html" />
+			<file href="activityApplet2.html" />
+			<file href="ada-access.gif" />
+			<file href="ada-activity.gif" />
+			<file href="ada-annotation.gif" />
+			<file href="ada-equation.gif" />
+			<file href="ada-media.gif" />
+			<file href="banner_custom.png" />
+			<file href="check.png" />
+			<file href="close_custom.png" />
+			<file href="close_feedback.png" />
+			<file href="contentwrap_custom.png" />
+			<file href="correct.mp3" />
+			<file href="csshover.htc" />
+			<file href="dropmenu_custom.png" />
+			<file href="get_flash_player.gif" />
+			<file href="index.html" />
+			<file href="lb_buttonimage.txt" />
+			<file href="QualityMatters.css" />
+			<file href="QualityMatters.html" />
+			<file href="QualityMatters2.html" />
+			<file href="QualityMatters3.html" />
+			<file href="QualityMatters4.html" />
+			<file href="QualityMatters5.html" />
+			<file href="QualityMatters6.html" />
+			<file href="QualityMatters7.html" />
+			<file href="QualityMatters_dummy.html" />
+			<file href="QualityMatters_md.xml" />
+			<file href="QualityMatters_orm.txt" />
+			<file href="QualityMatters_print.css" />
+			<file href="QualityMatters_print.html" />
+			<file href="QualityMatters_tiv.txt" />
+			<file href="sectionedshape.swf" />
+			<file href="sectionedshape1.xml" />
+			<file href="sectionedshape_custom.png" />
+			<file href="sectionedshape_title_custom.png" />
+			<file href="selfcheck_custom.png" />
+			<file href="softchalk.xml" />
+			<file href="softchalk_manifest.xml" />
+			<file href="sorting.swf" />
+			<file href="sorting2.xml" />
+			<file href="sorting_custom.png" />
+			<file href="sorting_title_custom.png" />
+			<file href="spacer.gif" />
+			<file href="submenu-rt_custom.png" />
+			<file href="submenu_custom.png" />
+			<file href="wrong.mp3" />
+			<file href="wrong.png" />
+			<file href="ada_files/ada_activity1.html" />
+			<file href="ada_files/ada_activity2.html" />
+			<file href="ada_files/ada_image1.html" />
+			<file href="ada_files/ada_image2.html" />
+			<file href="ada_files/ada_image3.html" />
+			<file href="ada_files/ada_image4.html" />
+			<file href="mobile_pages/check.png" />
+			<file href="mobile_pages/close_feedback.png" />
+			<file href="mobile_pages/index.html" />
+			<file href="mobile_pages/QualityMatters.html" />
+			<file href="mobile_pages/QualityMatters2.html" />
+			<file href="mobile_pages/QualityMatters3.html" />
+			<file href="mobile_pages/QualityMatters4.html" />
+			<file href="mobile_pages/QualityMatters5.html" />
+			<file href="mobile_pages/QualityMatters6.html" />
+			<file href="mobile_pages/QualityMatters7.html" />
+			<file href="mobile_pages/QualityMatters_dummy.html" />
+			<file href="mobile_pages/selfcheck_custom.png" />
+			<file href="mobile_pages/softchalk_manifest.xml" />
+			<file href="mobile_pages/spacer.gif" />
+			<file href="mobile_pages/wrong.png" />
+			<file href="mobile_pages/css/mobile-style.css" />
+			<file href="mobile_pages/images/downarrow.png" />
+			<file href="mobile_pages/images/downarrow_black.png" />
+			<file href="mobile_pages/images/leftnav.png" />
+			<file href="mobile_pages/images/nav-hover.png" />
+			<file href="mobile_pages/images/nav.png" />
+			<file href="mobile_pages/images/nav_background.png" />
+			<file href="mobile_pages/images/nav_bar_background.png" />
+			<file href="mobile_pages/images/nav_contract_button.png" />
+			<file href="mobile_pages/images/nav_expand_button.png" />
+			<file href="mobile_pages/images/nav_hide_button.png" />
+			<file href="mobile_pages/images/nav_left_background.png" />
+			<file href="mobile_pages/images/nav_left_button.png" />
+			<file href="mobile_pages/images/nav_right_button.png" />
+			<file href="mobile_pages/images/nav_show_button.png" />
+			<file href="mobile_pages/images/rightnav.png" />
+			<file href="mobile_pages/images/TOCarrow.png" />
+			<file href="mobile_pages/images/uparrow.png" />
+			<file href="mobile_pages/images/uparrow_black.png" />
+			<file href="mobile_pages/images/x.png" />
+			<file href="mobile_pages/js/jquery.json-2.2.js" />
+			<file href="mobile_pages/js/jquery.store.js" />
+			<file href="mobile_pages/js/mobile.js" />
+			<file href="mobile_pages/js/store.js" />
+			<file href="sclb_extras/activity_info.js" />
+			<file href="sclb_extras/activityApplets.js" />
+			<file href="sclb_extras/activityApplets_inline.js" />
+			<file href="sclb_extras/activityWindow.js" />
+			<file href="sclb_extras/emerging.js" />
+			<file href="sclb_extras/flashobject.js" />
+			<file href="sclb_extras/lesson_qp.js" />
+			<file href="sclb_extras/q_functions.js" />
+			<file href="sclb_extras/q_functions_ext.js" />
+			<file href="sclb_extras/q_functions_group.js" />
+			<file href="sclb_extras/overlibmws/flower_above_left.png" />
+			<file href="sclb_extras/overlibmws/flower_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/flower_above_right.png" />
+			<file href="sclb_extras/overlibmws/flower_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/flower_below_left.png" />
+			<file href="sclb_extras/overlibmws/flower_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/flower_below_right.png" />
+			<file href="sclb_extras/overlibmws/flower_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/oval_above_left.png" />
+			<file href="sclb_extras/overlibmws/oval_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/oval_above_right.png" />
+			<file href="sclb_extras/overlibmws/oval_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/oval_below_left.png" />
+			<file href="sclb_extras/overlibmws/oval_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/oval_below_right.png" />
+			<file href="sclb_extras/overlibmws/oval_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/overlibmws.js" />
+			<file href="sclb_extras/overlibmws/overlibmws_bubble.js" />
+			<file href="sclb_extras/overlibmws/overlibmws_shadow.js" />
+			<file href="sclb_extras/overlibmws/postit_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/postit_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/postit_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/postit_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/pushpin_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/pushpin_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/pushpin_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/pushpin_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/quotation_above_left.png" />
+			<file href="sclb_extras/overlibmws/quotation_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/quotation_above_right.png" />
+			<file href="sclb_extras/overlibmws/quotation_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/quotation_below_left.png" />
+			<file href="sclb_extras/overlibmws/quotation_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/quotation_below_right.png" />
+			<file href="sclb_extras/overlibmws/quotation_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/speech_above_left.png" />
+			<file href="sclb_extras/overlibmws/speech_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/speech_above_right.png" />
+			<file href="sclb_extras/overlibmws/speech_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/speech_below_left.png" />
+			<file href="sclb_extras/overlibmws/speech_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/speech_below_right.png" />
+			<file href="sclb_extras/overlibmws/speech_below_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/thought_above_left.png" />
+			<file href="sclb_extras/overlibmws/thought_above_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/thought_above_right.png" />
+			<file href="sclb_extras/overlibmws/thought_above_right_shadow.png" />
+			<file href="sclb_extras/overlibmws/thought_below_left.png" />
+			<file href="sclb_extras/overlibmws/thought_below_left_shadow.png" />
+			<file href="sclb_extras/overlibmws/thought_below_right.png" />
+			<file href="sclb_extras/overlibmws/thought_below_right_shadow.png" />
+		</resource>
+	</resources>
+</manifest>

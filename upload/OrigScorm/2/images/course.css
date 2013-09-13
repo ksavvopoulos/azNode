@@ -1,0 +1,4 @@
+/* Margin-top: 0px for P tag is intended to change Gecko-based browsers default P rendering */
+p {
+	margin-top: 0px;
+}

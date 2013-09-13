@@ -1,0 +1,54 @@
+
+.programme-name {
+	float:right;
+}
+
+
+
+.school-name {
+	left:20px;
+	right:auto;
+}
+
+
+.navigation a.selected span {
+	background-position: left center;
+	padding-left:25px;
+}
+
+
+
+.left-column {
+	margin-left:10px;
+}
+
+
+.programme-content {
+	text-align:right;
+}
+
+
+.return-to-programmes-link {
+	margin-right:0;
+}
+
+
+.logout-link {
+	float:left;
+	background: url('../images/arrow.left.png') left center no-repeat;
+	padding-left:26px;
+}
+
+
+.header-dropdown {
+	text-align:right;
+}
+
+
+.header-dropdown li ul li {
+	margin-right:10px;
+}
+
+
+
+

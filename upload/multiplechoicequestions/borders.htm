@@ -1,0 +1,167 @@
+<HTML>
+<HEAD>
+<TITLE>Border</TITLE>
+</HEAD>
+<!-- saved from url=(0013)about:internet -->
+<STYLE TYPE='text/css'>
+P {cursor:default;margin-top:0;margin-bottom:0;font-family:Verdana, Arial;font-size:12px;color:#000000;font-weight:normal;font-style:normal;}
+.small {font-size:12px}
+</STYLE>
+<BODY onresize="testit()" onload=stit() oncontextmenu='return false' scroll=no topmargin=0 leftmargin=0 rightmargin=0 bottommargin=0 bgcolor='#E0E0E0'>
+<SCRIPT>
+
+if (parent.frames.length == 0) {
+	location.replace("launchfull.htm");
+}
+
+function getObject(objectname){if(tbro=='ie'){return eval(objectname)}
+if(tbro=='ienn'){return document.getElementById(objectname)}
+if(tbro=='nn'){return eval('document.'+objectname)}}
+
+tbro='nn'
+if(document.all){tbro='ie'}
+if(parseInt(navigator.appVersion)>=5){tbro='ienn'}
+if(navigator.appName=='Microsoft Internet Explorer'){tbro='ie'}
+
+function errorlog(){return true;}
+window.onerror=errorlog;
+
+document.onselectstart=new Function("return false")
+function disabletext(e){return false}
+function reEnable(){return true}
+if(window.sidebar){document.onmousedown=disabletext
+document.onclick=reEnable}
+
+document.onkeydown=NavKey
+
+function showthumbs(){
+	parent.bottom.showmainthumbs()
+}
+
+function showmen(){
+	parent.bottom.showmainmen()
+}
+
+function NavKey(e){
+	if(tbro=='ie'){
+		event.keyCode=0
+		event.returnValue=false
+		return false
+	}else{
+		return false
+	}
+}
+
+function closeit(){
+	var agree=confirm('Are you sure you want to close this lesson?')
+	if (agree){
+		parent.window.close()
+	}
+}
+
+var hasstarted=false
+var theheight=2000
+function stit(){
+	resizeit()
+	hasstarted=true
+	if (this.name=='thetop'||this.name=='theleft'){
+		if (this.name=='theleft'&&document.body.clientWidth<12){
+		}else{
+			tl=getObject("mth")
+			tl.style.visibility="visible"
+		}
+	}
+}
+
+var rin=0
+function resizeit(){
+	tl=getObject("mh")
+	tl.style.overflow='auto'
+
+	if (parent.bottom.usenav>0&&parent.bottom.allowthumbs>0){
+		mheight=152+32
+	}else{
+		mheight=89+32+6
+	}
+
+	if (tbro=='ienn'){
+		tl.style.height=document.body.clientHeight-mheight
+	}else{
+		tl.style.height=document.body.clientHeight-mheight
+	}
+	if (rin!=0){
+		clearTimeout(rin)
+	}
+}
+function testit(){
+	if (rin!=0){
+		clearTimeout(rin)
+	}
+	rin = setTimeout('resizeit()',100)
+}
+
+if (this.name=='thetop'){
+	document.write("<TABLE id='mth' style='visibility:visible' WIDTH=100% height=100% border=0 cellspacing=0 cellpadding=0><TD align=center valign=middle WIDTH=146></TD><TD align=center valign=middle WIDTH=*><DIV id='mh'>&nbsp;</DIV></TD><TD align=left WIDTH=26><IMG width=18 height=18 onclick='closeit()' style='cursor:pointer;margin-top:0px;' border=0 SRC='_kpnav_closes.gif'></TD></TABLE>")
+}else{
+
+	document.write("<TABLE border=0 id='mth' style='visibility:hidden' WIDTH=100% height=100% border=0 cellspacing=0 cellpadding=0>")
+	document.write("<TR height=1><TD align=center valign=middle><IMG SRC='_kpnav_sep.gif' width=110 height=1></TD></TR>")
+
+	document.write("<TR height=1><TD align=center valign=middle>")
+	document.write("<TABLE border=0 bgcolor=#F0F0F0 WIDTH=110 height=85 border=0 cellspacing=0 cellpadding=0>")
+	document.write("<TR height=85><TD align=center valign=middle>")
+	document.write("<DIV id='theading' style='display:inline;margin-right:5px;margin-left:5px;width:100%;'></DIV>")
+	document.write("</TD></TR>")
+	document.write("</TABLE>")
+	document.write("</TD></TR>")
+
+	document.write("<TR height=1><TD align=center valign=middle><IMG SRC='_kpnav_sep.gif' width=110 height=1></TD></TR>")
+
+	document.write("<TR height=1><TD align=center valign=middle>")
+	document.write("<TABLE border=0 id='controls' style='display:none' WIDTH=100% height=58 border=0 cellspacing=0 cellpadding=0>")
+	document.write("<TR height=5><TD align=center valign=middle></TD></TR>")
+	document.write("<TR height=53><TD align=center valign=middle><DIV id='mh0' style='display:none;width:110px'></DIV></TD></TR>")
+	document.write("</TABLE>")
+	document.write("</TD></TR>")
+	document.write("<TR height=5><TD align=center valign=middle></TD></TR>")
+	document.write("<TR height=1><TD align=center valign=middle><IMG SRC='_kpnav_sep.gif' width=110 height=1></TD></TR>")
+
+	document.write("<TR height=*><TD align=center valign=top><DIV id='mh' style='background-color:#F0F0F0;position:absolute;left:5px;width:110px;overflow-y:auto;'></DIV></TD></TR>")
+	document.write("<TR height=1><TD align=center valign=middle><IMG SRC='_kpnav_sep.gif' width=110 height=1></TD></TR>")
+	document.write("<TR height=32><TD align=center valign=top>&nbsp;</TD></TR>")
+	document.write("</TABLE>")
+
+}
+function uh(thetext){
+	tl=getObject("mh")
+	tl.innerHTML=thetext
+}
+function uh1(thetext){
+	//tl=getObject("mh1")
+	//tl.innerHTML=thetext
+}
+
+function sethead(thetext){
+	tl=getObject("theading")
+	tl.innerHTML="<P STYLE='margin-left:3px;margin-right:3px;font-size:12px;'><B>" + thetext + "</P>"
+}
+
+function uh0(thetext){
+	resizeit()
+	tl=getObject("controls")
+	tl.style.display='inline'
+	tl=getObject("mh0")
+	tl.style.display='inline'
+	if (tl.innerHTML!=thetext){
+		tl.innerHTML=thetext
+	}
+}
+
+function uhdetails(thetext){
+	tl=getObject("details")
+	tl.innerHTML=thetext
+}
+</SCRIPT>
+</BODY>
+</HTML>
+

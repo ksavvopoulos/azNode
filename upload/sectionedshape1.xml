@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SectionedShapeActivity>
+    <BackgroundColor>#EEEEEE</BackgroundColor>
+    <DirectionsLabel>Instructions</DirectionsLabel>
+    <DirectionsText>%3Cp%3EClick+on+a+sub+section+of+the+shape+to+the+right+to+view+information+about+that+sub+section.%3C%2Fp%3E%3Cp%3EEach+pie+piece+represents+one+of+the+ingredients+of+a+quality+online+course.+Each+piece+is+named+with+that+factor+and+the+description+is+displayed+when+the+piece+is+clicked.%3C%2Fp%3E</DirectionsText>
+    <ShapeType>circle</ShapeType>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#FF0000" sectionPercentage="0.0" showTitle="true">
+            <Title>Course+Design</Title>
+            <TitleText>Course+Design</TitleText>
+            <Details>%3Cp%3EInvolves+the+forethought+and+planning+that+goes+into+an+online+course.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#FFFF00" sectionPercentage="0.0" showTitle="true">
+            <Title>Course+Delivery</Title>
+            <TitleText>Course+Delivery</TitleText>
+            <Details>%3Cp%3EThe+way+that+a+course+is+taught%2C+also+known+as+faculty+performance.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#000069" sectionPercentage="0.0" showTitle="true">
+            <Title>Course+Content</Title>
+            <TitleText>Course+Content</TitleText>
+            <Details>%3Cp%3EAll+of+the+subject+matter+and+its+rigor.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#FF6800" sectionPercentage="0.0" showTitle="true">
+            <Title>Course+Management+System</Title>
+            <TitleText>Course+Management+System</TitleText>
+            <Details>%3Cp%3EThe+platform+by+which+the+course+is+delivered%2C+it%27s+functionality%2C+and+the+technical+support+that+enables+its+use.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#00FF00" sectionPercentage="0.0" showTitle="true">
+            <Title>Institutional+Infrastructure</Title>
+            <TitleText>Institutional+Infrastructure</TitleText>
+            <Details>%3Cp%3EOnline+tutoring+access%2C+the+Help+desk%2C+online+Library+access%2C+etc.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#4F9ACF" sectionPercentage="0.0" showTitle="true">
+            <Title>Faculty+Readiness</Title>
+            <TitleText>Faculty+Readiness</TitleText>
+            <Details>%3Cp%3EFaculty+training+and+planning+to+teach+online.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+    <ShapeSection shapePercentage="0.0">
+        <ShapeSubSection color="#9D0DE9" sectionPercentage="0.0" showTitle="true">
+            <Title>Student+Readiness</Title>
+            <TitleText>Student+Readiness</TitleText>
+            <Details>%3Cp%3EStudents+are+oriented+to+learning+online+and+what+they+must+do+to+be+successful.%3C%2Fp%3E</Details>
+        </ShapeSubSection>
+    </ShapeSection>
+</SectionedShapeActivity>

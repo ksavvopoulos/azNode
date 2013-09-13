@@ -1,0 +1,47 @@
+! SoftChalk LessonBuilder TIV File (C)2003-2008
+! ================ DO NOT EDIT ================
+
+act_item=2
+
+act_num=1
+act_type=13
+items=0
+colorChoice=_custom
+showList=false
+showFlashCardTerm=true
+showFlashCardDef=false
+useFlashBigText=false
+hideActivityBackground=false
+instructions=Click on the sections of the pie chart to the right for more information about each piece of the "Online Quality Pie."
+minimumDuration=5
+inline=false
+points=0
+showRestart=false
+showTitle=true
+sqrsize=18
+adaDescription=Each pie piece represents one of the ingredients of a quality Online course. Each piece is named with that factor and the description is displayed when the piece is clicked.
+hotspotWidth=450
+hotspotHeight=500
+
+act_num=2
+act_type=8
+items=4
+colorChoice=_custom
+showList=false
+showFlashCardTerm=true
+showFlashCardDef=false
+useFlashBigText=false
+hideActivityBackground=false
+instructions=Click the card deck to view a card. Drag the card from the bottom to the correct category.
+minimumDuration=5
+inline=false
+catagory_1=design
+catagory_2=delivery
+points=0
+showRestart=false
+showTitle=true
+sqrsize=18
+adaDescription=
+hotspotWidth=450
+hotspotHeight=500
+

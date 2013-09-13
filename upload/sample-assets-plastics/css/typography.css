@@ -1,0 +1,44 @@
+/* -------------------------------------------------------------- 
+
+   typography.css
+   * Reset and define typography styles
+   
+-------------------------------------------------------------- */
+
+
+p { 
+	margin:0 0 0.5em 0;
+	padding:0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:normal;
+}
+
+h1 {
+	font-size:25px;
+}
+
+h2 {
+	font-size:17px;
+}
+
+ul {
+	margin:0 0 0 2em;
+	padding:0;
+}
+
+
+.programme-content h1 {
+	margin-bottom:0.5em;
+}
+
+.programme-content p {
+	margin-bottom:1em;
+}
+
+.programme-content table {
+	margin-bottom:2em;
+}
+

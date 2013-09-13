@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash screen file, saved 9/23/2012 8:31:01 PM by Isidora using CourseLab 090219 -->
+<splash>
+<settings>
+<showsplash>yes</showsplash>
+</settings>
+<data>
+<![CDATA[<img src="images/fonto-fisikis-2.png" style="position:absolute;left:0px;top:-1px;width:751px;height:531px;"/><div style="position:absolute;left:535px;top:463px;width:166px;height:31px;"><img border="0" width="166" height="31" style="cursor:hand;cursor:pointer;" src="images/splash_button_go/button_start1.gif" onclick="this.src = 'images/splash_button_go/button_wait.gif'; StartModule();return false;"   /></div><div style="position:absolute;left:171px;top:284px;width:468px;height:99px;"><P><SPAN style="FONT-FAMILY: Arial; FONT-SIZE: 12px"><SPAN style="COLOR: #fffffe"><SPAN style="COLOR: #e6fed3; FONT-SIZE: 18px"><SPAN style="COLOR: #008000"><SPAN style="COLOR: #ddf7f5"><SPAN style="FONT-SIZE: 26px"><SPAN style="FONT-FAMILY: ANA-OneiroparmEni82"><SPAN style="FONT-SIZE: 48px">Τι είναι η ενέργεια;</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P></div><img src="images/ip2.png" style="position:absolute;left:649px;top:6px;width:94px;height:93px;"/><div style="position:absolute;left:493px;top:432px;width:261px;height:24px;"><P><SPAN style="FONT-FAMILY: Arial; COLOR: #ffffff; FONT-SIZE: 12px">Κάντε κλικ στο "Start Module" για να ξεκινήσετε.</SPAN></P></div>]]>
+</data>
+</splash>

@@ -1,0 +1,25 @@
+.tabs {
+	overflow: hidden;
+	_height: 1%;
+	zoom:1;
+}
+
+
+.school-name h1 {
+	text-align:right;
+}
+
+.expand_collapse_links {
+	height:20px;
+}
+
+.content-column {
+	position:relative;
+}
+.programme-content {
+	position:relative;
+}
+
+.pagecontent {
+	zoom:1;
+}

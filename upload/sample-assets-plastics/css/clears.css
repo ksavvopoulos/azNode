@@ -1,0 +1,15 @@
+/* -------------------------------------------------------------- 
+
+   clears.css
+   * List all clearing classes/id's
+   
+-------------------------------------------------------------- */
+
+
+.header:after,
+.row:after,
+.pagecontent:after,
+.tabs:after,
+.programme-content:after,
+.expand_collapse_links:after
+{ content: ".";  display: block;  height: 0;  clear: both;  visibility: hidden; overflow:hidden; }

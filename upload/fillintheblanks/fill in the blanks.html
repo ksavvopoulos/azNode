@@ -1,0 +1,2486 @@
+<HTML><HEAD>
+<TITLE charset=iso-8859-1>Fill in the Blanks</TITLE>
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=iso-8859-1' />
+<META NAME="Creator" CONTENT="KnowledgePresenter 2006 Professional">
+<META NAME="Date" CONTENT="3/05/2007 1:23:43 AM">
+<META NAME="Format" CONTENT="text/html || 50000 bytes">
+<META NAME="Identifier" scheme="URI" CONTENT="">
+<META charset=iso-8859-1 NAME="Title" CONTENT="Fill in the Blanks">
+<META NAME="Type" CONTENT="Interactive Resource">
+<META NAME="Publisher" CONTENT="KP">
+</HEAD>
+<!-- saved from url=(0013)about:internet -->
+<STYLE TYPE='text/css'>
+A {text-decoration:none;}
+P {margin-top:0;font-family:Verdana, Arial;font-size:8pt;color:#000000;font-weight:normal;font-style:normal;}
+.instruct {margin-top:0px;margin-bottom:0px;font-family:Arial;font-size:11pt;color:#000000;font-weight:normal;font-style:normal;text-align:left;}
+.instructnnmac {margin-top:0px;margin-bottom:0px;font-family:Arial;font-size:13pt;color:#000000;font-weight:normal;font-style:normal;text-align:left;}
+.layer103{margin-bottom:0;margin-top:0;font-family:Arial;font-size:9.75pt;color:#FFFFFF;font-weight:bold;font-style:normal;text-align:center;}
+.layer103nnmac{margin-bottom:0;margin-top:0;font-family:Arial;font-size:12pt;color:#FFFFFF;font-weight:bold;font-style:normal;text-align:center;}
+.layer101{margin-bottom:0;margin-top:0;font-family:Arial;font-size:9pt;color:#000000;font-weight:normal;font-style:normal;text-align:center;}
+.layer101nnmac{margin-bottom:0;margin-top:0;font-family:Arial;font-size:11pt;color:#000000;font-weight:normal;font-style:normal;text-align:center;}
+.layer96{margin-bottom:0;margin-top:0;font-family:Arial;font-size:10pt;color:#000000;font-weight:normal;font-style:normal;}
+.layer2{margin-bottom:0;margin-top:0;font-family:Arial;font-size:12pt;color:#000000;font-weight:normal;font-style:normal;}
+.layer2nnmac{margin-bottom:0;margin-top:0;font-family:Arial;font-size:14pt;color:#000000;font-weight:normal;font-style:normal;}
+.fade {FILTER: progid:DXImageTransform.Microsoft.Alpha( style=1,opacity=0,finishOpacity=100,startX=100,finishX=20,startY=100,finishY=0)}
+.rectfade {FILTER: progid:DXImageTransform.Microsoft.Alpha( style=1,opacity=0,finishOpacity=100,startX=100,finishX=100,startY=100,finishY=0)}
+</STYLE>
+<SCRIPT>
+if(parent.frames.length==0){location.replace('launchfull.htm')};document.onselectstart=new Function("return false")
+function disabletext(e){return false}
+function reEnable(){return true}
+if(window.sidebar){document.onmousedown=disabletext
+document.onclick=reEnable}
+</SCRIPT>
+<SCRIPT>
+var d=document;function fur(rstring,rwith,rwith2){rstring=new String(rstring)
+do{rstring=rstring.replace(rwith, rwith2)}
+while (rstring.indexOf(rwith, 1) > 0)
+return rstring}
+var hasstarted=false, emailsent=false
+var launchexe=false
+function returnScore(){ascore=0
+for(ik=0; ik<theobs.length;ik++){gwrong=0
+gright=0
+for(jk=0; jk<f.length;jk++){if(f[jk].ename==theobs[ik]&&f[jk].score==True){if(f[jk].result=='correct'){gright=gright+1}
+if(f[jk].result=='wrong'){gwrong=gwrong+1}}}
+if(gright>0){if(typeof obsds[ik]!='undefined'){fullp=obsds[ik]}else{fullp=1}
+if(fullp==100){fullp=1}
+scoretemp=(gright/(gright+gwrong)) * getobvalue(theobs[ik])
+scoretemp=scoretemp * fullp
+ascore=ascore+scoretemp}}
+ascore=(parseInt(ascore * 100) / 100)
+score=ascore
+return score}
+function stopVideo(parm){if(hasstarted==false){return}
+if(thepos==-1){return}
+if(totalscore>0){score=returnScore()}
+if(totalscore>0){SaveData()}
+if((APIOK())&&(bFinishDone==false)){scorechildren=LMSGetValue('cmi.core.score._children')
+if(totalscore>0){finalscore=(score/totalscore)*100
+if(finalscore>100){finalscore=100}
+if(finalscore<0){finalscore=0}
+if(scorechildren.indexOf('raw')!=-1){LMSSetValue('cmi.core.score.raw',finalscore)}}
+if(scorechildren.indexOf('max')!=-1){if(totalscore==0){LMSSetValue('cmi.core.score.max',0)}else{LMSSetValue('cmi.core.score.max',100)}}
+thefeedback=''
+for (j=0; j<f.length; j++){if(f[j].feedback){thefeedback=thefeedback+f[j].entrytext+' '}}
+if(thefeedback!=''){thefeedback=thefeedback+' '+ucomment}else{thefeedback=ucomment}
+if(thefeedback!=''){LMSSetValue('cmi.comments',thefeedback)}
+cmisD=new Date();
+cmiet=cmisD.getTime() - cmistarttime
+cmiendtime=getTime(cmiet)
+if(scostatus=='not attempted'){LMSSetValue('cmi.core.session_time','0000:00:00')}else{LMSSetValue('cmi.core.session_time',cmiendtime)}
+if(hasascore==1&&scostatus=='incomplete'){scostatus='failed'}
+LMSSetValue('cmi.core.lesson_status',scostatus)
+if(scostatus=='incomplete'&&totalscore==0){LMSSetValue('cmi.suspend_data',thepos)}else{LMSSetValue('cmi.suspend_data',0)}
+var intChildren=LMSGetValue('cmi.interactions._children')
+result=showResults(true)
+bFinishDone=(objAPI.LMSFinish("")=='true')
+bFinishDone=true}
+return (bFinishDone)}
+</SCRIPT>
+<BODY onselect='hideselect()' leftMargin=0 topMargin=0 rightMargin=0 bottomMargin=0 oncontextmenu='return false' onbeforeunload='stopVideo()' onUnload='stopVideo()' bgcolor='#FFFFFF' onload='preloadfiles(0)'>
+<NOSCRIPT><DIV><TABLE WIDTH=100% height=100% bgcolor=#FFFFFF><TD align=center valign=middle>Scripting is disabled, or your browser has blocked the JavaScript on this page from executing. Please check your security settings, and run this file again.</TD></TABLE></DIV></NOSCRIPT>
+<SCRIPT>
+function getObject(objectname){if(tbro=='ie'){return eval(objectname)}
+if(tbro=='ienn'){return document.getElementById(objectname)}
+if(tbro=='nn'){return eval('document.'+objectname)}}
+</SCRIPT>
+<script>var fHasWMP64=true</script>
+<SCRIPT>
+var currentfreeform=-1
+function setfreeform(){currentfreeform=-1, attop=cheight, atleft=cwidth, uf=-1
+for (jjj=0; jjj<theactions2.length; jjj++){iii=theactions2[jjj]
+if(typeof(iii)=='undefined'||iii==-1){break}else{if(f[iii].ke=='freeform'){if(f[iii].ttop<attop){currentfreeform=iii
+attop=f[iii].ttop}
+if(f[iii].ttop==attop){if(f[iii].lleft<atleft){currentfreeform=iii
+atleft=f[iii].lleft}}}}}
+setfreeformhilite()}
+function setnextfreeform(){ofreeform=currentfreeform, realcurrentfreeform=currentfreeform
+currentfreeform=-1, attop=cheight, atleft=cwidth, uf=-1, realbottom=0, realtop=0, realleft=0, ltop=cheight, lleft=cwidth
+if(realcurrentfreeform>-1){realtop=f[realcurrentfreeform].ttop, realleft=f[realcurrentfreeform].lleft}
+for (jjj=0; jjj<theactions2.length; jjj++){iii=theactions2[jjj]
+if(typeof(iii)=='undefined'||iii==-1){break}else{if(f[iii].ke=='freeform'&&iii!=realcurrentfreeform){if(f[iii].ttop==realtop){if(f[iii].lleft>realleft){if(f[iii].lleft<atleft){attop=f[iii].ttop, atleft=f[iii].lleft, realcurrentfreeform=iii}}}
+if(f[iii].ttop>realtop){if(f[iii].ttop<attop){attop=f[iii].ttop, atleft=f[iii].lleft, realcurrentfreeform=iii}}
+if(f[iii].ttop<ltop){ltop=f[iii].ttop, lleft=f[iii].lleft, lowestffo=iii}
+if(f[iii].ttop==ltop){if(f[iii].lleft<lleft){ltop=f[iii].ttop, lleft=f[iii].lleft, lowestffo=iii}}}}}
+if(realcurrentfreeform==ofreeform){currentfreeform=lowestffo}else{currentfreeform=realcurrentfreeform}
+setfreeformhilite()}
+function setfreeformhilite(){for (jjjff=0; jjjff<theactions2.length; jjjff++){iiiff=theactions2[jjjff]
+if(typeof(iiiff)=='undefined'||iiiff==-1){break}else{if(f[iiiff].ke=='freeform'){writepercent(iiiff)}}}}
+function hideselect(){if(tbro=='ie'&&isopera==false){document.selection.empty()}}
+var noerrors=false
+function errorlog(sMsg,sUrl,sLine){if(noerrors==false){debugmode=(getArg('debug'))
+if(debugmode==1){oErrorLog='This message will only appear when a presentation is run in debug mode, and it may indicate that a problem has occurred in this presentation. The error caught was:\n\n';
+oErrorLog+='Error: '+sMsg+'\n';
+oErrorLog+='Line: '+sLine+'\n';
+oErrorLog+='URL: '+sUrl+'\n\n'
+oErrorLog+='Write these details down so you can contact KnowledgePresenter support.';
+if(sMsg.indexOf('Access is denied')==-1){alert (oErrorLog)}}}
+return true;}
+if((getArg('debug'))==1){alert ('Running in Debug Mode.')}
+window.onerror=errorlog;
+function getTimeString(cmiet){iSecs=parseInt((cmiet) % 60)
+iMins=parseInt(((cmiet-iSecs)/60) % 60)
+iHrs=parseInt((((cmiet-iSecs)/60)-iMins) / 60)
+rT=''
+if(iHrs>0){rT=iHrs+' Hour'
+if(iHrs>1){rT=rT+'s'}}
+if(iMins>0){if(rT!=''){rT=rT+', '}
+rT=rT+iMins+' Minute'
+if(iMins>1){rT=rT+'s'}}
+if(iSecs>0){if(rT!=''){rT=rT+', '}
+rT=rT+iSecs+' Second'
+if(iSecs>1){rT=rT+'s'}}
+return (rT)}
+function getTime(cmiet){cmiet=cmiet/1000
+iSec=parseInt((cmiet) % 60)
+iMin=((cmiet - iSec)/60) % 60
+iHrs=(((cmiet - iSec)/60)-iMin) / 60
+iMin=parseInt(iMin)
+iHrs=parseInt(iHrs)
+aSecs=new String(iSec)
+if(aSecs.length==1){aSecs='0'+aSecs}
+aMins=new String(iMin)
+if(aMins.length==1){aMins='0'+aMins}
+aHrs=new String(iHrs)
+if(aHrs.length==3){aHrs='0'+aHrs}
+if(aHrs.length==2){aHrs='00'+aHrs}
+if(aHrs.length==1){aHrs='000'+aHrs}
+cmiendtime=aHrs+':'+aMins+':'+aSecs
+return (cmiendtime)}
+iitems=new Array('Fill in the Blanks Questions','Creating the Initial Text Object','Setting the Object as a Fill in the Blanks Object','Adding a Submit Button','Previewing the Results','Summary')
+iitemstime=new Array('0','5','55','90','145','155')
+function checkWarning(thestring){if(thestring!=''){customalert (thestring,-1,'next|cancel')
+return false}else{return true}}
+function runWarning(todo){}
+function runalert(ts){alert (ts)}
+var isie7=false, netscapemac=false, mozillamac=false, mozilla=false, safariwk=false, isfirefox=false, ie55=false, issafari=false, iskhtml=false, isopera=false, tbro='nn', tbs='', tbe='', launch_data='', lesson_location=''
+if(document.all){tbro='ie'}
+if(parseInt(navigator.appVersion)>=5){tbro='ienn'}
+if(navigator.appName=='Microsoft Internet Explorer'){tbro='ie'}
+var navp=navigator.platform
+if(navp=='MacPPC'||navp=='Mac68K'){navp='Mac'}
+ua=navigator.userAgent
+if(ua.indexOf('Opera')>0){isopera=true}
+if(ua.indexOf('Firefox')>0){isfirefox=true}
+if(ua.indexOf('Mozilla')!=-1){if(ua.indexOf('Netscape')==-1){mozilla=true}else{if(navp=='Mac'){netscapemac=true}}}
+tmp=navigator.appVersion.split('MSIE')
+vers=parseFloat(tmp[1])
+if(vers>=7){isie7=true}
+if(ua.indexOf('KHTML')>0){iskhtml=true
+pf=ua.indexOf('Safari/')
+if(pf>-1){if(parseInt(ua.substring(pf+7,pf.length))>124){safariwk=true}}}
+if(iskhtml==true&&safariwk==false){alert ('This browser does not fully support the keyboard as input. If you are using Safari, you should upgrade to at least version 1.2')}
+if(navigator.userAgent.indexOf('Safari')>-1){issafari=true}
+if((ua.indexOf('Mozilla')!=-1||isfirefox)&&navp=='Mac'&&issafari==false){mozillamac=true}
+if(tbro=='ie'&&navp!='Mac'&&isopera==false){screen.updateInterval=0}
+if(tbro=='ie'&&navp!='Mac'){tmp=navigator.appVersion.split('MSIE')
+vers=parseFloat(tmp[1])
+if(vers>=5.5){ie55=true}
+if(navigator.userAgent=='LTMM'){ie55=true}}
+var asf=false
+var hasascore=1, dynamicresults=0, ucomment='', showmessage='', ispaused=1, intPath='', tpix=-1, tpiy=-1, tex=-1, texy=-1, uhae=false, dl=false, scostatus='not attempted', cmistarttime=0, hascommitted=false, usevbscript=false, pix=-1, piy=-1, mix=-1, miy=-1, mio=-1, ifontsize=11, totalscore=21, score=0, errorstring='', maxerrors=3, errorCounter=0, errorCords='', currenthint='', PreLoad=32, RealStartTime=0, RealEndTime=-1, cwidth=800, cheight=600, pausestart=0, pausedfor=0, haspaused=false, pausetime=0, pausetimer=0, imagesloaded=0, pstate=0, fc=0, buffering=false, currentstate='', thepos=-1, startTime=0, False=0, True=-1, duration=32, loadingtext='Loading -  '
+oTNav=''
+oTIE=''
+oT=''
+var zratio=1
+if(tbro=='nn'){document.write('<LAYER name="sbar" left=250 top=473 width=300 height=20></LAYER><LAYER name="starting" id="starting" left=240 top=463 width=320 height=70><LAYER left=0 top=0 width=320 height=70><IMG SRC="sbar1.gif" width=320 height=70></LAYER></LAYER>')}else{document.write('<DIV style="z-Index:600;position:absolute;left:240;top:463;width:320;height:70;visibility:visible;" name="starting" id="starting"><DIV style="position:absolute;top:10;left:10;width:300;height:20;background-color:#FFFFFF;"></DIV><DIV id="sbar" style="position:absolute;top:10;left:10;width:0;height:20;background-color:#000042;"></DIV><IMG style="position:absolute;top:0;left:0;" SRC="sbar1.gif" width=320 height=70></DIV>')}
+var nFindAPITries=0, objAPI=null, bFinishDone=false
+function FindAPI(win){try{while ((win.API==null)&&(win.parent!=null)&&(win.parent!=win)){nFindAPITries ++
+if(nFindAPITries>5){break;}else{win=win.parent}}
+if(win.API&&tbro=='nn'){realObjAPI=win}
+return win.API}catch(err){}}
+function getAPI(win){if(location.search!='?noapi'){var theAPI=FindAPI(window);
+if((theAPI==null)&&(window.opener!=null)&&(typeof(window.opener)!='undefined')){theAPI=FindAPI(window.opener);}
+if(theAPI==null&&window.parent.opener!=null){theAPI=FindAPI(parent.opener)}
+if(theAPI==null&&window.parent.parent.opener!=null){theAPI=FindAPI(parent.parent.opener)}
+if(theAPI==null){if(parent.frames.length>0){for(i=0; i<parent.frames.length; i++){theAPI=FindAPI(parent.frames[i]);
+if(theAPI!=null){break}}}}}
+return theAPI;}
+function APIOK(){return ((typeof(objAPI)!='undefined')&&(objAPI!=null))}
+function LMSSetValue(nam,v){if(APIOK()){return objAPI.LMSSetValue(nam,v)}}
+function LMSGetValue(nam){if(APIOK()){return objAPI.LMSGetValue(nam)}}
+function LMSCommit(){if(APIOK()){return objAPI.LMSCommit("")}}
+function LMSGetLastError(){if(APIOK()){return objAPI.LMSGetLastError()}}
+function LMSGetErrorString(n){if(APIOK()){return objAPI.LMSGetErrorString(n)}}
+function LMSGetDiagnostic(p){if(APIOK()){return objAPI.LMSGetDiagnostic(p)}}
+var realObjAPI=null
+objAPI=getAPI(window)
+if(tbro=='nn'){objAPI=realObjAPI}
+function getArg(arg){if(location.search==''){return ''}
+aGs=location.search.substring(1,location.search.length)+'&'
+aGspos=aGs.indexOf(arg)
+if(aGspos>-1){aGs=aGs.substring(aGspos,aGs.length)
+aGspos=aGs.indexOf('&')
+aGs=aGs.substring(0,aGspos)
+aGspos=aGs.indexOf('=')
+aGs=aGs.substring(aGspos+1,aGs.length)
+return aGs
+}else{return ''}}
+function updatePopup(thetext){tobj=getObject('starting')
+theob=getObject('sbar')
+thetext=new String(thetext)
+if(thetext==''){if(tbro=='nn'){theob.visibility='hide'
+tobj.visibility='hide'}else{tobj.style.visibility='hidden'}}else{thetext=new Number(thetext)
+if(tbro=='nn'){theob.document.write('<TABLE bgcolor="#FF00FF" WIDTH='+thetext*3+' height=20 cellspacing=0 cellpadding=0><TD >&nbsp;</TD></TABLE>')
+theob.document.close();
+tobj.zIndex=600
+theob.zIndex=599
+tobj.visibility='show'
+theob.visibility='show'}else{if(isNaN(thetext)==false){theob.style.width=thetext*3}
+tobj.style.visibility='visible'}}}
+var isquiz=false
+var theactions=new Array(115)
+var theactions2=new Array(115)
+var moos=new Array(0)
+var scoredobjects=new Array(0)
+var tooobjects=new Array(0)
+var tac=0, aic=0, mooc=-1, scoreobjects=-1
+function sf(preload,ii,timeoutdata,moid,oid,eventoff,ke,mod,sck,alt,bstyle,bwidth,bcolor,photo,timeon,timeoff,lleft,ttop,wwidth,hheight,onfil,offfil,onfiltime,offfiltime,xdistance,ydistance,thetext,valign,halign,loading,startup,margin,backcolor,thesize,media,imageover,imagedown,overevent,downevent,upevent,dblevent,parameter,nohide,instruct,fallback,theclass,thehint,thescore,qo,mds,mos,mus,dcs,kys,msc,ename){if(imageover!=''||upevent!=''||imagedown!=''||overevent!=''||downevent!=''||dblevent!=''){theactions [tac]=fc
+tac=tac+1
+if(startup=='true'){theactions2[aic]=fc
+aic++}}
+this.timeout=''
+this.ma=0
+this.maamount=0
+this.maamounty=0
+this.maspeed=0
+this.timedelay=0
+this.hidedelay=0
+this.fdelay=0
+this.fcount=0
+this.ffor=0
+this.ffinal=0
+this.cs=''
+this.incs=''
+this.madevisible=false
+this.preload=preload
+this.ii=ii
+this.moid=moid
+this.oid=oid
+this.eventoff=eventoff
+this.eventoff=eventoff*5
+this.mds=mds
+this.mos=mos
+this.mus=mus
+this.dcs=dcs
+this.kys=kys
+this.ke=ke
+this.hfk=false
+this.autoscroll=false
+this.feedback=false
+this.cursorinfo=16
+this.parameter=parameter
+if(this.ke=='!freeform'){this.ke='freeform'
+this.hfk=true}
+if(this.ke=='feedback'){this.ke='freeform'
+this.feedback=true}
+this.aspassword=0
+if(this.ke=='freeform'){ffvars=this.parameter.split('|')
+if(ffvars.length>2){this.parameter=ffvars[1]
+this.cursorinfo=ffvars[0]
+this.aspassword=ffvars[2]}}
+this.tex=-1
+this.tey=-1
+this.kis=false
+this.mod=mod
+if((navp=='Mac'||isopera)&&this.mod==4){this.mod=0}
+this.sck=sck
+this.alt=alt
+this.bstyle=bstyle
+if(this.bstyle==0){this.bstyle=''}
+this.bwidth=bwidth
+this.bcolor=bcolor
+this.photo=photo
+this.timeon=timeon
+this.timeoff=timeoff
+this.timeon=timeon*5
+this.timeoff=timeoff*5
+this.sequence=false
+this.seqid=-1
+this.seqdet=''
+this.eseqid=-1
+this.seqc=0
+this.hatimeon=this.timeon
+this.hatimeoff=this.timeoff
+if(this.timeoff<this.timeon){this.timeoff=this.eventoff}
+if(this.ke=='freeform'){this.eventoff=this.timeon+5}
+this.lleft=lleft
+this.ttop=ttop
+this.wwidth=wwidth
+this.hheight=hheight
+this.onfil=onfil
+this.offfil=offfil
+if(this.offfil>1&&this.onfil>1){this.offfil=1}
+if(canfilter==false){this.onfil=1
+this.offfil=1}
+this.onfiltime=onfiltime
+this.offfiltime=offfiltime
+if(tbro!='ie'||navp=='Mac'){this.onfil=1
+this.offfil=1}
+if(this.timeon!=0&&this.timeoff!=0){if(this.onfiltime>this.timeoff-this.timeon){this.onfiltime=this.timeoff-this.timeon-.1}
+if(this.onfiltime+this.offfiltime>this.timeoff-this.timeon){this.onfiltime=((this.timeoff-this.timeon)/2)-.1
+this.offfiltime=((this.timeoff-this.timeon)/2)-.1}}
+this.xdistance=xdistance
+this.ydistance=ydistance
+this.text=thetext
+if(tbro=='ie'&&navp!='Mac'&&isopera==false){this.text=fur(this.text,'<OBJECT ID=mediaplayer2','<OBJECT ID=mediaplayer'+fc)}
+if(navp=='Linux'){if(this.text.indexOf('class=')>0){startpos=this.text.indexOf('class=')
+endpos=(this.text.indexOf('>',startpos))
+repstring=(this.text.substring(startpos, endpos))
+this.text=this.text.replace(repstring,repstring +'nnmac')}}
+if(tbro=='nn'){this.text=fur(this.text,'style=\'cursor:hand;\'','')
+this.text=fur(this.text,'style="cursor:hand;"','')
+if(navp=='Mac'){if(this.text.indexOf('class=')>0){startpos=this.text.indexOf('class=')
+endpos=(this.text.indexOf('>',startpos))
+repstring=(this.text.substring(startpos, endpos))
+this.text=this.text.replace(repstring,repstring +'nnmac')}}}
+this.text=fur(this.text,'gotoTime','gotoiTime')
+this.valign=valign
+this.halign=halign
+this.loading=loading
+this.startup=startup
+this.margin=margin
+this.backcolor=backcolor
+if(this.backcolor==''){this.backcolor='transparent'}
+this.media=media
+this.imageover=imageover
+this.imagedown=imagedown
+if(this.imagedown!=''&&this.imageover==''&&this.photo=='_kpinvis.gif'){this.imageover='_kpinvis.gif'}
+this.overevent=overevent
+this.downevent=downevent
+this.upevent=upevent
+this.dblevent=dblevent
+this.flash=false
+this.truefalsestate=false
+if(this.text.indexOf('<P class=flash>')>-1){this.flash=true}
+this.nohide=nohide
+this.instruct=instruct
+this.fallback=fallback
+this.templeft=0
+this.temptop=0
+this.onflag=''
+this.offflag=''
+this.mouseover=0
+if(this.downevent=='truefalse'){this.imageover=''
+this.imagedown=''}
+this.mouseoff=1
+this.maxchars=32
+this.loaded=false
+this.theclass=theclass
+thehint=fur(thehint,'\n','&nbsp;<BR>')
+this.hint=thehint
+this.mhint=''
+if(thehint.indexOf('º')>0){if(thehint.indexOf('Ð')>0){this.hint=thehint.substring(thehint.indexOf('Ð')+1, thehint.length)
+thehint=thehint.substring(0, thehint.indexOf('Ð'))
+this.accuracy=thehint.substring(thehint.indexOf('º')+1, thehint.length)
+this.mhint='!move'}else{this.accuracy=thehint.substring(thehint.indexOf('º')+1, thehint.length)
+this.mhint='!move'}}
+this.hasdrop=false
+this.ct=''
+if(thehint.indexOf('@®@')>-1){splithints=thehint.split('@®@')
+this.hint=splithints[0]
+this.ct=splithints[1]}
+this.score=thescore
+this.allowenter=false
+this.qo=qo
+this.msc=msc
+this.ename=ename
+this.ftext=''
+this.rtext=''
+this.entrytext=''
+this.finalentrytext=''
+this.percenttext=''
+this.edittext=''
+this.iid=''
+this.og=''
+this.nb=false
+this.nf=false
+this.cn=false
+this.nbt=0
+this.nft=0
+this.cnt=0
+if(this.photo.indexOf('_kp_ss_')>-1){np=fur(this.photo,'_kp_ss_','')
+np=fur(np,'.gif','')
+this.photo='http://mystatus.skype.com/balloon/'+np}else{this.photo=fur(this.photo,' ','')}
+this.imageover=fur(this.imageover,' ','')
+this.imagedown=fur(this.imagedown,' ','')
+if(this.timeon==0&&this.timeoff==0){if(this.startup!='true'&&this.loading!='true'){mooc=mooc+1
+moos[mooc]=fc}}
+if(typeof ename=='undefined'){this.ename=''}
+if(typeof msc=='undefined'){this.msc=''}
+if(this.text=='~'){this.text="<IMG SRC='_kpinvis.gif' width=1 height=1>"}
+if(this.theclass==''){this.theclass='null'}
+if(this.text.indexOf('%%')>-1){this.percent=true}
+if(this.ke=='freeform'){this.percent=true}
+if(this.onfil==1){this.onfiltime=0}
+if(this.offfil==1){this.offfiltime=0}
+if(this.instruct=='true'){if(tbro=='nn'&&navp=='Mac'){this.text='<P class=instructnnmac>'+this.text}else{if(navp=='Linux'){this.text='<P class=instructnnmac>'+this.text
+this.text=this.text.substring(0,3)+' id="maint'+fc+'" '+this.text.substring(3,this.text.length)}else{this.text='<P class=instruct>'+this.text
+this.text=this.text.substring(0,3)+' id="maint'+fc+'" '+this.text.substring(3,this.text.length)}}}
+fc=fc+1
+if(this.timeoff==32700){this.timeoff=duration}
+if(this.timeoff>=32700){this.timeoff=duration*5}
+if(this.offfil>1){this.timeoff=this.timeoff - this.offfiltime}
+this.t_timeon=this.timeon
+this.t_timeoff=this.timeoff
+this.mo_timeon=this.timeon
+this.mo_timeoff=this.timeoff
+if(this.qo=='Picture'||this.qo=='Sound'){this.timeon=0
+this.timeoff=0}
+this.hasevent=false
+this.ismarker=false
+this.posset=false
+this.mtl=0
+this.ust=-1
+if(this.downevent=='tm'){this.ismarker=true
+this.downevent=''}
+if((this.ke!=''&&this.ke!='0')||this.overevent!=''||this.upevent!=''||this.downevent!=''||this.dblevent!=''||this.imageover!=''||this.imagedown!=''||this.moid!=-1){this.hasevent=true}
+if(this.mds!=''||this.mos!=''||this.mus!=''||this.dcs!=''||this.kys!=''){this.hasevent=true}
+this._ke='',this._overevent='',this._downevent='',this._upevent='', this._dblevent=''}
+</SCRIPT>
+<SCRIPT>
+noerrors=true
+var canfilter=false
+if(tbro=='ie'&&navp!='Mac'&&isopera==false){document.write ("<DIV id='ftest' style='position:absolute;visibility;hidden;left:0;top:0;width:1;height:1'></DIV>")
+t=getObject('ftest')
+t.style.filter='BlendTrans(duration="1")';
+t.filters.BlendTrans.apply();
+canfilter=true}
+</SCRIPT>
+<SCRIPT>
+noerrors=false
+</SCRIPT>
+<SCRIPT>
+f=new Array(1)
+f[fc]=new sf(0,-1,-1,'-1',0,32,'',0,0,'',0,0,0,'fi149_910795033.gif',31,32,138,9,642,482,1,1,2,2,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',1,0,'',0,0,'',0,0,0,'nextsmall.gif',0,0,64,320,1,1,1,1,2,2,0,0,'','','','','',0,'',0,'False','nextsmallmo.gif','nextsmallmd.gif','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',2,32,'',0,0,'',0,0,0,'',31,32,42,100,717,336,1,1,2,2,0,0,'<P class=layer2>This lesson examined what fill in the blanks questions are, when and how they can be used, and how to create them.&nbsp;<BR>&nbsp;<BR><B>By now, you should be able to:</B>&nbsp;<BR>&nbsp;<BR><UL class=layer2><LI class=layer2>understand what fill in the blanks questions are</LI><LI class=layer2>know how to create fill in the blanks questions</LI></UL><P class=layer2>&nbsp;<BR><B>Click <IMG onMouseUp=\'closeit()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to close this lesson.</B>','Top','left','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,1,-1,'-1',3,32,'',0,0,'',0,0,0,'headerbackground.jpg',31,32,0,-1,800,80,1,1,2,2,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',4,0,'',0,0,'',0,0,0,'',0,0,42,100,717,336,1,1,2,2,0,0,'<P class=layer2>This lesson examines what fill in the blanks questions are, when and how they can be used, and how to create them.&nbsp;<BR>&nbsp;<BR><B>At the end of this lesson, you will be able to:</B>&nbsp;<BR>&nbsp;<BR><UL class=layer2><LI class=layer2>understand what fill in the blanks questions are</LI><LI class=layer2>know how to create fill in the blanks questions</LI></UL><P class=layer2>','Top','left','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,1,-1,'-1',5,32,'',0,0,'',0,0,0,'fi2581_315746248.gif',31,32,78,4,644,71,1,1,2,2,0,0,'','middle','center','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,1,-1,'-1',6,32,'',0,0,'',0,0,0,'fi26081_394900501.gif',31,32,228,545,344,37,1,1,2,2,0,0,'','middle','center','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',7,0,'',0,0,'',0,0,0,'fi5465_677276671.gif',0,0,348,495,104,34,1,1,2,2,0,0,'','','','','',0,'',0,'False','fi26893_891868770.gif','fi17577_295288981.gif','','','next','','','','','False','','',False,'','','','','','','Hand','')
+f[fc]=new sf(0,-1,-1,'-1',9,1,'',0,0,'',0,0,0,'fte001.png',0,3,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',9,1,'',0,0,'',0,0,0,'_kpinvis.gif',0,1,410,51,24,24,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',8,2,'',0,0,'',0,0,0,'r_15fte012.gif',1,3,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',8,2,'',0,0,'',0,0,0,'_kpinvis.gif',1,2,410,51,24,24,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi313_271950186.gif','','','next','','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',10,3,'',0,0,'',0,0,0,'r_10fte003.gif',2,3,411,52,193,182,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',11,5,'',0,0,'',0,0,0,'fte004.png',3,11,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',12,6,'',0,0,'',0,0,0,'r_12fte005.gif',5,11,139,170,65,19,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',12,6,'',0,0,'',0,0,0,'_kpinvis.gif',5,6,86,189,22,22,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi4749_713676155.gif','fi16685_385913432.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',13,7,'',0,0,'',0,0,0,'fi14409_405199469.gif',6,11,140,170,228,34,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',14,8,'',0,0,'',0,0,0,'r_14fte009.gif',7,11,139,170,127,37,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',14,8,'',0,0,'',0,0,0,'_kpinvis.gif',7,8,86,189,22,22,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi4749_713676155.gif','fi16685_385913432.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',16,10,'',0,0,'',0,0,0,'r_16fte012.gif',8,11,156,188,103,19,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',16,10,'',0,0,'',0,0,0,'_kpinvis.gif',8,10,632,132,76,28,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',15,11,'',0,0,'',0,0,0,'r_15fte012.gif',10,11,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',15,11,'',0,0,'',0,0,0,'_kpinvis.gif',10,11,632,132,76,28,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi31040_46475233.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',18,12,'',0,0,'',0,0,0,'fte014.png',11,14,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',18,12,'',0,0,'',0,0,0,'_kpinvis.gif',11,12,129,29,47,21,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',17,13,'',0,0,'',0,0,0,'r_15fte012.gif',12,14,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',17,13,'',0,0,'',0,0,0,'_kpinvis.gif',12,13,129,29,47,21,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi7656_330531061.gif','','','next','','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',19,14,'',0,0,'',0,0,0,'r_19fte016.gif',13,14,0,2,800,597,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',19,14,'',0,0,'',0,0,0,'_kpinvis.gif',13,14,129,94,234,24,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi2013_510934890.gif','','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',20,15,'',0,0,'',0,0,0,'fte018.png',14,17,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',21,16,'',0,0,'',0,0,0,'r_21fte019.png',15,17,214,71,330,125,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',21,16,'',0,0,'',0,0,0,'_kpinvis.gif',15,16,215,90,310,104,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fte019_umd.png','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',22,17,'',0,0,'',0,0,0,'r_22fte021.png',16,17,177,71,367,479,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',22,17,'',0,0,'',0,0,0,'_kpinvis.gif',16,17,566,49,75,30,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi18533_762324631.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',24,18,'',0,0,'',0,0,0,'fte023.png',17,19,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',24,18,'',0,0,'',0,0,0,'_kpinvis.gif',17,18,477,52,22,22,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',23,19,'',0,0,'',0,0,0,'r_15fte012.gif',18,19,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',23,19,'',0,0,'',0,0,0,'_kpinvis.gif',18,19,477,52,22,22,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi16616_565079272.gif','fi28035_305051268.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',26,20,'',0,0,'',0,0,0,'fte026.png',19,21,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',26,20,'',0,0,'',0,0,0,'_kpinvis.gif',19,20,628,63,77,29,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',25,21,'',0,0,'',0,0,0,'r_15fte012.gif',20,21,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',25,21,'',0,0,'',0,0,0,'_kpinvis.gif',20,21,628,63,77,29,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi6941_474880875.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',28,22,'',0,0,'',0,0,0,'fte029.png',21,24,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',28,22,'',0,0,'',0,0,0,'_kpinvis.gif',21,22,129,29,47,21,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',27,23,'',0,0,'',0,0,0,'r_15fte012.gif',22,24,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',27,23,'',0,0,'',0,0,0,'_kpinvis.gif',22,23,129,29,47,21,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi7656_330531061.gif','','','next','','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',29,24,'',0,0,'',0,0,0,'r_29fte031.gif',23,24,0,2,800,597,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',29,24,'',0,0,'',0,0,0,'_kpinvis.gif',23,24,129,94,236,24,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi9892_936731160.gif','','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',30,25,'',0,0,'',0,0,0,'fte033.png',24,29,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',32,26,'',0,0,'',0,0,0,'r_32fte034.gif',25,29,217,71,327,173,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',32,26,'',0,0,'',0,0,0,'_kpinvis.gif',25,26,277,138,248,39,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',31,27,'',0,0,'',0,0,0,'r_15fte012.gif',26,29,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',31,27,'',0,0,'',0,0,0,'_kpinvis.gif',26,27,277,138,248,39,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi19524_315292299.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',34,28,'',0,0,'',0,0,0,'r_34fte036.png',27,29,175,119,369,296,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',34,28,'',0,0,'',0,0,0,'_kpinvis.gif',27,28,566,50,76,30,1,1,0,0,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',33,29,'',0,0,'',0,0,0,'r_15fte012.gif',28,29,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',33,29,'',0,0,'',0,0,0,'_kpinvis.gif',28,29,566,50,76,30,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi24844_484122336.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',35,30,'',0,0,'',0,0,0,'fte038.png',29,30,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',35,30,'',0,0,'',0,0,0,'_kpinvis.gif',29,30,99,52,22,22,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi13856_363365472.gif','fi2541_710288227.gif','','','next','','','','','False','','',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',36,31,'',0,0,'',0,0,0,'fte043.png',30,31,0,0,800,600,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',37,3,'',0,0,'',0,0,0,'fi12041_33069075.gif',2,3,420,165,181,19,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi16765_315069736.gif','','','','next','','','','','False','','',True,'','','','','','','default','')
+f[fc]=new sf(0,-1,-1,'-1',38,5,'',0,0,'',0,0,0,'',4,5,135,170,65,21,1,1,1,1,0,0,'<P>','','','','',0,'',0,'False','','','','','','next','','','','False','','',True,'','','','','','','Text','')
+f[fc]=new sf(0,-1,-1,'-1',39,25,'',0,0,'',0,0,0,'',24,25,275,115,268,21,1,1,1,1,0,0,'<P>','','','','',0,'',0,'False','','','','next','','','','','','False','','',True,'','','','','','','Default','')
+f[fc]=new sf(0,-1,-1,'-1',40,15,'',0,0,'',0,0,0,'',14,15,213,66,330,21,1,1,1,1,0,0,'<P>','','','','',0,'',0,'False','','','','next','','','','','','False','','',True,'','','','','','','Default','')
+f[fc]=new sf(0,-1,-1,'-1',41,7,'',0,0,'',0,0,0,'',6,7,154,187,42,21,1,1,1,1,0,0,'<P>','','','','',0,'',0,'False','','','','','','next','','','','False','','',True,'','','','','','','Text','')
+f[fc]=new sf(0,-1,-1,'-1',42,31,'',0,0,'',0,0,0,'fi11768_663647712.gif',30,31,340,351,120,27,1,1,1,1,0,0,'','','','','',0,'',0,'False','fi16096_234510721.gif','fi27920_853482425.gif','','','check','','|Your answer was incorrect!|False|Your answer was correct!|False|hidegroup|next|','','','False','','',False,'','','','','','','Hand','')
+f[fc]=new sf(0,-1,-1,'-1',43,31,'',0,0,'','ridge',8,'#FF0000','fi18741_755985558.gif',30,31,212,226,377,78,1,1,1,1,0,0,'','middle','center','','',0,'',0,'False','','','','freeformobject','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',96,31,'freeform',0,0,'','solid',1,'#000000','',30,31,446,245,102,21,1,1,1,1,0,0,'<P class=layer96>','middle','left','','',0,'#FFFFFF',0,'False','','','','','','','10|™48|0','','','False','','@®@learning',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',97,31,'freeform',0,0,'','solid',1,'#000000','',30,31,416,265,78,21,1,1,1,1,0,0,'<P class=layer96>','middle','left','','',0,'#FFFFFF',0,'False','','','','','','','10|™48|0','','','False','','@®@2002',True,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,98,31,'',0,0,'',0,0,0,'',30,31,236,192,331,220,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',98,31,'',0,0,'','ridge',10,'#000000','fi30985_836805761.gif',30,31,234,190,331,220,1,1,1,1,0,0,'','Top','center','','',6,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',99,31,'',0,0,'',0,0,0,'fi22548_970872223.gif',30,31,355,365,90,30,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi19813_901489079.gif','','','hidegroup','','MsgBox0','','','False','','OK',False,'','','','','','','Hand','')
+f[fc]=new sf(0,-1,-1,'-1',101,31,'',0,0,'',0,0,0,'',30,31,244,228,311,132,1,1,1,1,0,0,'<P class=layer101>%%msg%%','middle','center','','',6,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',102,31,'',0,0,'',0,0,0,'fi31700_397423804.gif',30,31,244,200,312,29,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','dragtarget','','','','','','False','','!moveº10',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',103,31,'',0,0,'',0,0,0,'',30,31,244,201,312,27,1,1,1,1,0,0,'<P class=layer103>Fill in the Blanks','middle','center','','',3,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,104,31,'',0,0,'',0,0,0,'',30,31,236,192,331,220,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',104,31,'',0,0,'','ridge',10,'#000000','fi30985_836805761.gif',30,31,234,190,331,220,1,1,1,1,0,0,'','Top','center','','',6,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',105,31,'',0,0,'',0,0,0,'fi22548_970872223.gif',30,31,306,365,90,30,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi19813_901489079.gif','','','hidegroup','','MsgBoxCancel0','','','False','','OK',False,'','','','','','','Hand','')
+f[fc]=new sf(0,-1,-1,'-1',106,31,'',0,0,'',0,0,0,'fi15889_622469604.gif',30,31,404,365,90,30,1,1,1,1,0,0,'','','','','',0,'',0,'False','','fi28472_462881029.gif','','','hidegroup','','MsgBoxCancel0','','','False','','Cancel',False,'','','','','','','Hand','')
+f[fc]=new sf(0,-1,-1,'-1',107,31,'',0,0,'',0,0,0,'',30,31,244,228,311,132,1,1,1,1,0,0,'<P class=layer101>%%msg%%','middle','center','','',6,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',108,31,'',0,0,'',0,0,0,'fi31700_397423804.gif',30,31,244,200,312,29,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','dragtarget','','','','','','False','','!moveº10',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',109,31,'',0,0,'',0,0,0,'',30,31,244,201,312,27,1,1,1,1,0,0,'<P class=layer103>Fill in the Blanks','middle','center','','',3,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,44,1,'',0,0,'',0,0,0,'',0,1,15,211,218,276,1,1,2,2,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',44,1,'',0,0,'','ridge',6,'#1D7ADE','',0,1,12,208,218,276,1,1,2,2,0,0,'In this example, we are going to create a <B>Fill in the Blanks</B> question. This is an extension of a normal freeform text entry question&nbsp;-&nbsp;but even easier to create.&nbsp;<BR>&nbsp;<BR>In this case, we\'ve already opened a template, and added the instructions for the user on the canvas.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,45,2,'',0,0,'',0,0,0,'',1,2,157,91,218,206,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',45,2,'',0,0,'','ridge',6,'#1D7ADE','',1,2,154,88,218,206,1,1,1,1,0,0,'Your first step is to create a text object that contains the text and the blanks you want the user to fill in.&nbsp;<BR>&nbsp;<BR>Select the indicated <B>Create Text Object</B> tool.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,46,3,'',0,0,'',0,0,0,'',2,3,157,91,218,238,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',46,3,'',0,0,'','ridge',6,'#1D7ADE','',2,3,154,88,218,238,1,1,1,1,0,0,'You can select one of the preset styles, or, as you\'ll see in a moment, you can make this text box appear anyway you like.&nbsp;<BR>&nbsp;<BR>In this case, select the <B>Standard Text, Centered</B> command.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,47,4,'',0,0,'',0,0,0,'',3,4,22,345,300,238,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',47,4,'',0,0,'','ridge',6,'#1D7ADE','',3,4,19,342,300,238,1,1,1,1,0,0,'The standard text editing window appears.&nbsp;<BR>&nbsp;<BR>In this case, we\'ve already added some text to this text box for you. It reads <B>KnowledgePresenter is for e-learning. It was released in 2002</B>.&nbsp;<BR>&nbsp;<BR>Now we have to specify which parts of this text we want to the user to complete.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,48,5,'',0,0,'',0,0,0,'',4,5,206,238,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',48,5,'',0,0,'','ridge',6,'#1D7ADE','',4,5,203,235,272,168,1,1,1,1,0,0,'The first word we want the user to complete is the word <B>learning</B>.&nbsp;<BR>&nbsp;<BR>Select this word by double-clicking on it.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,49,6,'',0,0,'',0,0,0,'',5,6,206,238,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',49,6,'',0,0,'','ridge',6,'#1D7ADE','',5,6,203,235,272,168,1,1,1,1,0,0,'The word <B>learning</B> is selected.&nbsp;<BR>&nbsp;<BR>Now select the <B>Underline</B> toolbar button.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,50,7,'',0,0,'',0,0,0,'',6,7,206,238,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',50,7,'',0,0,'','ridge',6,'#1D7ADE','',6,7,203,235,272,168,1,1,1,1,0,0,'The next word we want the user to complete is the word <B>2002</B>.&nbsp;<BR>&nbsp;<BR>Select this word by double-clicking on it.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,51,8,'',0,0,'',0,0,0,'',7,8,206,238,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',51,8,'',0,0,'','ridge',6,'#1D7ADE','',7,8,203,235,272,168,1,1,1,1,0,0,'The word <B>2002</B> is selected.&nbsp;<BR>&nbsp;<BR>Now select the <B>Underline</B> toolbar button.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,52,9,'',0,0,'',0,0,0,'',8,9,206,238,272,217,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',52,9,'',0,0,'','ridge',6,'#1D7ADE','',8,9,203,235,272,217,1,1,1,1,0,0,'We now have two underlined words in this passage. These will be the words the user has to complete.&nbsp;<BR>&nbsp;<BR>You\'ll be able to have from 1 to 25 of these underlined words in any one question.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,53,10,'',0,0,'',0,0,0,'',9,10,206,238,272,217,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',53,10,'',0,0,'','ridge',6,'#1D7ADE','',9,10,203,235,272,217,1,1,1,1,0,0,'In our documentation, you\'ll find ways to also specify several correct answers for any one question.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,54,11,'',0,0,'',0,0,0,'',10,11,505,171,272,134,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',54,11,'',0,0,'','ridge',6,'#1D7ADE','',10,11,502,168,272,134,1,1,1,1,0,0,'Select the <B>OK</B> button to save this text object and place it on the canvas.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,55,12,'',0,0,'',0,0,0,'',11,12,12,322,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',55,12,'',0,0,'','ridge',6,'#1D7ADE','',11,12,9,319,272,168,1,1,1,1,0,0,'The text object is placed on the canvas.&nbsp;<BR>&nbsp;<BR>Note the words you underlined appear underlined in this text object.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,56,14,'',0,0,'',0,0,0,'',12,14,12,154,272,168,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',56,14,'',0,0,'','ridge',6,'#1D7ADE','',12,14,9,151,272,168,1,1,1,1,0,0,'The rest is amazingly easy. First,  select the <B>Event</B> command from the <B>Objects</B> menu.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,57,16,'',0,0,'',0,0,0,'',14,16,213,222,296,201,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',57,16,'',0,0,'','ridge',6,'#1D7ADE','',14,16,210,219,296,201,1,1,1,1,0,0,'You will have seen this dialog box before&nbsp;-&nbsp;it is where we add most user interaction.&nbsp;<BR>&nbsp;<BR>To set this object as a Fill in the Blanks object, select the <B>Fill in the Blanks</B> option from the <B>When</B> listbox.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,58,17,'',0,0,'',0,0,0,'',16,17,213,222,296,145,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',58,17,'',0,0,'','ridge',6,'#1D7ADE','',16,17,210,219,296,145,1,1,1,1,0,0,'That\'s all you have to do.&nbsp;<BR>&nbsp;<BR>Click on <B>OK</B> to save these changes.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,59,18,'',0,0,'',0,0,0,'',17,18,287,346,253,178,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',59,18,'',0,0,'','ridge',6,'#1D7ADE','',17,18,284,343,253,178,1,1,1,1,0,0,'Note the new appearance of this object&nbsp;-&nbsp;the areas that were previously underlined now appear as areas where the user has to enter an answer.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,60,19,'',0,0,'',0,0,0,'',18,19,188,31,260,216,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',60,19,'',0,0,'','ridge',6,'#1D7ADE','',18,19,185,28,260,216,1,1,1,1,0,0,'Our final step to complete this question is to an object that allows the user to submit their answer. We\'ll use a button in this case.&nbsp;<BR>&nbsp;<BR>Click on the indicated <B>Button Creator</B> toolbar button.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,61,20,'',0,0,'',0,0,0,'',19,20,499,316,293,275,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',61,20,'',0,0,'','ridge',6,'#1D7ADE','',19,20,496,313,293,275,1,1,1,1,0,0,'This is the standard button creator window, where you can specify exactly how the button looks, and what the caption is.&nbsp;<BR>&nbsp;<BR>In this case, we\'ll leave all settings as they are&nbsp;-&nbsp;it already reads <B>Submit Answer</B>, which is a simple instruction for the user. Of course, you can make this button say anything you like when you use KP.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,62,21,'',0,0,'',0,0,0,'',20,21,571,203,217,138,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',62,21,'',0,0,'','ridge',6,'#1D7ADE','',20,21,568,200,217,138,1,1,1,1,0,0,'Click on <B>Create</B> to create this button.&nbsp;<BR>&nbsp;<BR><B>Please do this now.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,63,22,'',0,0,'',0,0,0,'',21,22,110,376,288,203,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',63,22,'',0,0,'','ridge',6,'#1D7ADE','',21,22,107,373,288,203,1,1,1,1,0,0,'The button is created and added to the canvas. We\'ve moved it to a suitable position.&nbsp;<BR>&nbsp;<BR>Now we need to tell KnowledgePresenter what to do when the user clicks on this button.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,64,24,'',0,0,'',0,0,0,'',22,24,110,376,288,203,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',64,24,'',0,0,'','ridge',6,'#1D7ADE','',22,24,107,373,288,203,1,1,1,1,0,0,'To do this, we select the <B>Event</B> command from the <B>Objects</B> menu (ensuring, as we have done here, the button is selected).&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,65,25,'',0,0,'',0,0,0,'',24,25,216,285,288,203,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',65,25,'',0,0,'','ridge',6,'#1D7ADE','',24,25,213,282,288,203,1,1,1,1,0,0,'You\'ve seen this dialog box earlier&nbsp;-&nbsp;it is where we create most user interaction.&nbsp;<BR>&nbsp;<BR>In this case, we need to select an option from the <B>Perform This Action</B> listbox.&nbsp;<BR>&nbsp;<BR><B>Please do this now.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,66,26,'',0,0,'',0,0,0,'',25,26,216,285,288,203,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',66,26,'',0,0,'','ridge',6,'#1D7ADE','',25,26,213,282,288,203,1,1,1,1,0,0,'In reality, you can select almost any action you like. If for example, you selected <B>Go to Next Step,</B> then KnowledgePresenter would check the user\'s answer, but move to the next step without providing any feedback.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,67,27,'',0,0,'',0,0,0,'',26,27,216,285,288,203,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',67,27,'',0,0,'','ridge',6,'#1D7ADE','',26,27,213,282,288,203,1,1,1,1,0,0,'By far the best action to select is called <B>Check Answer</B>. This allows you to add some feedback based on the user selection.&nbsp;<BR>&nbsp;<BR><B>Please do this now.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,68,28,'',0,0,'',0,0,0,'',27,28,556,279,240,311,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',68,28,'',0,0,'','ridge',6,'#1D7ADE','',27,28,553,276,240,311,1,1,1,1,0,0,'Once this action is selected, the bottom half of the dialog box lets you select from a range of selections determining what happens should the user get the answer right, wrong, or not even attempt the answer.&nbsp;<BR>&nbsp;<BR>You can optionally add some feedback as well&nbsp;-&nbsp;or maybe set an option that the user cannot move forwards until they get this answer correct.&nbsp;<BR>&nbsp;<BR><B>Click <IMG onMouseUp=\'gotoNextPause()\' style=\'cursor:hand;\' border=0 SRC=\'nextsmall.gif\' onMouseDown="this.src=\'nextsmallmd.gif\'" onMouseOver="this.src=\'nextsmallmo.gif\'" onMouseOut="this.src=\'nextsmall.gif\'" align=absmiddle></A> to continue.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,69,29,'',0,0,'',0,0,0,'',28,29,556,279,240,311,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',69,29,'',0,0,'','ridge',6,'#1D7ADE','',28,29,553,276,240,311,1,1,1,1,0,0,'In this case, we are going to select the default options&nbsp;-&nbsp;but when using KP for real, feel free to experiment with these options.&nbsp;<BR>&nbsp;<BR>Click on <B>OK</B> to save these settings.&nbsp;<BR>&nbsp;<BR><B>Please do this now.</B>','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,70,30,'',0,0,'',0,0,0,'',29,30,13,127,222,178,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',70,30,'',0,0,'','ridge',6,'#1D7ADE','',29,30,10,124,222,178,1,1,1,1,0,0,'Everything is now complete.&nbsp;<BR>&nbsp;<BR>Let\'s preview this question using the <B>Preview</B> button in the toolbar.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,71,31,'',0,0,'',0,0,0,'',30,31,13,346,300,242,1,1,1,1,0,0,'~','','','','',0,'#000000',0,'','','','','','','','','','false','false','','',false,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',71,31,'',0,0,'','ridge',6,'#1D7ADE','',30,31,10,343,300,242,1,1,1,1,0,0,'Now you can try to answer this question (remember that the correct answers are <B>learning,</B> and <B>2002)</B>.&nbsp;<BR>&nbsp;<BR>Using the settings we used in this example, you will not be able to move forwards until you get this correct.&nbsp;<BR>&nbsp;<BR><B>Please do this now</B>.','Top','left','','',3,'#FFFFFF',0,'False','','','','','','','','','true','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',72,2,'',0,0,'',0,0,0,'arrow_up2.gif',1,2,404,76,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',73,3,'',0,0,'',0,0,0,'arrow_right2.gif',2,3,382,156,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',74,4,'',0,0,'',0,0,0,'arrow_up2.gif',3,4,231,194,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',75,5,'',0,0,'',0,0,0,'arrow_up2.gif',4,5,148,197,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',76,6,'',0,0,'',0,0,0,'arrow_right2.gif',5,6,41,180,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',77,7,'',0,0,'',0,0,0,'arrow_up2.gif',6,7,155,211,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',78,8,'',0,0,'',0,0,0,'arrow_right2.gif',7,8,40,181,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',79,11,'',0,0,'',0,0,0,'arrow_left2.gif',10,11,709,125,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',80,12,'',0,0,'',0,0,0,'arrow_right2.gif',11,12,266,270,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',81,13,'',0,0,'',0,0,0,'arrow_up2.gif',12,13,134,49,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',82,14,'',0,0,'',0,0,0,'arrow_right2.gif',13,14,86,89,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',83,15,'',0,0,'',0,0,0,'arrow_down2.gif',14,15,299,19,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',84,16,'',0,0,'',0,0,0,'arrow_left2.gif',15,16,305,169,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',85,17,'',0,0,'',0,0,0,'arrow_left2.gif',16,17,640,46,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',86,18,'',0,0,'',0,0,0,'arrow_up2.gif',17,18,552,311,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',87,19,'',0,0,'',0,0,0,'arrow_up2.gif',18,19,470,74,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',88,21,'',0,0,'',0,0,0,'arrow_down2.gif',20,21,646,21,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',89,22,'',0,0,'',0,0,0,'arrow_up2.gif',21,22,474,405,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',90,23,'',0,0,'',0,0,0,'arrow_up2.gif',22,23,134,47,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',91,24,'',0,0,'',0,0,0,'arrow_right2.gif',23,24,86,89,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',92,25,'',0,0,'',0,0,0,'arrow_down2.gif',24,25,283,71,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',93,27,'',0,0,'',0,0,0,'arrow_left2.gif',26,27,358,152,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',94,29,'',0,0,'',0,0,0,'arrow_left2.gif',28,29,639,46,45,38,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,'-1',95,30,'',0,0,'',0,0,0,'arrow_up2.gif',29,30,92,73,38,45,1,1,1,1,0,0,'','','','','',0,'',0,'False','','','','','','','','','','False','','',False,'','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,1,0,'',0,0,'',0,0,0,'nextsmall.gif',0,0,64,320,1,1,1,1,2,2,0,0,'','','','','true',0,'',0,'','nextsmallmo.gif','nextsmallmd.gif','','','','','','','','','','','','','','','','','','','')
+f[fc]=new sf(0,1,-1,-1,3,0,'',0,0,'',0,0,0,'headerbackground.jpg',0,0,0,-1,800,80,1,1,2,2,0,0,'','','','true','true',0,'',0,'','','','','','','','','','','','','','','','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,4,0,'',0,0,'',0,0,0,'',0,0,42,100,717,336,1,1,2,2,0,0,'<P class=layer2>This lesson examines what fill in the blanks questions are, when and how they can be used, and how to create them.&nbsp;<BR>&nbsp;<BR><B>At the end of this lesson, you will be able to:</B>&nbsp;<BR>&nbsp;<BR><UL class=layer2><LI class=layer2>understand what fill in the blanks questions are</LI><LI class=layer2>know how to create fill in the blanks questions</LI></UL><P class=layer2>','Top','left','true','true',0,'',0,'','','','','','','','','','','','','','','','','','','','','','')
+f[fc]=new sf(0,1,-1,-1,5,0,'',0,0,'',0,0,0,'fi2581_315746248.gif',0,0,78,4,644,71,1,1,2,2,0,0,'','middle','center','true','true',0,'',0,'','','','','','','','','','','','','','','','','','','','','','')
+f[fc]=new sf(0,1,-1,-1,6,0,'',0,0,'',0,0,0,'fi26081_394900501.gif',0,0,228,545,344,37,1,1,2,2,0,0,'','middle','center','true','true',0,'',0,'','','','','','','','','','','','','','','','','','','','','','')
+f[fc]=new sf(0,-1,-1,-1,7,0,'',0,0,'',0,0,0,'fi5465_677276671.gif',0,0,348,495,104,34,1,1,2,2,0,0,'','','','','true',0,'',0,'','fi26893_891868770.gif','fi17577_295288981.gif','','','next','','','','','','','','','','','','','','','Hand','')
+</SCRIPT>
+<SCRIPT>
+var ftf=new Array(0)
+var ftfpos=''
+for(i=0; i<f.length; i++){if(f[i].ke.indexOf('|')>-1&&f[i].posset==false){tldata=f[i].ke.split('|'), usedata=f[i].ke, movesa=3, tcount=128, fcount=128
+if(tldata[0].indexOf('_')>-1&&tldata[1].indexOf('_')>-1){tcount=fur(tldata[0],'_',''), fcount=fur(tldata[1],'_',''), msg='', tcount++, fcount++
+for(ii=2; ii<tldata.length; ii++){if(ii==tldata.length-1){msg=msg+tldata[ii]}else{msg=msg+tldata[ii]+'|'}}
+usedata=msg, movesa=5}
+f[i].posset=true, ldata=usedata.split('|'), getdatafor=ldata[3], ftf=new Array(0), ftfc=0, ftfpos='', fin=''
+for(ii=0; ii<f.length; ii++){ldata=f[ii].ke.split('|')
+if(ldata[movesa]==getdatafor){if(fin.indexOf('_'+ldata[movesa+1]+'_')==-1){fin=fin+'_'+ldata[movesa+1]+'_', ftf[ftfc]=ii, ftfc=ftfc+1}
+f[ii].posset=true}}
+ldata=usedata.split('|'), thetop=ldata[0], movetf=true
+if(thetop.indexOf('_')>-1){thetop=fur(thetop, '_', ''), movetf=false}
+ftfcount=0, rtcount=0, rfcount=0
+for(ii=0; ii<300000; ii++){rnnum=Math.floor((ftf.length)*(Math.random()%1))
+if(ftfcount==0&&rnnum==0){}else{if(ftfpos.indexOf('_'+rnnum+'_')==-1){moveit=true
+if(movetf){if(f[new Number(ftf[rnnum])+new Number(1)].score==-1){if(rtcount==tcount){moveit=false}} 
+if(f[new Number(ftf[rnnum])+new Number(1)].score!=-1){if(rfcount==fcount){moveit=false}} }
+ftfpos=ftfpos+'_'+rnnum+'_'
+if(moveit==true){ftfcount=ftfcount+1, fnum=ftf[rnnum], f[fnum].ttop=thetop
+if(movetf){f[new Number(fnum)+new Number(1)].ttop=thetop
+if(f[new Number(fnum)+new Number(1)].score==-1){rtcount=rtcount+1}else{rfcount=rfcount+1}}else{f[fnum].seqid=ldata[3], f[fnum].seqdet=fur(f[fnum].ke,'_',''), f[fnum].sequence=true, f[fnum].eseqid=ftfcount, f[fnum].seqc=ftfc}
+thetop=new Number(thetop)+new Number(f[fnum].hheight)+new Number(ldata[2])-2}else{f[new Number(ftf[rnnum])+new Number(1)].lleft=0, f[ftf[rnnum]].lleft=0, f[new Number(ftf[rnnum])+new Number(1)].timeon=32000, f[ftf[rnnum]].timeoff=32000, f[new Number(ftf[rnnum])+new Number(1)].timeoff=32000, f[ftf[rnnum]].timeon=32000, f[new Number(ftf[rnnum])+new Number(1)].score=0, f[ftf[rnnum]].score=0, f[new Number(ftf[rnnum])+new Number(1)].photo='', f[ftf[rnnum]].photo='', ftfcount=ftfcount+1}
+if(ftfcount==ftf.length){break}}}}}}
+var arImageSrc=new Array('nextsmallmo.gif','nextsmallmd.gif','fi26893_891868770.gif','fi17577_295288981.gif','fi313_271950186.gif','fi4749_713676155.gif','fi16685_385913432.gif','fi31040_46475233.gif','fi7656_330531061.gif','fi2013_510934890.gif','fte019_umd.png','fi18533_762324631.gif','fi16616_565079272.gif','fi28035_305051268.gif','fi6941_474880875.gif','fi9892_936731160.gif','fi19524_315292299.gif','fi24844_484122336.gif','fi13856_363365472.gif','fi2541_710288227.gif','fi16765_315069736.gif','fi16096_234510721.gif','fi27920_853482425.gif','fi19813_901489079.gif','fi28472_462881029.gif')
+var pauses=new Array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31)
+var pausess=new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+for(i=0; i<pauses.length; i++){pauses[i]=pauses[i]*5}
+duration=duration * 5
+PreLoad=PreLoad*5
+var theobs=new Array('Create Freeform Object','Set Fill in the Blanks Event','Add Submit Button','Set Submit Event','Preview Lesson','KnowledgePresenter is for what?')
+var theobsval=new Array(7,5,2,5,1,1)
+var obsc=new Array(0,0,0,0,0,0)
+var obsds=new Array('100','100','100','100','100','100')
+var coi=0
+for(i=0; i<f.length; i++){switch (f[i].oid){case 41: case 38: case 37: case 15: case 14: case 12: case 8:
+f[i].ename=theobs[0]
+break
+case 40: case 22: case 21: case 19: case 17:
+f[i].ename=theobs[1]
+break
+case 25: case 23:
+f[i].ename=theobs[2]
+break
+case 39: case 33: case 31: case 29: case 27:
+f[i].ename=theobs[3]
+break
+case 35:
+f[i].ename=theobs[4]
+break
+case 97: case 96:
+f[i].ename=theobs[5]
+break}}
+function getobvalue(theobname){returnvalue=1
+for(h=0; h<theobs.length; h++){if(theobs[h]==theobname){returnvalue=theobsval[h]}}
+return returnvalue}
+function gettotalscore(){returnvalue=0
+for(i=0; i<f.length; i++){if(f[i].ename!=''){for(h=0; h<theobs.length; h++){if(theobs[h]==f[i].ename&&obsc[h]==0){obsc[h]=1
+addit=true
+if(i>0){if(f[i-1].ke=='tiny'&&f[i-1].ke=='tiny'){addit=false}}
+if(addit){returnvalue=returnvalue+new Number(getobvalue(f[i].ename))}}}}}
+return returnvalue}
+LMSInitialzes=true
+LMSIniitialzes=true
+LMSInitialzes=true
+function setinitialstate(theimage){f[theimage].timeon=0
+f[theimage].timeoff=0
+f[theimage].hatimeon=0
+f[theimage].hatimeoff=0
+f[theimage].mo_timeon=0
+f[theimage].mo_timeoff=0
+f[theimage].eventoff=0}
+function setinitialstatesmall(theimage){f[theimage].timeon=0
+f[theimage].timeoff=0
+f[theimage].mo_timeon=0
+f[theimage].mo_timeoff=0
+f[theimage].eventoff=0
+f[theimage].mtl=1}
+for(i=0; i<f.length; i++){switch (f[i].oid){case 103: case 102: case 101: case 99: case 98:
+f[i].og='MsgBox'
+setinitialstate(i)
+break
+case 109: case 108: case 107: case 106: case 105: case 104:
+f[i].og='MsgBoxCancel'
+setinitialstate(i)
+break}}
+function moveob(){}
+function cleardelays(){}
+function ed(i){if(f[i].ename==''){f[i].ename='Interaction ID '+parseInt(f[i].timeon)+':'
+aobfound=0
+for(ik=0; ik<theobs.length;ik++){if(f[i].ename==theobs[ik]){aobfound=true
+break}}
+if(aobfound==false){theobs.length=theobs.length+1
+theobs[theobs.length-1]=f[i].ename
+theobsval.length=theobsval.length+1
+theobsval[theobsval.length-1]=1
+obsc.length=obsc.length+1
+obsc[obsc.length-1]=0}}
+f[i].eid=fur(document.title, ' ', '')
+f[i].time=''
+f[i].type='performance'
+f[i].correctresponse=f[i].ename
+f[i].weighting='1'
+f[i].result='neutral'
+f[i].studentresponse=''
+f[i].ecounter=0
+f[i].scorestring=''
+f[i].ecords=''
+switch (f[i].oid){case 97:
+f[i].iid='Freeform Entry Single Line'
+break
+case 96:
+f[i].iid='Freeform Entry Single Line'
+break
+case 41:
+f[i].iid='Hotspot 002'
+break
+case 40:
+f[i].iid='Hotspot 003'
+break
+case 39:
+f[i].iid='Hotspot 004'
+break
+case 38:
+f[i].iid='Hotspot 001'
+break
+case 37:
+f[i].iid='XP Menu Command Highlighted'
+break
+case 35:
+f[i].iid='Fte038'
+break
+case 33:
+f[i].iid='Fte036'
+break
+case 31:
+f[i].iid='Fte034'
+break
+case 29:
+f[i].iid='Fte031'
+break
+case 27:
+f[i].iid='Fte029'
+break
+case 25:
+f[i].iid='Fte026'
+break
+case 23:
+f[i].iid='Fte023'
+break
+case 22:
+f[i].iid='Fte021'
+break
+case 21:
+f[i].iid='Fte019'
+break
+case 19:
+f[i].iid='Fte016'
+break
+case 17:
+f[i].iid='Fte014'
+break
+case 15:
+f[i].iid='Fte012'
+break
+case 14:
+f[i].iid='Fte009'
+break
+case 12:
+f[i].iid='Fte005'
+break
+case 8:
+f[i].iid='Fte001'
+break}
+f[i].tex=-1
+f[i].tey=-1}
+function ed2(){}
+function resetvars(){for(i=0; i<f.length; i++){if(f[i].ke!=''||f[i].overevent!=''||f[i].upevent!=''||f[i].downevent!=''||f[i].dblevent!=''||f[i].ismarker){if(f[i].ismarker||f[i].score==True||(f[i].downevent=='truefalse'||f[i].ke=='target'||f[i].overevent=='target'||f[i].upevent=='target'||f[i].downevent=='target'||f[i].dblevent=='target')){ed(i)}}else{if(f[i].ismarker==false){f[i].score=''}}
+f[i].cs=''
+f[i].incs=''
+if(f[i].truefalsestate==true){f[i].truefalsestate=false
+if(tbro=='nn'){newNavImage('document.main'+i, f[i].photo)}else{object=getObject('maini'+i)
+object.src=f[i].photo}}
+if(f[i].ke=='freeform'){f[i].entrytext=''
+f[i].edittext=''
+f[i].finalentrytext=''}}}
+resetvars()
+var resultstype=1
+allowpartial=0
+var ots=0, uts=0
+var toobjects=0
+for(i=0; i<f.length; i++){if(f[i].score==True&&f[i].timeon!=this.timeoff){scoreobjects=scoreobjects+1
+scoredobjects[scoreobjects]=i}
+if(f[i].timeout!=''){toobjects=toobjects+1
+tooobjects[toobjects]=i}}
+function showResults(forlms){ots=0, uts=0
+obs=new Array(scoredobjects.length)
+obsright=new Array(scoredobjects.length)
+obswrong=new Array(scoredobjects.length)
+obstime=new Array(scoredobjects.length)
+obsstring=new Array(scoredobjects.length)
+obscount=new Array(scoredobjects.length)
+obsselection=new Array(scoredobjects.length)
+obscorrect=new Array(scoredobjects.length)
+obserrors=new Array(scoredobjects.length)
+obserrorcords=new Array(scoredobjects.length)
+obschecked=new Array(scoredobjects.length)
+obspartialscore=new Array(scoredobjects.length)
+for (k=0; k<scoredobjects.length; k++){obs[k]=''
+obsright[k]=0
+obswrong[k]=0
+obstime[k]=0
+obscount[k]=0
+obsstring[k]=''
+obscorrect[k]=''
+obserrors[k]=0
+obserrorcords[k]=''
+obsselection[k]=''
+obschecked[k]=0
+obspartialscore[k]=0}
+msg='', afcounter=0
+for (jj=0; jj<pauses.length; jj++){isright=false
+obfound=''
+iswrong=false
+ispartial=0
+obserrorss=0
+onlytruefalsefound=true
+onlyfreeformfound=true
+for (k=0; k<scoredobjects.length; k++){iii=scoredobjects[k]
+jjj=pauses[jj]
+if(f[iii].timeon<=jjj&&f[iii].eventoff>jjj){if(f[iii].ename!=''){obfound=f[iii].ename
+obserrorss=f[iii].ecounter
+obserrorcordss=f[iii].ecords}
+if(f[iii].result=='correct'){if(obschecked[afcounter]==0){obschecked[afcounter]=1
+isright=true}}
+if(isNaN(f[iii].result)==false){if(obschecked[afcounter]==0&&f[iii].result>0){obspartialscore[afcounter]=f[iii].result
+obschecked[afcounter]=1
+iswrong=true
+ispartial=f[iii].result}
+lastwrong=iii}
+if(f[iii].result=='wrong'){if(obschecked[afcounter]==0){obschecked[afcounter]=1
+iswrong=true}
+lastwrong=iii}
+if(f[iii].downevent!='truefalse'){onlytruefalsefound=false}
+if(f[iii].ismarker==false&&f[iii].ke!='freeform'&&f[iii].ke!='dropdown'){onlyfreeformfound=false}
+if(obschecked[afcounter]==1){afcounter=afcounter+1}}
+if(obfound!=''){foundinarray=-1
+for (l=0; l<obs.length; l++){if(obs[l]==obfound){foundinarray=l
+break}
+if(obs[l]==''){obs[l]=obfound
+foundinarray=l
+break}}
+if((onlytruefalsefound||onlyfreeformfound)&&obscount[l]>=1){}else{obscount[l]=obscount[l]+1}
+if(isright==true){obsright[l]=obsright[l]+1
+if(f[iii].ke!='dropdown'&&f[iii].downevent!='truefalse'&&f[iii].ke!='freeform'){obscorrect[l]=f[iii].hint.replace('ª','')
+if(f[iii].ke=='tiny'||f[iii].upevent=='showmessage'||f[iii].overevent=='showmessage'||f[iii].downevent=='showmessage'||f[iii].ke=='showmessage'||f[iii].dblevent=='showmessage'){obscorrect[l]=''}}else{obscorrect[l]=f[iii].cs}
+obstime[l]=f[iii].time
+if(obsstring[l]==''){obsstring[l]=f[iii].scorestring}else{obsstring[l]=obsstring[l]+', '+f[iii].scorestring}
+obserrors[l]=((obserrorss)+(obserrors[l]))
+obserrorcords[l]=obserrorcords[l]+'¿'+obserrorcordss }else{if(iswrong==true){if(ispartial>0){obspartialscore[l]=ispartial}
+if(allowpartial==0){obspartialscore=0}
+if(f[iii].ismarker==false&&f[iii].ke!='dropdown'&&f[iii].downevent!='truefalse'&&f[iii].ke!='freeform'){if(f[lastwrong].finalentrytext!=''){obsselection[l]=f[lastwrong].finalentrytext}else{obsselection[l]=f[lastwrong].studentresponse}
+obscorrect[l]=f[lastwrong].hint.replace('ª','')
+if(f[lastwrong].ke=='tiny'||f[lastwrong].upevent=='showmessage'||f[lastwrong].overevent=='showmessage'||f[lastwrong].downevent=='showmessage'||f[lastwrong].ke=='showmessage'||f[lastwrong].dblevent=='showmessage'){obscorrect[l]=''}}else{obscorrect[l]=f[lastwrong].cs
+obsselection[l]=f[lastwrong].incs}
+obswrong[l]=obswrong[l]+1
+obstime[l]=f[lastwrong].time
+if(obsstring[l]==''){obsstring[l]=f[lastwrong].scorestring}else{obsstring[l]=obsstring[l]+', '+f[lastwrong].scorestring}
+obserrors[l]=((obserrorss)+(obserrors[l]))
+obserrorcords[l]=obserrorcords[l]+'¿'+obserrorcordss }}}
+isright=false
+obfound=''
+iswrong=false
+obserrorss=0}}
+lmsmsg=''
+supportsCords=false
+if(forlms){if((APIOK())&&(bFinishDone==false)){var intChildren=LMSGetValue('cmi.interactions._children')
+if(intChildren.indexOf('coordinates')!=-1){supportsCords=true}}}
+for (k=0; k<scoredobjects.length; k++){if(obs[k]!=''){if(obsright[k]==0&&obswrong[k]==0&&dynamicresults==1){}else{if(getobvalue(obs[k])>0){ots=new Number(ots)+new Number((getobvalue(obs[k])))
+oresult=parseInt(((obsright[k])/((obsright[k])+(obswrong[k])))*100)
+msg=msg+'<B>Objective:</B> '+obs[k]+'<BR>'
+if(obsstring[k]=='Timeout'){if(resultstype==1){msg=msg+'<B>Status:</B> User Timed Out<BR>'}}
+if(obsright[k]==0&&obswrong[k]==0){if(resultstype==1){msg=msg+'<B>Score:</B> Not Attempted, Skipped, or Poor Attempt<BR>'}}else{actualscore=((obsright[k] / ((obsright[k])+(obswrong[k]))) * getobvalue(obs[k]))
+actualscore=parseInt(actualscore * 100) / 100
+fullp=1
+for (lmn=0; lmn<obs.length; lmn++){if(obs[lmn]==obs[k]){if(typeof obsds[lmn]!='undefined'){fullp=obsds[lmn]}else{fullp=1}
+if(fullp==100){fullp=1}
+break}}
+if(fullp!=1){actualscore=(actualscore * fullp)*100
+actualscore= (parseInt(actualscore)/100)
+oresult=parseInt((actualscore / getobvalue(obs[k]))*100)}
+if(obspartialscore[k]>0){actualscore=(obspartialscore[k] * getobvalue(obs[k]))/100
+actualscore=Math.round(actualscore*100)/100
+if(fullp!=1){actualscore=(actualscore * fullp)*100
+actualscore= (parseInt(actualscore)/100)}
+oresult=parseInt((actualscore / getobvalue(obs[k]))*100)}
+uts=uts+actualscore
+if(resultstype==1){msg=msg+'<B>Score:</B> '+actualscore+' ('+oresult+'%)<BR>'}
+if(obscount[k]==1){if(obscorrect[k]!=''){if(obscorrect[k].substring(0,2)=="__"&&obscorrect[k].substring(obscorrect[k].length-2,obscorrect[k].length)=="__"){obscorrect[k]=fur(obscorrect[k],'__','')
+obscorrect[k]="'"+fur(obscorrect[k],"|","' and '")+"'"}else{obscorrect[k]="'"+fur(obscorrect[k],"|","' or '")+"'"}
+if(obscorrect[k].indexOf('kpall')>-1){if(resultstype==1){msg=msg+'<B>Correct Response was Long Answer, any entry marked as correct.</B><BR>'}}else{if(resultstype==1){msg=msg+'<B>Correct Response:</B> '+obscorrect[k]+ '<BR>'}}}
+if(obsselection[k]!=''){msg=msg+'<B>User Response:</B> '+obsselection[k]+ '<BR>'}}}
+msg=fur(msg,"''","'")
+msg=msg+'<BR>'}
+if((APIOK())&&(bFinishDone==false)&&getobvalue(obs[k])>0){if(forlms){obs[k]=fur(obs[k],' ','_')
+if(intChildren.indexOf('id')!=-1){LMSSetValue('cmi.interactions.'+k+'.id',obs[k])}
+iendtime=getTime(obstime[k])
+iendtime=iendtime.substring(2,iendtime.length)
+if(intChildren.indexOf('time')!=-1){LMSSetValue('cmi.interactions.'+k+'.time',iendtime)}
+if(intChildren.indexOf('type')!=-1){LMSSetValue('cmi.interactions.'+k+'.type','performance')}
+if(intChildren.indexOf('correct_responses')!=-1){LMSSetValue('cmi.interactions.'+k+'.correct_responses.0.pattern',obs[k])}
+if(intChildren.indexOf('weighting')!=-1){LMSSetValue('cmi.interactions.'+k+'.weighting',((obsright[k])+(obswrong[k])))}
+if(k==0){latency=obstime[k]}else{latency=obstime[k]-obstime[k-1]}
+if(obsright[k]==0&&obswrong[k]==0){oresult=0
+latency=0}else{oresult=parseInt(((obsright[k])/((obsright[k])+(obswrong[k])))*100)
+fullp=1
+for (lmn=0; lmn<obs.length; lmn++){if(obs[lmn]==obs[k]){if(typeof obsds[lmn]!='undefined'){fullp=obsds[lmn]}else{fullp=1}
+if(fullp==100){fullp=1}
+break}}
+if(fullp!=1){oresult=(oresult * fullp)*100
+oresult= (parseInt(oresult)/100)}
+if(obspartialscore[k]>0){actualscore2=(obspartialscore[k] * getobvalue(obs[k]))/100
+actualscore2=parseInt(actualscore2 * 100) / 100
+oresult=actualscore * 100
+if(fullp!=1){oresult=(oresult * fullp)*100
+oresult= (parseInt(oresult)/100)}}}
+if(intChildren.indexOf('result')!=-1){LMSSetValue('cmi.interactions.'+k+'.result',oresult)}
+cresponse=obsselection[k]
+if(cresponse==''){cresponse=obscorrect[k]}
+if(intChildren.indexOf('student_response')!=-1){LMSSetValue('cmi.interactions.'+k+'.student_response',cresponse)}
+if(intChildren.indexOf('latency')!=-1){LMSSetValue('cmi.interactions.'+k+'.latency',getTime(latency))}
+if(supportsCords){LMSSetValue('cmi.interactions.'+k+'.coordinates',obserrorcords[k])}
+if(obsstring[k]==''){obsstring[k]=' '}
+if(cresponse==''){cresponse=' '}
+if(obscorrect[k]==''){obscorrect[k]=' '}
+obserrorcords[k]=' '
+lmsmsg=lmsmsg+obs[k]+'¥'+'newperformance'+'¥'+obs[k]+'¥'+oresult+'¥'+getTime(obstime[k])+'¥'+getTime(latency)+'¥'+obscount[k]+'¥'+cresponse+'¥'+obscorrect[k]+'¥'+obserrorcords[k]+'¥¥'}}}}}
+if(forlms){if((APIOK())&&(bFinishDone==false)){var intChildren=LMSGetValue('cmi.interactions._children')
+if(intChildren.indexOf('summary')!=-1){LMSSetValue('cmi.interactions.summary',lmsmsg)}}
+msg=''}
+if(msg.substring(msg.length-8,msg.length)=='<BR><BR>'){msg=msg.substring(0,msg.length-8)}
+return msg}
+function compareNumbers(a,b){return a - b;}
+var hideTO=0
+function hidem(){if(tbro=='ie'||tbro=='ienn'){t=getObject('eblocker')
+t.style.visibility='hidden'}
+mmoobject=-1
+for(i=0; i<f.length; i++){if(i>-1){if(f[i].madevisible){if(f[i].kis==true){f[i].timeon=f[i].hatimeon
+f[i].timeoff=f[i].hatimeoff
+f[i].mo_timeon=f[i].hatimeon
+f[i].mo_timeoff=f[i].hatimeoff
+f[i].eventoff=f[i].hatimeoff}else{f[i].timeon=64000
+f[i].timeoff=64000
+f[i].mo_timeon=64000
+f[i].mo_timeoff=64000
+f[i].eventoff=64000}
+f[i].madevisible=false
+hideobject (i)}}
+if(f[i].startup=='true'&&f[i].offflag==''){hideobject (i)
+f[i].offflag='1'
+if(f[i].ftext!=''){ro=getObject('main'+i)
+if(tbro=='nn'){ro.document.write('');
+ro.document.close();}else{ro.innerHTML=''}}}else{if((thepos>=f[i].timeoff&&f[i].offflag=='')||(thepos<f[i].timeon&&f[i].onflag!='')){if(thepos>=duration&&f[i].timeoff>=duration){}else{if(tbro=='ie'&&navp!='Mac'&&isopera==false){if(i>-1){if(f[i].onfil==2){otoeval='main'+i
+t=getObject(otoeval)
+if(t.style.filter!=''&&t.style.filter.indexOf('BlendTrans')!=-1){t.filters.BlendTrans.stop();}}
+if(f[i].onfil>2){otoeval='main'+i
+t=getObject(otoeval)
+if(t.style.filter!=''&&t.style.filter.indexOf('RevealTrans')!=-1){t.filters.RevealTrans.stop();}}}}
+hideobject (i)
+if(f[i].ma>0){moveobject=getObject('main'+i)
+clearmove (i, moveobject)}
+f[i].offflag='1'
+f[i].onflag=''
+f[i].timeon=f[i].mo_timeon
+f[i].timeoff=f[i].mo_timeoff
+if(f[i].downevent=='dragtarget'||f[i].xdistance!=0||f[i].ydistance!=0){tobj=getObject('main'+i)
+if(tbro=='nn'){if((tobj.top!=f[i].ttop||tobj.left!=f[i].lleft)&&f[i].startup!='true'&&f[i].loading!='true'){if(thepos>=(f[i].timeoff+f[i].offfiltime)||thepos<f[i].timeon){tobj.moveTo (f[i].lleft,f[i].ttop)}}}else{if((parseInt(tobj.style.top)!=f[i].ttop||parseInt(tobj.style.left)!=f[i].lleft)&&f[i].startup!='true'&&f[i].loading!='true'){if(thepos>=(f[i].timeoff+f[i].offfiltime)||thepos<f[i].timeon){tobj.style.top=f[i].ttop
+tobj.style.left=f[i].lleft}}}
+f[i].templeft=0}}
+if((f[i].imageover!=''&&f[i].mouseover==1)||f[i].imagedown!=''){object=getObject('maini'+i)
+if(tbro=='nn'){newNavImage('document.main'+i,f[i].photo)}else{object.src=f[i].photo}
+f[i].mouseover=0}
+if(f[i].imageover!=''&&f[i].mos!=''){f[i].mouseover=0}}}}}
+var ddtds=-1, tdtrf=-1, tdtrfi=0, tdtrt=-1, tdtrti=0, ddt=-1,ddtids=0,ddti=0,cst=-1,csti=0,tlt=-1,tlti=0,tltr=-1,tltri=0, tltrr=-1000, lessonendtext=''
+var tltc=0, coverride=0
+function uds(){}
+var remainingtime=0
+var remtext='',remtext2=''
+function tremm(j){}
+function treml(j){}
+function tremc(j){}
+function drem(j){}
+var cds=0
+function dremds(j){}
+function tremb(j){}
+function trema(j){}
+function rts(rt){return rt}
+function trem(j){}
+function writepercent(i){if(i==-1){return}
+if(f[i].startup=='true'){return}
+if(thepos<f[i].timeon||thepos>=f[i].timeoff){return}
+ppos=thepos
+for(ik=0; ik<pauses.length; ik++){if(thepos>=pauses[ik]&&pausess[ik]==0){if(ik>pauses.length-2){ppos=duration}else{ppos=pauses[ik+1]}}}
+newtext=f[i].text
+if(f[i].ke=='freeform'){if(f[i].timeon<thepos||i!=currentfreeform){newtext=newtext.substring(0,newtext.length-1)+f[i].entrytext}else{thei=(f[i].cursorinfo*1.5)
+if(thei>(f[i].hheight-6)){thei=(f[i].hheight-6)}
+if(f[i].feedback){thei=16}
+newtext=newtext.substring(0,newtext.length-1)+f[i].entrytext+'<IMG SRC="kpani__kpfc.gif" hspace=2 align=absmiddle height='+thei+' width=1>'}
+window.focus()}
+if(f[i].ke!='freeform'){}
+newtext=newtext.replace('%%msg%%',showmessage)
+if(newtext.indexOf('%%')>-1&&launch_data!=''){ldata=launch_data.split('|')
+for(k=0; k<ldata.length; k=k+2){newtext=newtext.replace('%%'+ldata[k]+'%%',ldata[k+1])}}
+bc=''
+if(f[i].backcolor!=''){bc=' bgcolor='+f[i].backcolor}
+if(f[i].backcolor=='transparent'){bc=''}
+if(tbro=='ie'){bt='<TABLE WIDTH=100% height='+(f[i].hheight-(f[i].bwidth*2))+' '+bc+' cellspacing=0 cellpadding='+f[i].margin+'><TD valign='+f[i].valign+' align='+f[i].halign+'>'+newtext+'</td></table>'}else{bt=f[i].rtext.replace('¥¥¥',newtext)}
+if(tbro=='nn'){bt=fur(bt,'style="cursor:hand;"','')}
+if(f[i].instruct=='true'){tbs=fur(tbs,'HEIGHT=100%','height='+f[i].hheight)
+bt=tbs+bt+tbe}
+if(navp=='Mac'){bt=newtext}
+object=getObject('main'+i)
+if(f[i].percenttext==bt){return}
+f[i].percenttext=bt
+if(tbro=='nn'){object.document.write(bt);
+object.document.close();}else{if(navp=='Mac'){object=getObject('mainp'+i)}
+object.innerHTML=bt
+nav6fix(i)}}
+var alertshowing=-1
+var oldpos=0
+function closeit(){theactions2.length=0
+if(tbro!='ie'||parent.frames.length>0){stopVideo()}
+if(parent.parent.LMSSetValue==true){parent.parent.window.close()}else{if(parent.document.title.indexOf('FullScreen')>-1){parent.window.close()}else{window.close()}}}
+var tot=0, tot2=0
+function refreshScreen(){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){navrefresher.style.visibility='visible'
+hideTO2=setTimeout('navrefresher.style.visibility="hidden"',1)}}
+var tov=-1, tovv=0, tovt=0
+function checkposition(){clearTimeout(qtshower)
+qtshower=0
+showfromobject=-1
+if(timeoutreset){clearTimeout(tot)
+clearTimeout(tot2)
+tot=0, tot2=0}
+hideobject (-1)
+tov=-1
+clearInterval(tovt)
+tovt=0
+iscorrectanswer=false
+showgroup1=''
+showgroup2=-1
+theactions2=new Array(f.length)
+aic=0
+var date_now=new Date ();
+var time_now=date_now.getTime ();
+thepos=(time_now - startTime)/1000;
+cmisD=new Date();
+cmiet=cmisD.getTime() - cmistarttime
+cmiet=cmiet/1000
+if(maxtime>0&&cmiet>maxtime){if(maxaction=='exit,message'){runalert ('You have exceeded the maximum time in this lesson, as determined by the Learning Management System. This lesson will now close.')
+closeit()}
+if(maxaction=='exit,no message'){closeit()}
+if(maxaction=='continue,message'){runalert ('You have exceeded the maximum time in this lesson, as determined by the Learning Management System.')}}
+if(buffering==false){for(i=0; i<pauses.length; i++){if(thepos>=pauses[i]&&pausess[i]==0){if(typeof usepause!='undefined'){if(usepause[i]==0){do{i=i+1}
+while (usepause[i]==0)}}
+if(i==pauses.length-1){tempstartDate=new Date();
+RealEndTime=tempstartDate.getTime() - RealStartTime
+scostatus='completed'
+SaveData()}
+pausestart=new Date();
+pausetime=pausestart.getTime();
+thepos=pauses[i]
+if(typeof loadnextfile!='undefined'){clearInterval (loadnextfile)
+loadnextfile=0}}}
+if(thepos>0) {for (i=0; i<f.length; i++){if(f[i].startup=='true'&&f[i].offflag==''&&f[i].timeon!=f[i].timeoff){hideobject (i)}}}
+checkthepos=thepos
+if(checkthepos>=duration){checkthepos=thepos - 0.01
+thepos=duration-0.01
+checkthepos=thepos
+scostatus='completed'
+SaveData()}
+if(thepos<duration){if(processcheckpos==false){cleardelays()}
+for(i=0; i<f.length; i++){if(f[i].timeon<=checkthepos&&f[i].timeoff>checkthepos){f[i].offflag=''}
+if((f[i].timedelay>0||f[i].fdelay>0)&&checkthepos==f[i].timeon){if(processcheckpos==false){if(checkthepos<f[i].timeoff&&checkthepos>=f[i].timeon){}}}else{if(checkthepos<f[i].timeoff&&checkthepos>=f[i].timeon){if(insertobject>-1&&f[i].ke=='tiny'){}else{theactions2[aic]=i
+aic++
+if(f[i].onflag==''&&f[i].timeon!=f[i].timeoff&&f[i].timeoff!=-1){if(f[i].hfk==false){showobject (i)}}
+if(f[i].timeon!=f[i].timeoff&&f[i].timeoff!=-1){if(f[i].hidedelay>0){if(processcheckpos==false){if(checkthepos<f[i].timeoff&&checkthepos>=f[i].timeon){}}}}
+if(f[i].percent==true){writepercent(i)}}}}}
+if(insertobject>-1){theactions2[aic]=insertobject
+aic++}
+theactions2.length=aic}
+setfreeform()
+if(tbro=='nn'){hideTO=setTimeout('hidem()',1)}else{hidem()}
+if(thepos>=duration){scostatus='completed'
+SaveData()}
+refreshScreen()
+for(i=0; i<pauses.length; i++){if(thepos>=pauses[i]&&pausess[i]==0){pausess[i]=1}}}}
+function closetimer(ct){}
+function cleartimers(){}
+function getusername(){return username}
+function getuserid(){return userid}
+function SaveData(){if(totalscore>0){ascore=0
+for(ik=0; ik<theobs.length;ik++){gwrong=0
+gright=0
+for(jk=0; jk<f.length;jk++){if(f[jk].ename==theobs[ik]&&f[jk].score==True){if(f[jk].result=='correct'){gright=gright+1}
+if(f[jk].result=='wrong'){gwrong=gwrong+1}}}
+if(gright>0){if(typeof obsds[ik]!='undefined'){fullp=obsds[ik]}else{fullp=1}
+if(fullp==100){fullp=1}
+scoretemp=(gright/(gright+gwrong)) * getobvalue(theobs[ik])
+scoretemp=scoretemp * fullp
+ascore=ascore+scoretemp}}
+ascore=(parseInt(ascore * 100) / 100)
+score=ascore}
+if((APIOK())&&(bFinishDone==false)){scorechildren=LMSGetValue('cmi.core.score._children')
+if(totalscore>0){if(scorechildren.indexOf('raw')!=-1){if(score==0){LMSSetValue('cmi.core.score.raw',0)}else{LMSSetValue('cmi.core.score.raw',(score/totalscore)*100)}}}
+if(scorechildren.indexOf('max')!=-1){if(totalscore==0){LMSSetValue('cmi.core.score.max',0)}else{LMSSetValue('cmi.core.score.max',100)}}
+oldstatus=scostatus
+LMSSetValue('cmi.suspend_data','0')
+scostatus='completed'
+ms=LMSGetValue('cmi.student_data.mastery_score')
+if(typeof ms=='undefined'){ms='80'}
+if(ms==''){ms='80'}
+if(totalscore>0){if((score/totalscore)*100>=parseInt(ms)){scostatus='passed'}else{scostatus='failed'}
+if(dynamicresults==1&&oldstatus=='incomplete'){scostatus='failed'}
+if(score==0){scostatus='failed'}}}}
+var hinttext=''
+function resetflash(aflobject){if(navp=='Mac'&&tbro=='ie'){aro=getObject('mainp'+aflobject)}else{aro=getObject('main'+aflobject)}
+aro.innerHTML=''}
+var anewone=0
+function fixFlash(flobject,onoff){if(f[flobject].photo!=''){if(f[flobject].photo.substring(0,6)=='kpani_'&&onoff==1){object=getObject('maini'+flobject)
+if(tbro=='nn'){newNavImage('document.main'+flobject, '_kpinvis.gif')
+newNavImage('document.main'+flobject, f[flobject].photo)}else{if(tbro!='ie'){object.src='_kpinvis.gif'}
+object.src=f[flobject].photo}}}}
+function adddelayedobject(thedobject){if(f[thedobject].timeon==thepos){theactions2.length=theactions2.length+1
+theactions2[theactions2.length-1]=thedobject
+showobject (thedobject)
+if(f[thedobject].percent==true){writepercent (thedobject)}
+for (igh=0; igh<f.length; igh++){if(f[igh].oid==f[thedobject].oid&&thedobject!=igh){theactions2.length=theactions2.length+1
+theactions2[theactions2.length-1]=igh
+showobject (igh)
+if(f[igh].percent==true){writepercent (igh)}}}}}
+var sendit=false
+var qtshow=false, qtshower=0
+function showqt(a,b,c){if(qtshower==0){return}
+qtshow=true
+showIt(a,b,c)
+qtshow=false}
+function showIt(i,oflt,ofltime){if(i==-1){otoeval='thestatus'}else{if(qtshow==false&&f[i].ftext.indexOf('clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B')>-1){fixFlash (i,1)
+qtshower=setTimeout('showqt('+i+',0,0)',500)
+return}
+if(f[i].loaded==false&&thepos>0&&f[i].photo!=''){loadanImage(i)}
+otoeval='main'+i
+fixFlash (i,1)
+moveob(i)}
+t=getObject(otoeval)
+if(tbro=='ie'||tbro=='ienn'){if(i>-1){if(f[i].autoscroll&&issafari==false){t.style.overflow='auto'}}
+if(navp!='Mac'&&tbro=='ie'&&isopera==false){if(t.style.filter.indexOf('BlendTrans')>-1){t.filters.BlendTrans.stop()}
+if(t.style.filter.indexOf('RevealTrans')>-1){t.filters.RevealTrans.stop()}}
+t.style.visibility='visible'
+if(mozillamac&&i>-1){if(f[i].photo!=''){butrefresher.style.visibility='visible'
+clearTimeout(hideTO)
+hideTO=setTimeout('butrefresher.style.visibility="hidden"',1)}}
+if(i>-1){f[i].onflag='1'}}else{if(new Number(t.left)+new Number(t.clip.right)>cwidth){t.clip.right=cwidth - t.left}
+if(new Number(t.top)+new Number(t.clip.bottom)>cheight){t.clip.bottom=cheight - t.top}
+t.visibility='visible'
+if(i>-1){f[i].onflag='1'}}
+if(i>-1){if((f[i].xdistance==0&&f[i].ydistance==0)||f[i].downevent!=''){return}}}
+function hideIt(i,oflt,ofltime){if(i==-1){otoeval='thestatus'}else{otoeval='main'+i
+fixFlash (i,0)}
+t=getObject(otoeval)
+if(tbro=='ie'||tbro=='ienn'){if(i>-1){if(thepos>f[i].timeoff+ofltime&&f[i].offflag != '1'&&(f[i].mo_timeon!=0||f[i].mo_timeoff!=0)){t.style.visibility='hidden'
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0&&i>-1){if(i>-1){if(f[i].imagedown!=''){t=getObject('mainiid'+i)
+t.style.visibility= 'hidden'}
+if(f[i].imageover!=''){t=getObject('mainiio'+i)
+t.style.visibility= 'hidden'}}}
+if(i>-1){f[i].offflag='1'}
+return}}
+t.style.visibility='hidden'
+if(mozillamac&&i>-1){if(f[i].photo!=''){butrefresher.style.visibility='visible'
+clearTimeout(hideTO)
+hideTO=setTimeout('butrefresher.style.visibility="hidden"',1)}}
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0&&i>-1){if(i>-1){if(f[i].imagedown!=''){t=getObject('mainiid'+i)
+t.style.visibility= 'hidden'}
+if(f[i].imageover!=''){t=getObject('mainiio'+i)
+t.style.visibility= 'hidden'}}}
+if(i>-1){f[i].offflag='1'}}else{t.visibility='hide'
+if(i>-1){f[i].offflag='1'}}
+if(i!=-1){fixFlash (i,0)}
+if(i>-1){if(f[i].autoscroll&&issafari==false){t.style.overflow='hidden'}}}
+function hideobject(i){if(i==-1){hideIt (i,1,0)}else{hideIt (i,f[i].offfil,f[i].offfiltime)}}
+function hideobject2(i){hideIt (i,f[i].offfil,f[i].offfiltime)
+for (igh=0; igh<f.length; igh++){if(f[igh].oid==f[i].oid&&i!=igh){hideIt (igh,f[igh].offfil,f[igh].offfiltime)}}}
+function showobject(i){if(i==-1){showIt (i,1,0)}else{showIt (i,f[i].onfil,f[i].onfiltime)}}
+function loadanImage(inum){if(f[inum].photo==''||f[inum].loading=='true'){completed()
+return}
+f[inum].loaded=true
+if(tbro=='nn'){t=getObject('main'+inum)
+ihs=''
+ihe=''
+t.document.write(ihs+'<IMG border=0 src="'+f[inum].photo+'" onload="completed()" onerror="errorcompleted('+inum+')" width='+f[inum].wwidth+' height='+f[inum].hheight+'>'+ihe)
+t.document.close();}else{t=getObject('maini'+inum)
+t.src=f[inum].photo}}
+function SecondaryLoad(inum){f[inum].loaded=true
+if(tbro=='nn'){t=getObject('main'+inum)
+t.document.write('<IMG src="'+f[inum].photo+'" onload="sL()" onerror="sLe('+inum+')" width='+f[inum].wwidth+' height='+f[inum].hheight+'>')
+t.document.close();}else{t=getObject('maini'+inum)
+t.onload=ss
+t.onerror=sse
+t.src=f[inum].photo}}
+function ss(){newone=setTimeout('sL()', 25)}
+function sse(i){ss()
+if(typeof i!='undefined'){f[i].loaded=false}}
+function sLe(i){sL()
+if(typeof i!='undefined'){f[i].loaded=false}}
+function sL(){foundfile=-1
+lowestone=32000
+for (i=0; i<f.length; i++){if(f[i].preload!=1&&f[i].photo!=''&&f[i].startup!='true'&&f[i].loading!='true'&&f[i].loaded==false){if(f[i].timeon<lowestone){lowestone=f[i].timeon
+foundfile=i}}}
+if(foundfile>-1){SecondaryLoad(foundfile)}}
+var gotime=-1, maxtime=0, maxaction='',username='User Name', userid=''
+function preloadfiles(imagenumber){if(typeof imagenumber=='undefined'){imagenumber=0}
+if(imagenumber==0){totalscore=gettotalscore()
+ed2()
+gotime=(getArg('go'))
+tPreLoad=(getArg('preload'))
+if(tPreLoad!=''){PreLoad=tPreLoad}
+if(isNaN(PreLoad)){PreLoad=duration}
+if(PreLoad>duration){PreLoad=duration}
+s_nl='', s_pl=''
+if(!APIOK()){}else{var result=objAPI.LMSInitialize('')
+if(result=='false') {var errorCode=objAPI.LMSGetLastError();
+alert('Error:'+errorCode+' - '+objAPI.LMSGetErrorString(errorCode)+'\n'+objAPI.LMSGetDiagnostic(''));
+self.close();}}
+cmimaxtime=LMSGetValue('cmi.student_data.max_time_allowed')
+if(cmimaxtime!=''&&typeof(cmimaxtime)!='undefined'){mtime=cmimaxtime.split(':')
+maxtime=(parseInt(mtime[0])*3600)+parseInt(mtime[1]*60)+parseInt(mtime[2])}
+maxaction=LMSGetValue('cmi.student_data.time_limit_action')
+username=LMSGetValue('cmi.core.student_name')
+userid=LMSGetValue('cmi.core.student_id')
+launch_data=LMSGetValue('cmi.launch_data')
+lesson_location=LMSGetValue('cmi.suspend_data')
+if(typeof launch_data=='undefined'){launch_data=''}
+if(typeof username=='undefined'){username=''}
+if(typeof lesson_location=='undefined'){lesson_location=''}
+if(typeof userid=='undefined'){userid=''}
+if(isNaN(parseFloat(lesson_location))==false){if(lesson_location>0){gotime=lesson_location}}}
+arImageList=new Array()
+for (counter in arImageSrc) {arImageList[counter]=new Image();
+arImageList[counter].onload=completed
+arImageList[counter].onerror=completed
+arImageList[counter].src=arImageSrc[counter];}
+for (i=0; i<f.length; i++){if(f[i].timeon<=PreLoad||f[i].startup=='true'){if(f[i].preload==1||f[i].preload==3){completed()}else{loadanImage(i)}}else{if(f[i].preload==2){loadanImage(i)}else{completed()}}}}
+function errorcompleted(i){completed()
+f[i].loaded=false}
+var preloadfn=f.length+arImageSrc.length
+var dopreload=false
+var cchecki=0
+function reloadoverlays(){for (counter in arImageSrc) {arImageList[counter]=new Image();
+arImageList[counter].src=arImageSrc[counter];}}
+function countImages(){imagesloaded=preloadfn - 1
+completed()}
+function completed(){if(thepos>-1){return}
+if(imagesloaded>preloadfn-1){return}
+if(tbro=='nn'||tbro=='ienn'||isopera||isfirefox){clearTimeout(cchecki)
+cchecki=setTimeout("countImages()", 10000)}
+percentloaded=(parseInt((imagesloaded / (preloadfn - 1)) * 100))
+if(isNaN(percentloaded)){updateStatus ('0')}else{updateStatus (percentloaded)}
+imagesloaded=imagesloaded+1
+if(imagesloaded>preloadfn-1){clearTimeout(cchecki)
+showStart()
+if(PreLoad<duration||dopreload){sL()}}
+dl=true}
+function updateStatus(thetext){updatePopup(thetext)}
+function showStart(){if((APIOK())&&(bFinishDone==false)){var intChildren=LMSGetValue('cmi.core._children')
+if(intChildren.indexOf('starttime')!=-1){LMSSetValue('cmi.core.starttime',0)}}
+hasstarted=true
+sfound=false
+hidestart=false
+for (i=0; i<f.length; i++){if(f[i].startup=='true'){if(f[i].upevent!=''||f[i].downevent!=''||f[i].dblevent!=''){hidestart=true}
+sfound=true
+if(f[i].ftext!=''){ro=getObject('main'+i)
+if(tbro=='nn'){ro.document.write(f[i].ftext);
+ro.document.close();}else{ro.innerHTML=f[i].ftext}}
+if(tbro=='nn'){t=getObject('main'+i)
+t.visibility='visible'}else{showobject (i)}}}
+if(sfound==true){updateStatus('')
+for (i=0; i<f.length; i++){if(f[i].loading=='true'&&f[i].startup!='true'){hideobject (i)}}
+hideobject (-1)
+if(hidestart==false){tobj=getObject('startup')
+if(tbro=='nn'){tobj.visibility='show'}else{tobj.style.visibility='visible'}}
+cmisD=new Date();
+cmistarttime=cmisD.getTime();
+scostatus='incomplete'
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){setTimeout ('fixns1()',1)}}else{startPlayer()}
+window.focus()}
+function fixns1(){navrefresher.style.visibility='visible'
+hideTO2=setTimeout('navrefresher.style.visibility="hidden"',1)}
+function startPlayer(){tobj=getObject('startup')
+if(tbro=='nn'){tobj.visibility='hide'}else{tobj.style.visibility='hidden'}
+score=0
+for (i=0; i<f.length; i++){if(f[i].xdistance!=0||f[i].ydistance!=0){if(tbro=='nn'){if((tobj.top!=f[i].ttop||tobj.left!=f[i].lleft)&&f[i].startup!='true'&&f[i].loading!='true'){tobj.moveTo (f[i].lleft,f[i].ttop)}}else{if((parseInt(tobj.style.top)!=f[i].ttop||parseInt(tobj.style.left)!=f[i].lleft)&&f[i].startup!='true'&&f[i].loading!='true'){tobj.style.top=f[i].ttop
+tobj.style.left=f[i].lleft}}}
+if(f[i].startup=='true'&&f[i].nohide!='true'&&f[i].nohide!=true){tobj=getObject('main'+i)
+if(tbro=='nn'){tobj.visibility='hide'}else{tobj.style.visibility='hidden'}}}
+var startDate=new Date();
+startTime=startDate.getTime();
+updateStatus('')
+thestartDate=new Date();
+RealStartTime=thestartDate.getTime();
+currentslidenumber=0
+if(typeof loadnextfile!='undefined'){clearInterval (loadnextfile)
+loadnextfile=0}
+loadnextfile=setInterval('checkposition()', 40)
+cmisD=new Date();
+cmistarttime=cmisD.getTime();
+scostatus='incomplete'}
+</SCRIPT>
+<DIV id='thevideo' name='thevideo' style='visibility:hidden;'>
+</DIV>
+<SCRIPT>
+function restart(){cleardelays()
+resetvars()
+alldone=false
+pausetime=0
+for(i=0; i<pauses.length; i++){pausess[i]=0}
+cleartimers()
+if(thepos!=-1){clearInterval (loadnextfile)
+loadnextfile=0}
+for(i=0; i<f.length; i++){if(f[i].timeon>0||f[i].timedelay>0){t=getObject('main'+i)
+fixFlash (i,0)
+if(tbro=='nn'){t.visibility='hide'}else{t.style.visibility='hidden'}
+f[i].onflag=''
+f[i].offflag=''}else{if(f[i].timeoff>0){t=getObject('main'+i)
+fixFlash (i,1)
+if(tbro=='ie'){t.style.visibility='visible'}else{t.visibility='show'}
+f[i].onflag=''
+f[i].offflag=''}}}
+startPlayer()}
+function resumeplaying(){if(thepos==-1){startPlayer()}else{val=ispaused}
+if(val==ispaused){if(typeof loadnextfile!='undefined'){clearInterval (loadnextfile)
+loadnextfile=0}
+loadnextfile=setInterval('checkposition()', 40)}}
+function seterrorstate(te,lf){errorCounter=0
+errorCords=''}
+function gethint(){currenthint=''
+for (i=0; i<f.length; i++){if(f[i].downevent!='tm'&&f[i].downevent!='target'&&f[i].downevent!='truefalse'){if(f[i].ke=='showmessage'||f[i].overevent=='showmessage'||f[i].upevent=='showmessage'||f[i].downevent=='showmessage'||f[i].dblevent=='showmessage'){}else{t=getObject('main'+i)
+if(tbro=='nn'){if(t.visibility=='show'&&f[i].hint!=''){currenthint=f[i].hint}}else{if(t.style.visibility=='visible'&&f[i].hint!=''){currenthint=f[i].hint}}}}}
+return currenthint}
+var cmu=false
+var submit_objective=false
+var tscore=0
+var insertobject=-1
+function fixcurrentstep(scoreobject, fromwhere, goback){if(thepos==-1){return}
+sscore=0
+otherscore=-1
+offf=false
+psfto=0
+asfto=0
+nsfto=0
+uds()
+thegroups=new Array(theactions2.length+4)
+currentename=''
+currentenamecounter=0
+for(ii=0; ii<theactions2.length; ii++){iii=theactions2[ii]
+if(f[iii].ke=='freeform'&&f[iii].score==True&&f[iii].ename!=currentename){thegroups[currentenamecounter]=f[iii].ename
+currentename=f[iii].ename
+currentenamecounter=currentenamecounter+5}}
+thegroups.length=currentenamecounter
+for (k=0; k<thegroups.length; k=k+5){gotitright=true
+selectstring=''
+correctstring=''
+gotonewrong=false
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].ename==thegroups[k]){f[i].entrytext=fur(f[i].entrytext,'  ','')
+f[i].finalentrytext=f[i].entrytext
+isright=false
+correcttext=f[i].ct.toLowerCase()+'|'
+sortof=0, sortofright=0, sortofcount=0
+if(correcttext.substring(0,1)=='"'&&correcttext.substring(correcttext.length-2,correcttext.length)=='"|'){sortof=1}
+if(correcttext.substring(0,1)=="'"&&correcttext.substring(correcttext.length-2,correcttext.length)=="'|"){sortof=2}
+ldata=correcttext.split('|')
+for(kk=0; kk<ldata.length-1; kk++){sortofcount++
+ldata[kk]=ldata[kk].replace(String.fromCharCode(170),'')
+if(sortof==1){ldata[kk]=ldata[kk].replace('"','')}
+if(sortof==2){ldata[kk]=ldata[kk].replace("'","")}
+if(sortof>0){if(f[i].entrytext.toLowerCase().indexOf(ldata[kk])>-1){isright=true
+sortofright++
+if(sortof==2){break}}}else{if(f[i].entrytext.toLowerCase()==ldata[kk]||ldata[kk]=='kpall'){isright=true
+break}}}
+if(sortof==1){if(sortofright<sortofcount){isright=false}}
+if(isright==false){gotonewrong=true}
+if(selectstring==''){selectstring='\''+f[i].entrytext+'\''}else{selectstring=selectstring+', '+'\''+f[i].entrytext+'\''}
+if(correctstring==''){correctstring='\''+f[i].ct+'\''}else{correctstring=correctstring+', '+'\''+f[i].ct+'\''}
+correctstring=correctstring.replace('ª','')
+if(sortof==1){correctstring="__"+correctstring+"__"}
+if(correctstring=='kpall'){correctstring=selectstring}
+gotitright=isright
+psfto=psfto+1
+if(gotitright==true){asfto=asfto+1}}}}
+if(gotonewrong==true){gotitright=false}
+thegroups[k+1]=gotitright
+thegroups[k+2]=selectstring
+thegroups[k+3]=correctstring
+thegroups[k+4]=false
+if(nsfto==1||asfto==psfto){asfto=0}}
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].score==True){if(f[i].ke=='freeform'){cmo=0
+for (k=0; k<thegroups.length; k=k+5){if(f[i].ename==thegroups[k]){isright=thegroups[k+1]
+selectstring=thegroups[k+2]
+correctstring=thegroups[k+3]
+doneonce=thegroups[k+4]
+break}}
+for (jh=0; jh<theactions2.length; jh++){ih=theactions2[jh]
+if(f[ih].ename==thegroups[k]){cmo++}}
+if(doneonce==false){offf=true
+scoreobject=i
+if(fromwhere==1){isright=false}
+if(fromwhere==2){isright=false}
+f[i].ecounter=errorCounter
+f[i].ecords=errorCords
+if(f[i].iid.toLowerCase()=='username'){username=f[i].entrytext}
+if(isright==true){f[i].result='correct'
+f[i].scorestring='Text Entry Correct'}else{f[i].scorestring='Text Entry Incorrect'
+f[i].result='wrong'
+if(fromwhere==2){f[i].scorestring='Timeout'}}
+if(asfto>0&&cmo>1){f[i].result=(asfto/psfto)*100
+f[i].scorestring='Text Entry Partially Correct'}
+f[i].cs=correctstring
+f[i].incs=selectstring
+f[i].ecounter=''
+f[i].ecords=''
+cmisD=new Date();
+cmiet=cmisD.getTime()-cmistarttime
+f[i].time=cmiet}else{f[i].result='neutral'}
+thegroups[k+4]=true}}}}
+scob=-1
+processdrag=-1
+if(processdrag==-1){for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if((f[i].og!='MsgBox'&&f[i].og!='MsgBoxCancel')&&(f[i].downevent=='dragtarget'||f[i].ke=='target'||f[i].overevent=='target'||f[i].upevent=='target'||f[i].downevent=='target'||f[i].dblevent=='target')){sscore=-1
+for (jk=0; jk<theactions2.length; jk++){ik=theactions2[jk]
+if(typeof(ik)=='undefined'||ik==-1){break}else{tex=f[i].tex, tey=f[i].tey
+if(f[i].downevent=='dragtarget'){tobj=getObject('main'+i)
+if(tbro=='nn'){nl=tobj.left
+nt=tobj.top}else{nl=parseInt(tobj.style.left)
+nt=parseInt(tobj.style.top)}
+tex=nl+f[i].wwidth/2
+tey=nt+f[i].hheight/2}
+if(i!=ik&&tex>=(f[ik].lleft+f[ik].xdistance)&&tex<=(f[ik].xdistance+f[ik].wwidth+f[ik].lleft)&&tey>=(f[ik].ttop+f[ik].ydistance)&&tey<=(f[ik].ydistance+f[ik].hheight+f[ik].ttop)){f[i].studentresponse=f[ik].hint
+if(f[ik].score==True){scoreobject=ik
+sscore=1
+for (p=0; p<theactions2.length; p++){iip=theactions2[p]
+if(f[iip].score==True&&f[iip].ismarker){f[iip].result='correct'}}}else{sscore=-1, msg=''
+for (p=0; p<theactions2.length; p++){iip=theactions2[p]
+if(f[iip].score==True&&f[iip].ismarker){addit=''
+msg=msg+addit+'\''+f[iip].iid+'\' or '
+f[iip].studentresponse=f[ik].hint}}
+if(msg!=''){msg=msg.substring(0,msg.length-4)}
+for (p=0; p<theactions2.length; p++){iip=theactions2[p]
+if(f[iip].score==True&&f[iip].ismarker){f[iip].cs=msg, f[iip].scorestring=f[ik].hint, f[iip].incs=f[ik].hint}}}
+if(f[ik].ismarker){break}}}}}}}}
+if(offf){return}
+onewrongalready=false
+for (j=0; j<theactions2.length; j++){ii=theactions2[j]
+if(f[ii].score==True&&thepos<f[ii].eventoff&&(f[ii].timeon!=f[ii].timeoff)){if(processdrag==-1){if(scoreobject==20000){thescoreobject=True
+f[ii].result='wrong'
+f[ii].ecounter=errorCounter
+f[ii].ecords=errorCords
+if(f[ii].ke=='freeform'){f[ii].scorestring=f[ii].iid+' (Wrong: User entered \''+f[ii].finalentrytext+'\')'}
+if(f[ii].downevent=='dragtarget'||f[ii].downevent=='target'){f[ii].scorestring=f[ii].iid+' (Wrong: User selected \''+f[ii].studentresponse+'\')'}
+f[ii].scorestring='Error'}else{if(scoreobject==-1){thescoreobject=True}else{thescoreobject=f[scoreobject].score}}
+if((ii==scoreobject||thescoreobject!=True)||f[ii].ke=='tiny'&&f[scoreobject].ke=='showmessage'){if(ii!=scoreobject&&thescoreobject!=True&&sscore==0){sscore=-1}
+if(sscore!=-1&&fromwhere!=1&&fromwhere!=2){f[ii].ecounter=errorCounter
+f[ii].ecords=errorCords
+f[ii].result='correct'
+if(goback!=true){score=score+1}
+f[ii].scorestring=f[ii].iid}else{if(onewrongalready==false){f[ii].result='wrong'
+f[ii].ecounter=errorCounter
+f[ii].ecords=errorCords
+if(f[ii].ke=='freeform'){f[ii].scorestring=f[ii].iid+' (Wrong: User entered \''+f[ii].finalentrytext+'\')'}
+if(f[ii].downevent=='dragtarget'||f[ii].downevent=='target'){f[ii].scorestring=f[ii].iid+' (Wrong: User selected \''+f[ii].studentresponse+'\')'}
+if(f[ii].ismarker){f[ii].scorestring=f[ii].cs+' (Wrong: User selected \''+f[ii].studentresponse+'\')'}
+if(fromwhere==1){f[ii].scorestring='Error'}
+if(fromwhere==2){f[ii].scorestring='Timeout'}}
+onewrongalready=true}
+if(otherscore!=-1){f[ii].scorestring=f[otherscore].scorestring+', '+f[ii].scorestring}}}
+cmisD=new Date();
+cmiet=cmisD.getTime()-cmistarttime
+f[ii].time=cmiet}}}
+var timeoutreset=true
+var showfromobject=-1
+var showgroup1=''
+var showgroup2=-1
+function showgroup(thegroup, fromobject, hidecancel){if(thepos==-1){return}
+if(iscorrectanswer==true&&coverride==0){return}
+if(coverride==2){return}
+if(coverride==1){coverride=2}
+haspaused=false
+if(typeof(fromobject)=='undefined'){fromobject=-1}
+gr=thegroup
+showfromobject=fromobject
+exclusive=false
+if(thegroup.substring(thegroup.length-2, thegroup.length-1)==1){exclusive=true}
+if(exclusive==false){showfromobject=-1}
+hideothergroups=false
+if(thegroup.substring(thegroup.length-1, thegroup.length)==1){hideothergroups=true}
+thegroup=thegroup.substring(0,thegroup.length-2)
+pausefound=false
+for (j=0; j<f.length; j++){if(f[j].madevisible&&hideothergroups&&f[j].og!=thegroup){f[j].timeon=64000
+f[j].timeoff=64000
+f[j].madevisible=false
+hideIt(j,f[j].offfil,f[j].offfiltime)}}
+for(i=0; i<pauses.length; i++){if(pauses[i]>thepos&&pausefound==false){endtime=pauses[i]
+if(i>0){starttime=pauses[i-1]}else{starttime=0}
+pausefound=true
+break}}
+if(pausefound==false){endtime=duration
+if(pauses.length>0){starttime=pauses[pauses.length-1]}else{starttime=0}}
+if(hinttext==''){hinttext=gethint()}
+if(thegroup=='Handout'){scounter=0
+for (js=0; js<f.length; js++){if(f[js].og==thegroup||(thegroup=='CheckAnswerWrong'&&f[js].og=='AnswerWrongMoreInfo')){if(f[js].hatimeon<=thepos&&f[js].hatimeoff>thepos){f[js].timeon=f[js].hatimeon
+f[js].timeoff=f[js].hatimeoff
+f[js].mo_timeon=f[js].hatimeon
+f[js].mo_timeoff=f[js].hatimeoff
+f[js].eventoff=f[js].hatimeoff
+f[js].madevisible=true
+if(tbro=='ie'||tbro=='ienn'){t=getObject('main'+js)
+t.style.zIndex=1000+js
+if(showgroup1!=''){t.style.zIndex=2000+js}}
+if(f[js].percent==true){writepercent(js)}
+repos(js)
+showIt(js,f[js].onfil,f[js].onfiltime)
+scounter=scounter+1
+if(f[js].timeout!=''){if(tot==0){tot=setTimeout('processTimeoutEvent(\''+f[js].timeout+'\','+js+',true,1)',f[js].timeouttime)}else{if(tot2==0){tot2=setTimeout('processTimeoutEvent(\''+f[js].timeout+'\','+js+',true,2)',f[js].timeouttime)}}}}}}}else{scounter=0
+for (js=0; js<f.length; js++){if(f[js].og==thegroup||(thegroup=='CheckAnswerWrong'&&f[js].og=='AnswerWrongMoreInfo')){if(f[js].text.indexOf('%%picture%%')!=-1&&answerpicstring==''){}else{if(f[js].photo.indexOf('i__i')>-1&&f[js].imageover==''){}else{f[js].timeon=starttime
+f[js].timeoff=endtime
+f[js].eventoff=endtime
+scounter=scounter+1
+if(f[js].percent==true){writepercent(js)}
+if(f[js].madevisible==false){f[js].madevisible=true
+if(tbro=='ie'||tbro=='ienn'){t=getObject('main'+js)
+t.style.zIndex=1000+js
+if(showgroup1!=''){t.style.zIndex=2000+js}}
+repos(js)
+showIt(js,f[js].onfil,f[js].onfiltime)
+if(f[js].timeout!=''){if(tot==0){tot=setTimeout('processTimeoutEvent(\''+f[js].timeout+'\','+js+',true,1)',f[js].timeouttime)}else{if(tot2==0){tot2=setTimeout('processTimeoutEvent(\''+f[js].timeout+'\','+js+',true,2)',f[js].timeouttime)}}}}}}}}}
+if(scounter==0){exclusive=false}
+if(exclusive&&(tbro=='ie'||tbro=='ienn')){t=getObject('eblocker')
+t.style.visibility='visible'
+t.style.zIndex=1000
+if(showgroup1!=''){t.style.zIndex=2000}}
+aic=0
+theactions2=new Array(f.length)
+for(jk=0; jk<f.length; jk++){if(f[jk].photo.indexOf('i__i')>-1&&f[jk].imageover==''){}else{if(thepos<f[jk].timeoff&&thepos>=f[jk].timeon){if(exclusive){if(f[jk].og==thegroup||(thegroup=='CheckAnswerWrong'&&f[jk].og=='AnswerWrongMoreInfo')){theactions2[aic]=jk
+aic++}}else{theactions2[aic]=jk
+aic++}}}}
+theactions2.length=aic
+if(exclusive&&showgroup1==''){showgroup1=gr
+showgroup2=fromobject}}
+function printit(){var agree=confirm('Are you sure you want to print?');
+if(agree){saveit=true;}else{saveit=false;}
+if(saveit){window.focus();
+window.print();}}
+function repos(j){tobj=getObject('main'+j)
+if(tbro=='nn'){tobj.moveTo(f[j].lleft,f[j].ttop)}else{tobj.style.left=f[j].lleft
+tobj.style.top=f[j].ttop}}
+function hidegroup(thegroup, fromtimeout){if(coverride==2){closeit()
+return}
+showfromobject=-1
+pausefound=false
+hideothergroups=false
+if(thegroup.substring(thegroup.length-1, thegroup.length)==1){hideothergroups=true}
+thegroup=thegroup.substring(0,thegroup.length-1)
+if(thegroup.toLowerCase()=='msgbox'||thegroup.toLowerCase()=='msgboxcancel'){iscorrectanswer=false}
+for (j=0; j<f.length; j++){if(f[j].madevisible&&hideothergroups){f[j].timeon=64000
+f[j].timeoff=64000
+hideIt(j,f[j].offfil,f[j].offfiltime)
+f[j].madevisible=false}
+if(f[j].og==thegroup){f[j].timeon=64000
+f[j].timeoff=64000
+hideIt(j,f[j].offfil,f[j].offfiltime)
+f[j].madevisible=false
+if(thegroup=='Handout'){f[j].mo_timeon=64000
+f[j].mo_timeoff=64000}}}
+if(tbro=='ie'||tbro=='ienn'){t=getObject('eblocker')
+t.style.visibility='hidden'}
+aic=0
+theactions2=new Array(f.length)
+for(jk=0; jk<f.length; jk++){if(thepos<f[jk].timeoff&&thepos>=f[jk].timeon){theactions2[aic]=jk
+aic++}}
+theactions2.length=aic
+for(jk=0; jk<f.length; jk++){if(f[jk].og==thegroup){f[jk].timeon=f[jk].hatimeon
+f[jk].timeoff=f[jk].hatimeoff
+f[jk].mo_timeon=f[jk].hatimeon
+f[jk].mo_timeoff=f[jk].hatimeoff
+f[jk].eventoff=f[jk].hatimeoff}}
+if(showgroup1!=''){if(thegroup==showgroup1.substring(0,showgroup1.length-2)){showgroup1=''
+showgroup2=''
+if(haspaused){if(typeof loadnextfile!='undefined'){clearInterval (loadnextfile)
+loadnextfile=0}
+loadnextfile=setInterval('checkposition()', 40)
+pausetime=0
+pausestart2=new Date();
+pausedfor3=pausestart2.getTime();
+startTime=startTime+(pausedfor3 - pausedfor)}}else{tshowgroup=showgroup1
+showgroup1=''
+showgroup(tshowgroup, showgroup2)}}}
+function skipq(){if(quizquestion>totalquizquestions){customalert ('You have previously skipped this question. Please select the most appropriate answer to this question.')}else{addskipped()
+if(usetimer==true){clearquiztimer()}
+checkanswer('skip')
+writequizquestion()}}
+processcheckpos=false
+var iscorrectanswer=false
+function processEvent(thevent,l, fromtimeout){insertobject=-1
+if(hasstarted==false){return}
+if(thevent==''){return}
+if(f[l].downevent!='printresults'&&f[l].downevent!='tm'&&f[l].downevent!='target'&&f[l].downevent!='truefalse'){hinttext=f[l].hint}
+clearTimeout(nt)
+nt=0
+if(f[l].mhint=='!move'&&pix>-1){tobj=getObject('main'+l)
+if(tbro=='nn'){mix=pix - parseInt(tobj.left)
+miy=piy - parseInt(tobj.top)}else{mix=pix - parseInt(parseInt(tobj.style.left))
+miy=piy - parseInt(parseInt(tobj.style.top))}
+mio=l
+return}
+if(thevent=='hidegroup'){hidegroup(f[l].parameter)}
+if(thevent=='target'||thevent=='dragtarget'){if(f[l].mhint!='!move'&&f[l].downevent!='dragtarget'){tobj=getObject('target')
+if(tbro=='ie'||tbro=='ienn'){tobj.style.left=tpix-16
+tobj.style.top=tpiy-16
+tobj.style.visibility='visible'}else{tobj.moveTo(tpix-16,tpiy-16)
+tobj.visibility='show'
+tobj.zIndex=-1000}}
+f[l].tex=tpix, f[l].tey=tpiy
+tex=tpix, texy=tpiy
+return}
+if(isNaN(parseFloat(thevent))==false){if(thevent!=32768){thevent=thevent*5}}
+cmu=false
+if(typeof fromtimeout=='undefined'){fromtimeout=0}
+if(thevent=='emailresultssilent'||thevent=='emailresults'||thevent=='printcert'||thevent=='submittolms'||thevent=='submittolmssilent'||thevent=='printresults'||thevent=='sendemail'||thevent=='showgroup'||thevent=='hidegroup'||thevent=='submita'||thevent=='submitb'||thevent=='submitc'||thevent=='submitd'||thevent=='submite'||thevent=='submitf'||thevent=='submit'||thevent=='launch'||thevent=='launchwindow'||thevent=='increasev'||thevent=='decreasev'||thevent=='mute'||thevent=='showmessage'||thevent=='print'||thevent=='printall'||thevent=='closeconfirm'||thevent=='restart'||thevent=='showhint'||thevent=='tup'||thevent=='tdown'||thevent=='close'||thevent=='back2'||thevent=='back3'||thevent=='previous'){tex=-1, texy=-1}else{if(showfromobject!=-1){aic=0
+l=showfromobject
+theactions2=new Array(f.length)
+for(jk=0; jk<f.length; jk++){if(thepos<f[jk].eventoff&&thepos>=f[jk].timeon){theactions2[aic]=jk
+aic++}}
+theactions2.length=aic}
+ctex=tex, ctexy=texy
+if(isNaN(parseFloat(thevent))==false){if(Math.abs(parseFloat(thevent))>thepos){fixcurrentstep(l, fromtimeout)}}else{fixcurrentstep(l,fromtimeout)}}
+if(thevent=='check'){iscorrectanswer=false
+showwarn1=false
+showwarn2=false
+showwarn3=false
+tef=false, tff=false, def=false, sscore=1, ssscore=1
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].score==True){if(f[i].ke=='freeform'){tef=true
+f[i].finalentrytext=f[i].entrytext
+isright=false
+correcttext=f[i].ct.toLowerCase()+'|'
+sortof=0, sortofright=0, sortofcount=0
+if(correcttext.substring(0,1)=='"'&&correcttext.substring(correcttext.length-2,correcttext.length)=='"|'){sortof=1}
+if(correcttext.substring(0,1)=="'"&&correcttext.substring(correcttext.length-2,correcttext.length)=="'|"){sortof=2}
+ldata=correcttext.split('|')
+for(kk=0; kk<ldata.length-1; kk++){sortofcount++
+ldata[kk]=ldata[kk].replace('ª','')
+if(sortof==1){ldata[kk]=ldata[kk].replace('"','')}
+if(sortof==2){ldata[kk]=ldata[kk].replace("'","")}
+if(sortof>0){if(f[i].entrytext.toLowerCase().indexOf(ldata[kk])>-1){isright=true
+sortofright++
+if(sortof==2){break}}}else{if(f[i].entrytext.toLowerCase()==ldata[kk]||ldata[kk]=='kpall'){isright=true
+break}}}
+if(sortof==1){if(sortofright<sortofcount){isright=false}}
+if(isright==false){sscore=-1}
+if(f[i].entrytext==''){showwarn1=true}}}}}
+processdrag=-1
+if(processdrag==-1){for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].downevent=='dragtarget'||f[i].ke=='target'||f[i].overevent=='target'||f[i].upevent=='target'||f[i].downevent=='target'||f[i].dblevent=='target'){def=true
+for (jk=0; jk<theactions2.length; jk++){ik=theactions2[jk]
+if(typeof(ik)=='undefined'||ik==-1){break}else{if(f[ik].score==True){if(tex>=f[ik].lleft&&tex<=(f[ik].wwidth+f[ik].lleft)&&tey>=f[ik].ttop&&tey<=(f[ik].hheight+f[ik].ttop)){ssscore=1
+break}else{ssscore=-1}}}}
+break}}}
+if(ctex==-1&&ctexy==-1&&def==true){showwarn3=true}}
+cancelit=true
+checkparameters=f[l].parameter.split('|')
+if(showwarn1==true||showwarn2==true||showwarn3==true){if(checkparameters[0]!=''){customalert (checkparameters[0],-1,'hidegroup')
+tex=-1, texy=-1}else{addto=''
+if(checkparameters[1]!=''){if(checkparameters[2]=='True'){addto='|cancel'}
+customalert (checkparameters[1],-1,checkparameters[5]+addto)}else{processEvent(checkparameters[5],l)}}}else{if(def==true||tef==true||tff==true){addto=''
+if(sscore==1&&ssscore==1){goon=showcheck(true)
+if(goon==false){if(checkparameters[3]!=''){if(checkparameters[4]=='True'){addto='|cancel'}
+customalert (checkparameters[3],-1,checkparameters[6]+addto)
+iscorrectanswer=true}else{processEvent(checkparameters[6],l)}}}else{goon=showcheck(false)
+if(goon==false){if(checkparameters[1]!=''){if(checkparameters[2]=='True'&&checkparameters[5]!='hidegroup'){addto='|cancel'}
+errorCounter=errorCounter+1
+sec=32000
+if(typeof checkparameters[7]!='undefined'){sec=checkparameters[7]
+if(sec==0){sec=32000}}
+if(errorCounter>sec){customalert (checkparameters[8],-1,'next')}else{customalert (checkparameters[1],-1,checkparameters[5]+addto)}}else{processEvent(checkparameters[5],l)}}}}else{processEvent(checkparameters[6],l)}}}
+if(thevent=='next'){seterrorstate(thevent,l)
+processit=true
+if(f[l].fallback=='True'){for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(thepos<f[i].eventoff){if(f[i].score==True){processit=false}
+if(f[i].score==True&&(f[i].ke=='freeform'||f[i].ke=='textentry'||f[i].overevent=='textentry'||f[i].upevent=='textentry'||f[i].downevent=='textentry'||f[i].dblevent=='textentry')){if(f[i].entrytext!=''){processit=true
+break}}
+if(f[i].score!=True&&(f[i].ke=='target'||f[i].overevent=='target'||f[i].upevent=='target'||f[i].downevent=='target'||f[i].dblevent=='target')){if(tex>-1&&tey>-1){processit=true
+break}}}}}
+if(processit==false){for (jk=0; jk<theactions2.length; jk++){f[jk].result='neutral'}}}
+if(processit==false){runWarning('next')}else{gotoNextPause()}}
+if(thevent=='previous'||thevent=='back'){seterrorstate(thevent,l)
+gotoPreviousPause()}
+if(thevent=='close'){closeit()}
+if(thevent=='restart'){seterrorstate(thevent,l)
+restart()}
+if(thevent=='showhint'){if(gethint()!=''){customalert (gethint(),l)}}
+if(thevent=='showmessage'){customalert (f[l].parameter, l)}
+if(thevent=='printresults'){printAllResults(l)}
+if(thevent=='printresults2'){printresultstype=2
+printAllResults(l)
+printresultstype=1}
+if(isNaN(parseFloat(thevent))==false){seterrorstate(thevent,l)
+gotoTime (parseFloat(thevent))}}
+function showcheck(iscorrect){isup=false
+caf=false
+if(iscorrect==true){for (iaec=0; iaec<f.length; iaec++){if(f[iaec].og=='CheckAnswerRight'){caf=true
+break}}
+if(caf==true){showgroup('CheckAnswerRight11')
+isup=true}else{isup=false}}else{for (iaec=0; iaec<f.length; iaec++){if(f[iaec].og=='CheckAnswerWrong'){caf=true
+break}}
+if(caf==true){showgroup('CheckAnswerWrong11')
+isup=true}else{isup=false}}
+return isup}
+function gotoiTime(thetime){if(thetime!=-32768&&thetime!=32768){thetime=thetime * 5}
+gotoTime(thetime)}
+function gotoTime(thetime){tex=-1, texy=-1, oldpos=thepos
+cleardelays()
+incrementscores=true
+if(thetime<0){incrementscores=false
+thetime=-thetime}
+if(thetime==32768){incrementscores=false
+thetime=0}
+currentpos=thepos
+date_now=new Date ();
+time_now=date_now.getTime ();
+startTime=time_now - (thetime * 1000)
+ctime=thepos
+thepos=thetime
+if(typeof usepause!='undefined'){if(thetime<ctime){if(usepause[thetime/5]==0){do{thetime=thetime-5}
+while (usepause[thetime/5]==0)}}}
+for(i=0; i<pauses.length; i++){if(pauses[i]<thetime){pausess [i]=1}else{pausess [i]=0}}
+for(i=0; i<pauses.length; i++){if(pauses[i]>ctime&&pauses[i]<thetime){for (jj=0; jj<scoredobjects.length; jj++){j=scoredobjects[jj]
+if(f[j].timeon<=pauses[i]&&f[j].eventoff>pauses[i]&&f[j].timeoff>pauses[i]){if(f[j].score==True){if(incrementscores){if(f[j].ke!='freeform'){f[j].result='correct'}
+score=score+1
+break}}}}}
+if(pauses[i]<ctime&&pauses[i]>=thetime){for (jj=0; jj<scoredobjects.length; jj++){j=scoredobjects[jj]
+if(f[j].timeon<=pauses[i]&&f[j].eventoff>pauses[i]&&f[j].timeoff>pauses[i]){if(f[j].score==True){if(incrementscores){score=score - 1
+if(score<0){score=0}
+if(f[j].ke!='freeform'){f[j].result='neutral'}}
+break}}}}}
+if(thetime<currentpos){for (j=0; j<f.length; j++){if(f[j].timedelay==0){if(f[j].timeon<=thetime&&f[j].timeoff>thetime){object=getObject('main'+j)
+if(tbro=='nn'){object.visibility='show'
+fixFlash(j,1)}else{showIt (j, f[j].onfil, f[j].onfiltime)}}
+if(f[j].timeon>thetime){object=getObject('main'+j)
+if(tbro=='nn'){object.visibility='hide'}else{object.style.visibility='hidden'}
+fixFlash(j,0)
+f[j].onflag=''
+f[j].offflag=''}}}}
+checkposition()
+for (i=0; i<f.length; i++){if(f[i].timeoff<=thetime){f[i].onflag='1'
+f[i].offflag=''}
+if(f[i].timeon>thetime){f[i].onflag=''
+f[i].offflag=''}}
+for(i=0; i<pauses.length; i++){if(pauses[i]<thetime){pausess [i]=1}else{pausess [i]=0}}
+if(pausetime>0){pausetime=0
+if(typeof loadnextfile!='undefined'){clearInterval (loadnextfile)
+loadnextfile=0}
+loadnextfile=setInterval('checkposition()', 40)}}
+function gotoNextPause(){if(tbro=='ie'){if(event!=null){event.cancelBubble=true}}
+if(thepos==-1){tob=getObject('startup')
+if(tbro=='nn'){tob.visibility='hide'}else{tob.style.visibility='hidden'}}
+pausefound=false
+for(i=0; i<pauses.length; i++){if(pauses[i]>thepos&&pausefound==false){gotoTime(pauses[i])
+pausefound=true}}
+if(thepos==-1){restart()}}
+function jumpPause(tj){pausefound=false
+if(isquiz&&qwritten==false){writequizquestion()}
+for(i=0; i<pauses.length; i++){if(pauses[i]>thepos&&i+(tj-1)<pauses.length){gotoTime(pauses[(i+(tj-1))])
+pausefound=true
+break}}
+if(thepos==-1){restart()}}
+function gotoPreviousPause(){pausefound=false
+for (i=pauses.length-1; i>-1; i--){if(pauses[i]<thepos){thetime=pauses[i]
+pausefound=true
+break}}
+if(pausefound==true){gotoTime(thetime)
+pausefound=true}
+if(pausefound==false){restart()}}
+function backPause(jp){jp=jp-1
+pausefound=false
+for (i=pauses.length-1; i>-1; i--){if(pauses[i]<thepos){if(i-jp>-1){thetime=pauses[i-jp]
+pausefound=true
+break}}}
+if(pausefound==true){gotoTime(thetime)}}
+function getLayer(x,y, isdouble){l=-1
+for (j=theactions2.length-1; j>-1; j--){i=theactions2[j]
+if((typeof(i)=='undefined'||i==-1)&&thepos>-1){break}else{if(typeof(i)!='undefined'&&i!=-1){ow=parseInt(f[i].wwidth)
+oh=parseInt(f[i].hheight)
+ox=parseInt(f[i].lleft)
+oy=parseInt(f[i].ttop)
+processobject=false
+if(f[i].og!=''){for (kk=theactions2.length-1; kk>-1; kk--){kkk=theactions2[kk]
+if(typeof(kkk)=='undefined'||kkk==-1){}else{if(f[kkk].downevent=='dragtarget'&&f[kkk].og==f[i].og){processobject=true
+break}}}}
+if(processobject||f[i].xdistance!=0||f[i].ydistance!=0||f[i].downevent=='dragtarget'){tobj=getObject('main'+i)
+if(tbro!='nn'){ox=parseInt(tobj.style.left)
+oy=parseInt(tobj.style.top)}else{ox=parseInt(tobj.left)
+oy=parseInt(tobj.top)}}
+if(tbro=='ie'){ow=(zratio) * ow
+oh=(zratio) * oh
+ox=(zratio) * ox
+oy=(zratio) * oy}
+if(x>=ox&&x<=ox+ow&&y>=oy&&y<=oy+oh){processit=true
+if(thepos>-1&&thepos>=f[i].eventoff){processit=false}
+if(isdouble){if(f[i].dblevent==''&&f[i].downevent!='block'){processit=false}}
+if(f[i].ke=='freeform'){processit=true}
+if(f[i].downevent=='mousetarget'){processit=false}
+if(f[i].hidedelay>0){fgh=getObject('main'+i)
+if(fgh.style.visibility=='hidden'){processit=false}}
+if(processit){if(f[i].hasevent||f[i].ftext!=''){l=i
+break}}}}}}
+return l}
+var mmoobject=-1
+var de=0
+var nt=0
+function nav6fix(nobject){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){butrefresher.style.left=f[nobject].lleft
+butrefresher.style.top=f[nobject].ttop
+butrefresher.style.width=f[nobject].wwidth
+butrefresher.style.height=f[nobject].hheight
+butrefresher.style.visibility='visible'
+clearTimeout(hideTO)
+hideTO=setTimeout('butrefresher.style.visibility="hidden"',1)}}
+var mda=false
+var pue=true
+var menuup=false
+var mennum=''
+var ddlist=false
+function gref(){ddlist=true
+return true}
+function NavDown(e){if(issafari||safariwk){l=getLayer(e.pageX, e.pageY)
+if(f[l].ftext!=''){ddlist=true}}
+if(ddlist==true){ddlist=false
+return true}
+pue=true
+mda=false
+if(isopera){blockit()}
+clearTimeout(de)
+de=0
+if(tbro=='nn'){if(nt>0){NavDouble (e)
+return}else{nt=setTimeout('donothing()',300)}}
+cmu=true
+fallback=true
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].ftext!=''||f[i].text.indexOf('</SPECS>')>-1||f[i].imagedown!=''||f[i].mds!=''||f[i].ke!=''||f[i].overevent!=''||f[i].upevent!=''||f[i].downevent!=''||f[i].dblevent!=''){fallback=false
+break}}}
+if((fallback&&pausetime>0)||(fallback&&thepos==-1&&tbro=='nn')){return}
+modifier=0
+if(tbro!='ie'){x=e.pageX
+y=e.pageY
+if(tbro=='ienn'){if(e.shiftKey){modifier=1}
+if(e.ctrlKey){modifier=2}
+if(e.altKey){modifier=3}}else{if(e.modifiers & Event.SHIFT_MASK){modifier=1}
+if(e.modifiers & Event.CTRL_MASK){modifier=2}
+if(e.modifiers & Event.ALT_MASK){modifier=3}}
+if(e.which>1){modifier=4}}else{x=event.clientX+document.body.scrollLeft
+y=event.clientY+document.body.scrollTop
+if(event.shiftKey){modifier=1}
+if(event.ctrlKey){modifier=2}
+if(event.altKey){modifier=3}
+if(event.button>1){modifier=4}}
+pix=x
+piy=y
+l=getLayer(x, y)
+if(l==-1&&iskhtml){event.cancelBubble=true
+return}
+if(l>-1){if(f[l].instruct&&iskhtml){return}
+if(f[l].timeon==thepos&&f[i].ke=='freeform'&&currentfreeform!=i){currentfreeform=i
+setfreeformhilite()}
+if(f[l].timeon!=thepos&&f[i].ke=='freeform'){ttime=f[i].timeon
+if(ttime<=thepos){fixcurrentstep (i,0,true)}else{fixcurrentstep (i,0,false)}
+gotoTime (ttime)}
+if(tbro=='nn'){if(f[l].imagedown!=''){newNavImage('document.main'+l, f[l].imagedown)}}else{if(f[l].text==''){if(f[l].imagedown!=''){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){object=getObject('maini'+l)
+object.style.visibility='hidden'
+object=getObject('mainiid'+i)
+object.style.visibility='visible'
+if(f[l].imageover!=''){object=getObject('mainiio'+i)
+object.style.visibility='hidden'}
+nav6fix(i)}else{object=getObject('maini'+l)
+object.src=f[l].imagedown}}}}
+if(f[l].mds!=''){playSound (f[l].mds)}
+oldl=l
+ldbl=getLayer(x, y, true)
+delayevent=0
+if(ldbl>-1){delayevent=250}
+l=oldl
+if(l>-1){if(modifier==f[l].mod||f[l].mhint=='!move'){if(delayevent==0){processEvent (f[l].downevent,l)}else{de=setTimeout('processEvent (\''+f[l].downevent+'\','+l+')',delayevent)}
+if(l>-1){if(f[l].downevent!=''&&f[l].downevent!='dragtarget'&&f[l].mhint!='!move'){pue=false}}}}}
+if(tbro=='ie'&&modifier==2){es=setTimeout('hideselect()',1)}
+return false}
+function NavUp(e){if(pue==false){pue=true
+return}
+modifier=0
+checkerrors=false
+if(mio!=-1){tobj=getObject('main'+mio)
+if(tbro=='nn'){nl=tobj.left
+nt=tobj.top}else{nl=parseInt(tobj.style.left)
+nt=parseInt(tobj.style.top)}
+mix=-1, miy=-1, pix=-1, piy=-1, ti=mio, mio=-1
+if(Math.abs(nl-(f[ti].lleft+f[ti].xdistance))<=f[ti].accuracy&&Math.abs(nt-(f[ti].ttop+f[ti].ydistance))<=f[ti].accuracy){processEvent (f[ti].downevent,ti)
+return}else{if(f[ti].downevent!=='target'&&f[ti].downevent!='dragtarget'){if(tbro=='nn'){tobj.moveTo(f[ti].lleft,f[ti].ttop)}else{tobj.style.left=f[ti].lleft
+tobj.style.top=f[ti].ttop}
+if(f[ti].photo!=''){tobject=getObject('maini'+ti)
+tobject.src=f[ti].photo}}
+if(f[ti].downevent=='target'){processEvent (f[ti].downevent,ti)
+return}
+if(f[ti].downevent=='dragtarget'){processEvent (f[ti].downevent,ti)
+return}
+checkerrors=true}}
+if(tbro!='ie'){x=e.pageX
+y=e.pageY
+if(tbro=='ienn'){if(e.shiftKey){modifier=1}
+if(e.ctrlKey){modifier=2}
+if(e.altKey){modifier=3}}else{if(e.modifiers & Event.SHIFT_MASK){modifier=1}
+if(e.modifiers & Event.CTRL_MASK){modifier=2}
+if(e.modifiers & Event.ALT_MASK){modifier=3}}
+if(e.which>1){modifier=4}}else{x=event.clientX+document.body.scrollLeft
+y=event.clientY+document.body.scrollTop
+if(event.shiftKey){modifier=1}
+if(event.ctrlKey){modifier=2}
+if(event.altKey){modifier=3}
+if(event.button>1){modifier=4}}
+l=getLayer(x, y)
+if(l>-1){if(f[l].dblevent==''&&f[l].overevent==''&&f[l].downevent==''&&f[l].upevent==''){checkerrors=true}}
+if(l>-1){if(tbro=='nn'){if(f[l].imageover!=''&&f[l].imageover!='_kpinvis.gif'){newNavImage('document.main'+l, f[l].imageover)}else{if(f[l].imagedown!=''&&f[l].dblevent==''){newNavImage('document.main'+l, f[l].photo)}}}else{if(f[l].text==''){if(f[l].imageover!=''&&f[l].imageover!='_kpinvis.gif'){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){if(f[l].imagedown!=''){object=getObject('mainiid'+l)
+object.style.visibility='hidden'}
+object=getObject('mainiio'+l)
+object.style.visibility='visible'
+nav6fix(l)}else{object=getObject('maini'+l)
+object.src=f[l].imageover}
+if(tbro=='ienn'){letnavigator='REFRESH_SCREEN'}}else{if(f[l].imagedown!=''&&f[l].dblevent==''){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){object=getObject('mainiid'+l)
+object.style.visibility='hidden'
+nav6fix(l)}else{object=getObject('maini'+l)
+object.src=f[l].photo}}}}}
+if(f[l].mus!=''){playSound (f[l].mus)}
+if(modifier==f[l].mod){processEvent (f[l].upevent,l)}else{checkerrors=true}}
+if(l==-1||checkerrors==true){}}
+function NavDouble(e){es=setTimeout('hideselect()',1)
+clearTimeout(nt)
+nt=0
+modifier=0
+if(tbro!='ie'){x=e.pageX
+y=e.pageY
+if(tbro=='ienn'){if(e.shiftKey){modifier=1}
+if(e.ctrlKey){modifier=2}
+if(e.altKey){modifier=3}}else{if(e.modifiers & Event.SHIFT_MASK){modifier=1}
+if(e.modifiers & Event.CTRL_MASK){modifier=2}
+if(e.modifiers & Event.ALT_MASK){modifier=3}}
+if(e.which>1){modifier=4}}else{x=event.clientX+document.body.scrollLeft
+y=event.clientY+document.body.scrollTop
+if(event.shiftKey){modifier=1}
+if(event.ctrlKey){modifier=2}
+if(event.altKey){modifier=3}
+if(event.button>1){modifier=4}}
+l=getLayer(x, y, true)
+if(l>-1){clearTimeout(de)
+de=0
+if(f[l].dcs!=''){playSound (f[l].dcs)}
+if(modifier==f[l].mod){processEvent (f[l].dblevent,l)}
+if(f[l].imagedown!=''){if(tbro=='nn'){newNavImage('document.main'+l, f[l].photo)}else{object=getObject('maini'+l)
+object.src=f[l].photo}}}
+return false}
+var menushower=-1
+var menuoption=0
+function CheckButs(e){if(isopera){blockit()}
+modifier=0
+if(mix>-1){pue=true
+tobj=getObject('main'+mio)
+if(tbro!='ie'){nl=(e.pageX) - mix
+nt=(e.pageY) - miy}else{nl=(event.clientX+document.body.scrollLeft)-mix
+nt=(event.clientY+document.body.scrollTop)-miy}
+if(f[mio].downevent!='dragtarget'){minxd=f[mio].lleft
+maxxd=f[mio].lleft+f[mio].xdistance
+if(f[mio].xdistance<0){minxd=f[mio].lleft+f[mio].xdistance
+maxxd=f[mio].lleft}
+minyd=f[mio].ttop
+maxyd=f[mio].ttop+f[mio].ydistance
+if(f[mio].ydistance<0){minyd=f[mio].ttop+f[mio].ydistance
+maxyd=f[mio].ttop}
+if(nl<minxd){nl=minxd}
+if(nt<minyd){nt=minyd}
+if(nl>maxxd){nl=maxxd}
+if(nt>maxyd){nt=maxyd}}
+if(nl<0){nl=0}
+if(nt<0){nt=0}
+if(nl+f[mio].wwidth>cwidth){nl=cwidth-f[mio].wwidth}
+if(nt+f[mio].hheight>cheight){nt=cheight-f[mio].hheight}
+if(tbro=='nn'){tobj.moveTo(nl,nt)
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(f[i].og!=''&&f[i].og==f[mio].og){tobj=getObject('main'+i)
+xoffset=f[i].lleft-f[mio].lleft
+yoffset=f[i].ttop-f[mio].ttop
+tobj.moveTo(nl+xoffset,nt+yoffset)}}}else{tobj.style.left=nl
+tobj.style.top=nt
+if(f[mio].sequence==false){for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(f[i].og!=''&&f[i].og==f[mio].og){tobj=getObject('main'+i)
+xoffset=f[i].lleft-f[mio].lleft
+yoffset=f[i].ttop-f[mio].ttop
+tobj.style.left=nl+xoffset
+tobj.style.top=nt+yoffset}}}
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){butrefresher.style.left=nl
+butrefresher.style.top=nt
+butrefresher.style.width=f[mio].wwidth
+butrefresher.style.height=f[mio].hheight
+butrefresher.style.visibility='visible'
+clearTimeout(hideTO)
+hideTO=setTimeout('butrefresher.style.visibility="hidden"',1)}}}
+if(tbro!='ie'){if(typeof(e)=='undefined'){return}
+x=e.pageX
+y=e.pageY
+if(tbro=='ienn'){if(e.shiftKey){modifier=1}
+if(e.ctrlKey){modifier=2}
+if(e.altKey){modifier=3}}else{if(e.modifiers & Event.SHIFT_MASK){modifier=1}
+if(e.modifiers & Event.CTRL_MASK){modifier=2}
+if(e.modifiers & Event.ALT_MASK){modifier=3}}}else{x=event.clientX+document.body.scrollLeft
+y=event.clientY+document.body.scrollTop
+if(event.shiftKey){modifier=1}
+if(event.ctrlKey){modifier=2}
+if(event.altKey){modifier=3}}
+tpix=x, tpiy=y
+l=getLayer(x, y)
+if(l!=-1){if(f[l].ftext!=''){return}}
+for (j=0; j<theactions2.length; j++){if(typeof(theactions2[j])=='undefined'||theactions2[j]==-1){break}
+i=theactions2[j]
+if(i!=l&&f[i].imageover!=''&&f[i].mouseover==1&&((f[i].timeon<=thepos&&f[i].timeoff>thepos)||(thepos==-1&&f[i].startup=='true'))){if(i!=menushower){if(tbro=='nn'){newNavImage('document.main'+i,fur(f[i].photo,'kpani_',''))
+f[i].mouseover=0}else{if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){if(f[i].imagedown!=''){object=getObject('mainiid'+i)
+object.style.visibility='hidden'}
+object=getObject('maini'+i)
+object.style.visibility='visible'
+object=getObject('mainiio'+i)
+object.style.visibility='hidden'
+nav6fix(i)}else{object=getObject('maini'+i)
+object.src=fur(f[i].photo,'kpani_','')}
+f[i].mouseover=0}}}
+if(i!=l&&f[i].mos!=''){f[i].mouseover=0}}
+if(l>-1){if(f[l].mouseover==0){if(f[l].mos!=''){playSound (f[l].mos)
+if(f[l].imageover==''){f[l].mouseover=1}}}
+if(modifier==f[l].mod){if(f[l].overevent!=''){pue=true}
+processEvent (f[l].overevent,l)}
+if(f[l].imageover!=''){if(tbro=='nn'){if(f[l].mouseover==0){newNavImage('document.main'+l,f[l].imageover)
+f[l].mouseover=1}}else{if(f[l].mouseover==0){if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){if(f[l].imageover!='_kpinvis.gif'){object=getObject('mainiio'+l)
+object.style.visibility='visible'
+object=getObject('maini'+l)
+object.style.visibility='hidden'
+nav6fix(l)}}else{object=getObject('maini'+l)
+object.src=f[l].imageover}
+f[l].mouseover=1}}}}
+return false}
+function checkkeys(thekey){kefound=false
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}
+tm=f[i].sck
+if(tm==thekey||f[i].ke=='freeform'){kefound=true
+break}}
+return kefound}
+function ikee(){kefound=false
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}
+tm=f[i].ke
+if(tm=='tiny'){kefound=true
+break}}
+return kefound}
+function textdisp(thetext){thetext=fur(thetext,'Å','<BR>')
+thetext=fur(thetext,'À','&lt;')
+thetext=fur(thetext,'Á','&gt;')
+thetext=fur(thetext,'Ã','&amp;')
+thetext=fur(thetext,'Ä','&#92;')
+return thetext}
+function textstring(achar, index){if(issafari){achar=parseInt(achar)}
+if(f[index].feedback){f[index].maxchars=4096}
+if(f[index].entrytext.length<f[index].maxchars||achar==8){switch (achar){case 246:
+break
+case 13:
+if(f[index].allowenter){f[index].edittext=f[index].edittext+'Å'}
+break
+case 8:
+f[index].edittext=f[index].edittext.substring(0,f[index].edittext.length-1)
+break
+default:
+f[index].edittext=f[index].edittext+String.fromCharCode(achar)}}
+et=textdisp(f[index].edittext)
+f[index].entrytext=et
+if(f[index].aspassword==1){msg=''
+for (j=0; j<et.length; j++){msg=msg+'•'}
+et=msg}
+if(f[index].hint.indexOf('ª')>0){newtext=f[i].text.substring(0,f[i].text.length)+et}else{thei=(f[index].cursorinfo*1.5)
+if(thei>(f[index].hheight-6)){thei=(f[index].hheight-6)}
+if(f[index].feedback){thei=16}
+newtext=f[i].text.substring(0,f[i].text.length-1)+et+'<IMG SRC="kpani__kpfc.gif" hspace=2 align=absmiddle height='+thei+' width=1>'}
+thenewtext=newtext
+return thenewtext}
+function updatefreeform(ff, thecode){l=ff
+k=thecode
+ro=getObject('main'+l)
+if(document.layers){if(k==0){return}
+newtext=textstring(k, l)
+newtext=f[l].rtext.replace('¥¥¥',newtext)
+ro.document.write(newtext);
+ro.document.close();
+if(ro.visibility=='hide'){showIt(l,0,0)}}else{bc=''
+if(f[l].backcolor!='transparent'){bc=' bgcolor='+f[l].backcolor}
+if(k!=0&&k!=9){if(tbro!='ie'){ro.innerHTML=f[l].rtext.replace('¥¥¥',textstring(k, l))}else{if(tbro=='ie'&&navp=='Mac'){ro.innerHTML='<SPAN id=mainp'+l+'>'+textstring(k,l)+'</span>'}else{ro.innerHTML='<TABLE WIDTH='+(f[l].wwidth-(f[l].bwidth*2))+' height='+(f[l].hheight-(f[l].bwidth*2))+' '+bc+' cellspacing=0 cellpadding='+f[l].margin+'><TD valign='+f[l].valign+' align='+f[l].halign+'><SPAN id=mainp'+l+'>'+textstring(k,l)+'</span></td></table>'}}}
+if(ro.style.visibility=='hidden'){showIt(l,0,0)
+nav6fix(l)}}}
+function NavKeyP(e,thecode){if(keyeventkilled==true){return}
+if(thecode!=2){if(tbro=='ie'){thekey=event.keyCode}else{thekey=e.which}}
+if(thekey==9){ukd=false
+for (jjjff=0; jjjff<theactions2.length; jjjff++){iiiff=theactions2[jjjff]
+if(typeof(iiiff)=='undefined'||iiiff==-1){break}else{if(f[iiiff].ke=='freeform'){ukd=true
+break}}}
+if(ukd){setnextfreeform()}}
+if(checkkey!=-1){thekey=checkkey}
+freeformupdated=false
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}
+if(checkkey!=-1&&thekey!=8&&thekey!=13){}else{if(f[i].ke=='freeform'&&f[i].timeon==thepos&&i==currentfreeform){if(thekey==13&&f[i].allowenter==false){}else{updatefreeform(i,thekey)
+freeformupdated=true
+return}}}}
+if(freeformupdated==true){return}
+cmu=true
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}
+tkeyin=String.fromCharCode(thekey);
+tkeycompare=String.fromCharCode(f[i].sck);
+tkeyin=tkeyin.toLowerCase()
+tkeycompare=tkeycompare.toLowerCase()
+if(tkeycompare==tkeyin&&(f[i].mod==modifier||f[i].mod==0)){if(f[i].downevent!=''||f[i].upevent!=''||f[i].overevent!=''||f[i].dblevent!=''||f[i].ke!=''){if(thepos<f[i].eventoff||thepos==-1){cmu=false
+origi=i
+if(f[origi].downevent!=''){processEvent(f[origi].downevent,origi)}
+if(f[origi].upevent!=''){processEvent(f[origi].upevent,origi)}
+if(f[origi].overevent!=''){processEvent(f[origi].overevent,origi)}
+if(f[origi].dblevent!=''){processEvent(f[origi].dblevent,origi)}
+if(f[origi].ke!=''){processEvent(f[origi].ke,origi)}
+break}}}}
+if(tbro=='ie'){event.keyCode=0
+event.returnValue=false
+return false}else{return false}}
+var keyeventkilled=true
+if(netscapemac){keyeventkilled=false}
+var modifier=0
+var checkkey=-1
+function NavKey(e,thecode){keyeventkilled=true
+modifier=0
+checkkey=-1
+if(tbro=='ie'){thekey=event.keyCode
+if(event.shiftKey){modifier=1}
+if(event.ctrlKey){modifier=2}
+if(event.altKey){modifier=3}
+if(event.ctrlKey&&event.shiftKey){modifier=5}}else{thekey=e.which
+if(tbro=='ienn'){if(e.shiftKey){modifier=1}
+if(e.ctrlKey){modifier=2}
+if(e.altKey){modifier=3}
+if(e.shiftKey&&e.ctrlKey){modifier=5}}else{if(e.modifiers==4){modifier=1}
+if(e.modifiers==2){modifier=2}
+if(e.modifiers==1){modifier=3}}}
+if(modifier==5||modifier==3||modifier==2||thekey==0||thekey==8||thekey==13||thekey==27||thekey==9||thekey==46||thekey==37||thekey==39||thekey==40||thekey==38||thekey==33||thekey==34||thekey==35||thekey==36||thekey==112||thekey==113||thekey==114||thekey==115||thekey==116||thekey==117||thekey==118||thekey==119||thekey==120||thekey==121||thekey==122||thekey==123){keyeventkilled=false
+checkkey=thekey
+NavKeyP (e,-2)
+keyeventkilled=true
+if(tbro=='ie'){event.keyCode=0
+event.returnValue=false}else{return false}}else{keyeventkilled=false}
+return}
+document.write ("<DIV frameborder=0 id='printframe' style='visibility:hidden;overflow:hidden;position:absolute;top:0px;left:0px;width:1px;height:1px;'></DIV>")
+function shortscore(){msg=''
+msg=msg+thescore
+return msg}
+var printresultstype=1
+function mcprint(){msg=''
+score=returnScore()
+thescore=(score/totalscore)*100
+thescore=parseInt(thescore)
+ms=LMSGetValue('cmi.student_data.mastery_score')
+if(typeof ms=='undefined'){ms='80'}
+if(ms==''){ms='80'}
+if(totalscore>0){if(thescore>=parseInt(ms)){scostatus='passed'}else{scostatus='failed'}
+if(score==0){scostatus='failed'}}
+iscomplete=true
+for(iii=0; iii<scoredobjects.length; iii++){ 
+i=scoredobjects[iii]
+if(f[i].eventoff>thepos){iscomplete=false
+break}}
+if(iscomplete==false){msg='<P>You have not yet completed this assessment. Your current results are:<BR>&nbsp;<BR>'
+if(totalscore>0){possscore=0
+for(ik=0; ik<obsc.length;ik++){obsc[ik]=0}
+for(ik=0; ik<theobs.length;ik++){for(jk=0; jk<f.length;jk++){if(f[jk].ename==theobs[ik]&&f[jk].score==True&&f[jk].timeon<thepos&&f[jk].timeoff>f[jk].timeon&&obsc[ik]==0){obsc[ik]=1
+possscore=new Number(possscore)+new Number(getobvalue(theobs[ik]))}}}
+possiblescore=possscore
+realscore=score/possiblescore
+realscore=parseInt(realscore*100)
+if(score==0){realscore=0}
+msg=msg+'<B>Score:</B> '+score+' out of '+possiblescore+' ('+realscore+'%)<BR>'}}else{msg='<P>You have now completed this assessment. Your final results are<BR>&nbsp;<BR>'
+if(totalscore>0){msg=msg+'<B>Score:</B> '+score+' out of '+totalscore+' ('+thescore+'%)<BR>'}
+msg=msg+'<B>Status:</B> '+scostatus+'</P><P>'}
+return msg}
+function printAllResults(l){if(l!=-1){addtext=fur(f[l].hint,'\n','&nbsp;<BR>')}else{addtext=''}
+if(getusername()=='User Name'||getusername()==''||getusername()=='null'||getusername()==null){username=prompt('Your User Name was not found. Please enter a user name for identification purposes.', 'My Name');
+if(username==null||username==''){return}}
+pio=getObject('printframe')
+pio.innerHTML="<IFRAME style='visibility:visible;top:0;left:0;position:absolute;' id='printmainsource'></IFRAME>"
+pio=getObject('printmainsource')
+if(tbro=='ie'){piod=pio.document}else{piod=pio.contentDocument}
+piod.open()
+piod.write ('<HTML><HEAD><TITLE>'+document.title+' Results</TITLE></HEAD>')
+piod.write ("<SCR"+"IPT>")
+piod.write ("function printit(){")
+piod.write ("var agree=confirm('Are you sure you want to print?');")
+piod.write ("if(agree){")
+piod.write ("saveit=true;")
+piod.write ("}else{")
+piod.write ("saveit=false;")
+piod.write ("}")
+piod.write ("if(saveit){")
+piod.write ("window.focus();")
+piod.write ("window.print();")
+piod.write ("}")
+piod.write ("}")
+piod.write ("</SCR"+"IPT>")
+piod.write ('<!-- saved from url=(0013)about:internet -->')
+piod.write ('<STYLE TYPE=\'text/css\'>')
+piod.write ('P {margin-top:10;font-family:Verdana, Arial;font-size:11pt;color:#000000;font-weight:normal;font-style:normal;}')
+piod.write ('.header {margin-top:10;margin-bottom:10;font-size:14pt;color:#FFFFFF;font-weight:bold;}')
+piod.write ('</STYLE>')
+piod.write ('<body onload="printit()" bgcolor=\'white\'>')
+piod.write ('<TABLE cellspacing=0 cellpadding=0 WIDTH=100%><TD bgcolor=\'#336699\' WIDTH=100% align=center valign=middle><P class=header><B>'+document.title+' Results</B></P></TD></TABLE>')
+if(getusername()!='User Name'){piod.write ('<P><B>User: </B>'+getusername()+'<BR>')}
+if(getuserid()!=''){piod.write ('<B>User ID: </B>'+getuserid()+'<BR>')}
+d=new Date()
+thedate=d.toLocaleString()
+piod.write ('<B>Date:</B> '+thedate+'<BR>')
+thescore=(score/totalscore)*100
+thescore=parseInt(thescore)
+ms=LMSGetValue('cmi.student_data.mastery_score')
+if(typeof ms=='undefined'){ms='80'}
+if(ms==''){ms='80'}
+if(totalscore>0){if(thescore>=parseInt(ms)){scostatus='passed'}else{scostatus='failed'}
+if(score==0){scostatus='failed'}}
+if(totalscore>0){score=returnScore()
+if(printresultstype==1){piod.write ('<B>Score:</B> '+score+' out of '+totalscore+' ('+thescore+'%)<BR>')}}
+if(printresultstype==1){piod.write ('<B>Status:</B> '+scostatus+'</P><P>')}
+if(printresultstype==1){piod.write (showResults (False))}else{resultstype=2
+piod.write ('&nbsp;<BR>')
+piod.write (showResults (False))
+resultstype=1}
+piod.write ('<P>&nbsp;<BR>'+addtext+'</P>')
+piod.write ('</body>')
+piod.write ('</html>')
+piod.close()
+return}
+function newNavImage(object,image){t=eval(object)
+t.document.write('<IMG src="'+image+'">')
+t.document.close();}
+if(tbro!='nn'){document.write ("<DIV id='presh' style='overflow:hidden;position:absolute;width:800;height:600;left:0;top:0;'>")}
+if(tbro=='ie'){zratio=1
+document.body.onmousedown=NavDown
+document.body.onmouseup=NavUp
+document.body.ondblclick=NavDouble
+document.body.onkeydown=NavKey
+document.body.onkeypress=NavKeyP
+document.body.onmousemove=CheckButs}
+function playSound(snd){}
+function customalert(thestring, sobject, customcommand){if(thestring==''){usemessagebox=false
+return}
+msgfound=false
+msgfoundc=false
+for (i=0; i<f.length; i++){if(f[i].og=='MsgBox'){msgfound=true
+break}}
+for (i=0; i<f.length; i++){if(f[i].og=='MsgBoxCancel'){msgfoundc=true
+break}}
+showmessage=thestring
+if(thepos==-1){msgfound=false}
+if(msgfound){if(typeof(customcommand)=='undefined'){if(typeof(sobject)!='undefined'){customcommand=f[sobject].hint}else{customcommand=''}}
+if(customcommand==''){customcommand='hidegroup'}
+if(customcommand.indexOf('|cancel')!=-1&&msgfoundc==true){showgroup ('MsgBoxCancel10', sobject)}else{showgroup ('MsgBox10', sobject)}
+for (j=0; j<theactions2.length; j++){i=theactions2[j]
+if(typeof(i)=='undefined'||i==-1){break}else{if(f[i].hint=='OK'){if(f[i]._ke=='hidegroup'){f[i].ke=fur(customcommand,'|cancel','')}
+if(f[i]._overevent=='hidegroup'){f[i].overevent=fur(customcommand,'|cancel','')}
+if(f[i]._downevent=='hidegroup'){f[i].downevent=fur(customcommand,'|cancel','')}
+if(f[i]._upevent=='hidegroup'){f[i].upevent=fur(customcommand,'|cancel','')}
+if(f[i]._dblevent=='hidegroup'){f[i].dblevent=fur(customcommand,'|cancel','')}}}}
+haspaused=false
+if(pausetime==0){haspaused=true
+clearInterval (loadnextfile)
+loadnextfile=0
+pausestart2=new Date()
+pausedfor=pausestart2.getTime()}}else{alert (showmessage)}}
+tobj=getObject('starting')
+if(tbro=='nn'){tobj.visibility='hidden'}else{tobj.style.visibility='hidden'}
+intPath=(getArg('interfacepath'))
+function fixcode(s1,s2,s3){sp1=s1.indexOf(s2)
+sp2=s1.indexOf(s3)
+if(sp1>-1&&sp2>-1){return (s1.substring(0,sp1)+s1.substring(sp2,s1.length))}else{return (s1)}}
+function fixtext(i){}
+for (i=0; i<f.length; i++){if(intPath!=''){if(f[i].ii=='1'&&f[i].photo!=''){f[i].photo=intPath+f[i].photo}}
+if(f[i].photo=='_kpinvis.gif'&&f[i].imageover==''&&f[i].imagedown==''){if(f[i].alt==''||tbro=='ie'){f[i].text='<FONT SIZE=1>'
+f[i].photo=''}}
+if(f[i].text!=''){fixtext(i)
+bc=''
+if(f[i].backcolor!='transparent'){bc=' bgcolor='+f[i].backcolor}
+if(f[i].instruct=='true'){tw=' WIDTH=100% '
+if(tbro=='ie'){if(f[i].valign=='Top'&&f[i].halign=='left'){tw=' '}}else{tw=' WIDTH=100% height='+f[i].hheight+' '
+if(iskhtml==true){tw=' '
+tw=' WIDTH=100% height='+(f[i].hheight-((f[i].bwidth)*2))+' '}
+if(f[i].bstyle!=''){tw="bordercolor="+f[i].bcolor+" border="+f[i].bwidth+" "+tw}}
+bt='<TABLE '+tw +bc+' cellspacing=0 cellpadding='+f[i].margin+'><TD valign='+f[i].valign+' align='+f[i].halign+'><SPAN id=mainp'+i+'>'+f[i].text+'</span></td></table>'
+btmac='<TABLE '+tw +bc+' cellspacing=0 cellpadding='+f[i].margin+'><TD valign='+f[i].valign+' align='+f[i].halign+'><SPAN id=mainp'+i+'></span></td></table>'}else{tw=' WIDTH=100% height='+(f[i].hheight - ((f[i].bwidth)*2))+' '
+if((tbro=='nn'||tbro=='ienn')&&iskhtml==false){tw=' WIDTH=100% height='+(f[i].hheight)+' '}
+if(tbro=='ie'){if(f[i].valign=='Top'&&f[i].halign=='left'){if(navp=='Mac'){tw=' '}}}else{if(f[i].bstyle!=''){tw="bordercolor="+f[i].bcolor+" border="+f[i].bwidth+" "+tw}}
+if(f[i].ke=='freeform'){lastchar=f[i].text.substring(f[i].text.length-1,f[i].text.length)
+if(lastchar!='|'){if(f[i].hint.indexOf('ª')==-1){f[i].text=f[i].text+'|'}}
+if(f[i].parameter.substring(0,3)=='!!!'){f[i].allowenter=True}else{f[i].allowenter=False}
+mp=f[i].parameter.indexOf('™')
+f[i].maxchars=f[i].parameter.substring(mp+1,f[i].parameter.length)}
+bt='<TABLE '+tw+ bc+' cellspacing=0 cellpadding='+f[i].margin+'><TD valign='+f[i].valign+' align='+f[i].halign+'><SPAN id=mainp'+i+'>'+f[i].text+'</span></td></table>'
+btmac='<TABLE '+tw+ bc+' cellspacing=0 cellpadding='+f[i].margin+'><TD valign='+f[i].valign+' align='+f[i].halign+'><SPAN id=mainp'+i+'></span></td></table>'}
+if(f[i].instruct=='true'){tbs=fur(tbs,'HEIGHT=100%','')
+bt=tbs+bt+tbe}
+if(f[i].percent==true){}
+if(tbro!='ie'){f[i].rtext=bt.replace('<SPAN id=mainp'+i+'>','¥¥¥<SPAN id=mainp'+i+'>')
+f[i].rtext=fixcode(f[i].rtext,'<SPAN id=mainp'+i+'>','</span>')}
+bc=''
+if(f[i].backcolor!='transparent'){bc=' bgcolor='+f[i].backcolor
+if(tbro=='ie'){bc='background-color:'+f[i].backcolor}}
+sd=''
+if(f[i].bstyle!=''&&tbro=='ie'){sd=";border-color:"+f[i].bcolor+";border-style:"+f[i].bstyle+";border-width:"+f[i].bwidth}
+if(tbro=='nn'){document.write('<LAYER '+sd+'class='+f[i].theclass+' id="main'+i+'" name="main'+i+'" '+bc+' left='+f[i].lleft+' top='+f[i].ttop+' width='+f[i].wwidth+' height='+f[i].hheight+' VISIBILITY="HIDDEN">'+bt+'</LAYER>')}else{tw='hidden'
+if(f[i].ke!='freeform'&&f[i].valign=='Top'&&f[i].halign=='left'){f[i].autoscroll=true
+if(issafari){tw='auto'}}
+if(f[i].feedback){f[i].autoscroll=true}
+if(f[i].text.indexOf(' usegrid=')>1){tw='visible'}
+document.write('<DIV class='+f[i].theclass+' id="main'+i+'" style="overflow:'+tw+';'+bc+';position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden'+sd+';">'+bt+'</DIV>')
+if(f[i].text.indexOf('divbg="')>-1){divbg=f[i].text.substring(f[i].text.indexOf('divbg="')+7,f[i].text.length)
+if(divbg.indexOf('>')>-1){divbg=divbg.substring(0,divbg.indexOf('>')-1)
+if(divbg!=''){tflashdo=getObject('main'+i)
+tflashdo.style.backgroundImage='url('+divbg+')'}}}
+if(f[i].alt!=''){tobj=getObject('main'+i)
+tobj.title=f[i].alt}}}else{loadimage=''
+ihs=''
+ihe=''
+if(f[i].loading=='true'){loadimage=' SRC='+f[i].photo
+if(tbro=='nn'){document.write('<LAYER class='+f[i].theclass+' name="main'+i+'" id="main'+i+'" left='+f[i].lleft+' top='+f[i].ttop+' width='+f[i].wwidth+' height='+f[i].hheight+' VISIBILITY="HIDDEN">'+ihs+'<IMG border=0 alt="'+f[i].alt+'" '+loadimage+' id="maini'+i+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</LAYER>')}else{document.write('<DIV class='+f[i].theclass+' id="main'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 alt="'+f[i].alt+'" '+loadimage+' id="maini'+i+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){if(f[i].imageover!=''&&f[i].imageover!='_kpinvis.gif'){document.write('<DIV class='+f[i].theclass+' '+mo+'id="mainiio'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 SRC="'+f[i].imageover+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')}
+if(f[i].imagedown!=''&&f[i].imagedown!='_kpinvis.gif'){document.write('<DIV class='+f[i].theclass+' '+mo+'id="mainiid'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 SRC="'+f[i].imagedown+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')}}}}else{if(f[i].media!='True'){if(tbro=='nn'){mo=' '
+document.write('<LAYER class='+f[i].theclass+' '+mo+'name="main'+i+'" left='+f[i].lleft+' top='+f[i].ttop+' width='+f[i].wwidth+' height='+f[i].hheight+' VISIBILITY="HIDDEN"></LAYER>')}else{mo=' '
+document.write('<DIV class='+f[i].theclass+' '+mo+'id="main'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 alt="'+f[i].alt+'" '+loadimage+' id="maini'+i+'" onload="completed()" onerror="errorcompleted('+i+')" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){if(f[i].imageover!=''){document.write('<DIV class='+f[i].theclass+' '+mo+'id="mainiio'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 SRC="'+f[i].imageover+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')}
+if(f[i].imagedown!=''){document.write('<DIV class='+f[i].theclass+' '+mo+'id="mainiid'+i+'" style="overflow:hidden;position:absolute;left:'+f[i].lleft+';top:'+f[i].ttop+';width:'+f[i].wwidth+';height:'+f[i].hheight+';visibility:hidden;">'+ihs+'<IMG border=0 SRC="'+f[i].imagedown+'" width='+f[i].wwidth+' height='+f[i].hheight+'>'+ihe+'</DIV>')}}}}else{}}}}
+for (i=0; i<f.length; i++){if(f[i].loading=='true'){t=getObject('main'+i)
+if(tbro=='nn'){t.visibility='visible'}else{t.style.visibility='visible'}}}
+if(tbro=='nn'){document.write('<LAYER name="startup2" id="startup2" left=0 top=0 width=800 height=600 VISIBILITY="VISIBLE"></LAYER>')
+document.write('<LAYER name="startup" id="startup" left=0 top=0 width=800 height=600 VISIBILITY="HIDDEN"><IMG src="_kpinvis.gif" width= 800 height=600></LAYER>')
+document.write('<LAYER name="thestatus" id="thestatus" left=240 top=463 width=320 height=70 VISIBILITY="VISIBLE"></LAYER>')
+document.startup.captureEvents(Event.MOUSEDOWN)
+document.startup.OnMouseDown=gotoNextPause}else{document.write("<IMG src='_kpinvis.gif' onmousemove='javascript:CheckButs()' name='startup' id='startup' style='position:absolute;left:0;top:0;width:800;height:600;visibility:hidden;'>")
+ebi='_kpinvis.gif'
+document.write("<IMG src='"+ebi+"' name='eblocker' id='eblocker' style='position:absolute;left:0;top:0;width:800;height:600;visibility:hidden;'>")
+if(tbro=='ienn'&&navigator.userAgent.indexOf('Netscape6')>0){document.write("<IMG src='_kpinvis.gif' name='navrefresh' id='navrefresh' style='position:absolute;left:0;top:0;width:800;height:600;visibility:hidden;'>")
+document.write("<IMG src='_kpinvis.gif' name='butover' id='butover' style='position:absolute;left:0;top:0;width:800;height:600;visibility:hidden;'>")
+var navrefresher=getObject('navrefresh')
+var butrefresher=getObject('butover')}
+if(mozillamac||issafari){document.write("<IMG src='_kpinvis.gif' name='butover' id='butover' style='position:absolute;left:0;top:0;width:800;height:600;visibility:hidden;'>")
+var butrefresher=getObject('butover')}
+document.write('<DIV name="thestatus" id="thestatus" style="cursor:default;overflow:hidden;position:absolute;left:240;top:463;width:320;height:70;visibility:visible;"></DIV>')}
+if(tbro!='nn'){document.write ('</DIV>')}
+updateStatus ('0')
+if(isopera){function blockit(){tobj=getObject('block')
+tobj.focus()}
+document.write('<DIV style="position:absolute;left:-1px;top:-1px;width:1px;height:1px"><TEXTAREA name="block" id="block" style="width:1px;height:1px;"></TEXTAREA></DIV>')
+blockit()}
+if(document.all){document.body.onload=preloadfiles}
+</SCRIPT>
+<DIV frameborder=0 id='statsframe' style='overflow:hidden;position:absolute;top:0px;left:0px;width:1px;height:1px;visibility:hidden'></DIV>
+<SCRIPT>
+function donothing(){clearTimeout(nt)
+nt=0}
+for(i=0; i<f.length; i++){if(f[i].msc.indexOf('Hand')>-1){t=getObject('main'+i)
+t.style.cursor='pointer'}
+if(f[i].og=='MsgBox'||f[i].og=='MsgBoxCancel'){if(f[i].ke=='hidegroup'){f[i]._ke='hidegroup'}
+if(f[i].overevent=='hidegroup'){f[i]._overevent='hidegroup'}
+if(f[i].downevent=='hidegroup'){f[i]._downevent='hidegroup'}
+if(f[i].upevent=='hidegroup'){f[i]._upevent='hidegroup'}
+if(f[i].dblevent=='hidegroup'){f[i]._dblevent='hidegroup'}}}
+if(tbro=='ie'||tbro=='ienn'){tmp=navigator.appVersion.split('MSIE')
+vers=parseFloat(tmp[1])
+if(navigator.userAgent=='LTMM'){vers=6}
+for(i=0; i<f.length; i++){if(f[i].ma>0){if(i<=f.length-2){if(f[i+1].oid==f[i].oid){if(tbro=='ie'&&navp=='Mac'){setinitialstate(i)
+f[i].hasdrop=false
+f[i+1].hasdrop=false}}}}
+if(f[i].og=='MsgBox'||f[i].og=='MsgBoxCancel'){if(f[i].photo==''){if(f[i].text.indexOf('%%picture%%')==-1){theob=getObject('main'+i)
+theob.style.overflow='auto'}}}
+tcu=f[i].msc
+if(typeof(tcu)=='undefined'||tcu==''||tcu=='0'){tcu='default|default'}
+if(tcu.indexOf('|')<1){tcu='default|'+tcu}
+tcus=tcu.split('|')
+t=getObject('main'+i)
+t.style.cursor=tcus[1]
+if((vers>=6||tbro=='ienn')&&tcus[0]!='default'){t.style.cursor=tcus[0]+', auto'}}}
+for(i=0; i<f.length; i++){switch (f[i].oid){}}
+if(tbro!='ie'){document.captureEvents(Event.CLICK | Event.MOUSEDOWN | Event.MOUSEUP | Event.KEYPRESS | Event.DBLCLICK | Event.MOUSEMOVE)
+if(tbro=='nn'){document.onMouseUp=NavUp
+document.onMouseDown=NavDown
+document.onKeyPress=NavKeyP
+document.onKeyDown=NavKey
+document.onMouseMove=CheckButs}else{document.onmouseup=NavUp
+document.onmousedown=NavDown
+document.addEventListener('dblclick',NavDouble,true)
+document.onkeypress=NavKeyP
+document.onkeydown=NavKey
+document.onmousemove=CheckButs}}
+if(tbro=='ie'&&navp=='Mac'){document.body.scroll='no'}
+</SCRIPT>
+<DIV id='stester' style="visibility:hidden;margin-right:0px;margin-left:0px;margin-top:0;margin-bottom:0;zIndex:4000;width:300;font-family:Arial;font-size:20px;overflow:auto;position:absolute;left:0;top:0;height:25px">freddtpp</DIV>
+<SCRIPT>
+var ddlistsize=13
+function sdef(sname,ssize){this.stylename=sname
+this.stylesize=ssize}
+if((issafari==false&&iskhtml==false)||safariwk==true){t=getObject('stester')
+offsetsize= (20/(t.scrollHeight-5))
+mystyles=new Array(1)
+mystyles[0]=new sdef("instruct",11)
+mystyles[1]=new sdef("instructnnmac",13)
+mystyles[2]=new sdef("layer103",9.75)
+mystyles[3]=new sdef("layer103nnmac",12)
+mystyles[4]=new sdef("layer101",9)
+mystyles[5]=new sdef("layer101nnmac",11)
+mystyles[6]=new sdef("layer96",10)
+mystyles[7]=new sdef("layer2",12)
+mystyles[8]=new sdef("layer2nnmac",14)
+
+if(offsetsize<1){offsetsize=(parseInt(offsetsize*100))/100
+for(i=0; i<f.length; i++){if(f[i].text!=''){object=getObject("main"+i)
+for(j=0; j<mystyles.length; j++){if(f[i].text.indexOf('<P class='+mystyles[j].stylename+'>')>-1){newsize=mystyles[j].stylesize * offsetsize
+f[i].text=f[i].text.replace('<P class='+mystyles[j].stylename+'>','<P class='+mystyles[j].stylename+' style="font-size:'+newsize+'pt;">')
+object.innerHTML=object.innerHTML.replace('<P class="'+mystyles[j].stylename+'">','<P class="'+mystyles[j].stylename+'" style="font-size:'+newsize+'pt;">')
+object.innerHTML=object.innerHTML.replace('<p class="'+mystyles[j].stylename+'">','<P class="'+mystyles[j].stylename+'" style="font-size:'+newsize+'pt;">')
+break}
+if(f[i].text.indexOf('<SELECT')>-1){newsize=13 * offsetsize
+ddlistsize=newsize
+f[i].text=fur(f[i].text,'13px',newsize+'px')
+object.innerHTML=fur(object.innerHTML,'13px',newsize+'px')}
+if(f[i].text.indexOf('<SPAN class='+mystyles[j].stylename+'>')>-1){newsize=mystyles[j].stylesize * offsetsize
+f[i].text=fur(f[i].text,'<SPAN class='+mystyles[j].stylename+'>','<SPAN class='+mystyles[j].stylename+' style="font-size:'+newsize+'pt;">')
+object.innerHTML=fur(object.innerHTML,'<SPAN class="'+mystyles[j].stylename+'">','<SPAN class="'+mystyles[j].stylename+'" style="font-size:'+newsize+'pt;">')
+object.innerHTML=fur(object.innerHTML,'<span class="'+mystyles[j].stylename+'">','<SPAN class="'+mystyles[j].stylename+'" style="font-size:'+newsize+'pt;">')
+break}}}}}}
+</SCRIPT>
+</BODY></HTML>
+
+

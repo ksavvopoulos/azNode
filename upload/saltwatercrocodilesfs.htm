@@ -1,0 +1,857 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<TITLE>Saltwater Crocodiles FullScreen</TITLE>
+<link rel='stylesheet' href='autonav.css'>
+</HEAD>
+<!-- saved from url=(0013)about:internet -->
+<STYLE TYPE='text/css'>
+P {cursor:default;margin-top:0;margin-bottom:0;font-family:Candara,Calibri,Verdana,Arial;font-size:9pt;color:#000000;font-weight:normal;font-style:normal;}
+.mainhead {font-size:18pt}
+</STYLE>
+<BODY class=fullbody onload="loadit()" onresize="testit()" oncontextmenu='return false' topmargin=0 leftmargin=0 rightmargin=0 bottommargin=0>
+<TABLE WIDTH=100% height=100% cellspacing=0 cellpadding=0><TD valign=middle align=center>
+<SCRIPT>
+
+if (parent.frames.length == 0) {
+	location.replace("launchfull.htm");
+}
+
+var isipod=false
+if(navigator.userAgent.indexOf('Safari')>-1&&(navigator.userAgent.indexOf('iPhone')>-1||navigator.userAgent.indexOf('iPod')>-1)){isipod=true}
+
+function errorlog(){return true;}
+window.onerror=errorlog;
+
+document.onselectstart=new Function("return false")
+function disabletext(e){return false}
+function reEnable(){return true}
+if(window.sidebar){document.onmousedown=disabletext
+document.onclick=reEnable}
+
+var allowlivechat=0
+var allowliveupload=0
+var allowliveemail=0
+var chatlogin=''
+var allowblog=0
+var mailaccount='david'
+var mailemail='david.webster@gmail.com'
+var indicators='0'
+document.onkeydown=NavKey
+
+function NavKey(e){
+	if(tbro=='ie'){
+		if (event.keyCode==116){
+			event.keyCode=0
+			event.returnValue=false
+			return false
+		}
+	}else{
+		tl=getObject('ff3h')	
+		if (tl.style.visibility=='hidden'){e.preventDefault()}		
+	}
+}
+
+var rif=""
+var ni=0
+var cheightsafari=0
+var cwidthsafari=0
+var smoveer=0
+var issafari=false
+if(navigator.userAgent.indexOf('Safari')>-1){issafari=true}
+if(navigator.userAgent.indexOf('Opera')>-1){issafari=true}
+function loadit(){
+	if (isipod){
+		for(i=0; i<window.document.images.length; i++){	
+			rwidth=window.document.images[i].width
+			rheight=window.document.images[i].height
+			window.document.images[i].style.width=rwidth*2
+			window.document.images[i].style.height=rheight*2
+		}
+	}
+	if (issafari){
+		cheightsafari=document.body.clientHeight
+		cwidthsafari=document.body.clientWidth
+		smoveer=setInterval("testitr()",200)
+	}
+	tif=getObject('ff')
+	if (tbro=='ienn'){
+		rif=tif.contentWindow
+	}else{
+		rif=tif
+	}
+	if (chatlogin!=''){
+		tif2=getObject('chat2')
+ 		if (rif.APIOK()){
+           		var intChildren=rif.LMSGetValue('cmi.core._children')
+           		useremail=''
+           		if (intChildren.indexOf('student_email')>-1){
+           			useremail=rif.LMSGetValue('cmi.core.student_email')
+			}
+			username=rif.getusername()
+			userid=rif.getuserid()
+			thesrc = "http://chat.knowledgepresenter.com/chatter/index.htm?calladminemail=" + chatlogin + "&allowchat=" + allowlivechat + "&allowemail=" + allowliveemail + "&allowupload=" + allowliveupload + "&coursename=" + rif.document.title
+			thesrc=thesrc + "&username=" + username + "&userid=" + userid
+ 		}else{
+			thesrc = "http://chat.knowledgepresenter.com/chatter/index.htm?calladminemail=" + chatlogin + "&allowchat=" + allowlivechat + "&allowemail=" + allowliveemail + "&allowupload=" + allowliveupload + "&coursename=" + rif.document.title
+ 		}
+		thesrc = "<IFRAME style='width:100%;height:100%' src='" + thesrc + "'></IFRAME>"
+		tif2.innerHTML=thesrc
+	}
+	if (allowblog==1){
+		tif2=getObject('blog2')
+ 		if (rif.APIOK()){
+           		var intChildren=rif.LMSGetValue('cmi.core._children')
+           		userblog=''
+           		if (intChildren.indexOf('student_email')>-1){
+           			userblog=rif.LMSGetValue('cmi.core.student_blog')
+			}
+			thesrc = userblog
+			if (userblog==''){thesrc = "http://blog.knowledgepresenter.com?nolmssupport"}
+ 		}else{
+			thesrc = "http://blog.knowledgepresenter.com?nolms"
+		}
+		thesrc = "<IFRAME style='width:100%;height:100%' src='" + thesrc + "'></IFRAME>"
+		tif2.innerHTML=thesrc
+	}
+	testit()
+}
+
+function testitr(){
+	if (isipod){return}
+	cheight=document.body.clientHeight
+	cwidth=document.body.clientWidth
+	if (cheightsafari==cheight&&cwidthsafari==cwidth){return}
+	cheightsafari=cheight
+	cwidthsafari=cwidth
+	parent.theleft.testit()
+	safariresize=setTimeout("testit()",500)
+}
+function testit(){
+	rescroll()
+	reallyhidemen()
+}
+
+function rescroll(){
+	ccheight = rif.realcheight
+ccwidth=rif.realcwidth
+xwidth = document.body.clientWidth
+yheight = document.body.clientHeight
+if (xwidth>ccwidth&&xwidth-ccwidth<50){xwidth=ccwidth+2}
+if (yheight>ccheight&&yheight-ccheight<50){yheight=ccheight+2}
+zratio=(yheight-2) / ccheight
+if((ccwidth * zratio)>(xwidth-2)){zratio=(xwidth-2) / ccwidth}
+if (isipod){zratio=1}
+tif=getObject('mf')
+tif.style.height=ccheight * zratio
+tif.style.width=ccwidth * zratio
+tif.style.left=(document.body.clientWidth-(ccwidth * zratio))/2
+tif.style.top=(document.body.clientHeight-(ccheight * zratio))/2
+rif.fixstuff()
+return
+
+	cheight=document.body.clientHeight
+	cwidth=document.body.clientWidth
+	awidth=rif.cwidth
+	aheight=rif.cheight
+	if (tbro=='ienn'){
+		cheight = parent.theleft.document.body.scrollHeight-32
+		cwidth = parent.thetop.document.body.scrollWidth-120-8
+		tif=getObject('ff')
+		if (cwidth>awidth){
+			tif.style.width=awidth
+		}else{
+			tif.style.width=cwidth
+		}
+		if (cheight>aheight){
+			tif.style.height=aheight
+		}else{
+			tif.style.height=cheight
+		}
+	}
+	if (cwidth<awidth||cheight<aheight){
+		document.body.scroll='auto'
+		if (tbro=='ienn'){
+			tif=getObject('ff')
+			tif.style.overflow='scroll'
+		}
+	}else{
+		if (tbro=='ienn'){
+			tif=getObject('ff')
+			tif.style.overflow='visible'
+		}
+		document.body.scroll='no'
+	}
+}
+
+function getObject(objectname){if(tbro=='ie'){return eval(objectname)}
+if(tbro=='ienn'){return document.getElementById(objectname)}
+if(tbro=='nn'){return eval('document.'+objectname)}}
+
+tbro='nn'
+if(document.all){tbro='ie'}
+if(parseInt(navigator.appVersion)>=5){tbro='ienn'}
+if(navigator.appName=='Microsoft Internet Explorer'){tbro='ie'}
+
+function createmenus(){
+	msg=""
+	mcount=0
+	for(i=0; i<rif.iitems.length; i++){	
+		stime=rif.iitemstime[i]
+		ftime=false
+		if (i==rif.iitems.length-1){
+			etime=32700
+			ftime=true
+		}else{
+			etime=rif.iitemstime[i+1]
+		}
+		useit=1
+		if(typeof rif.usepause!='undefined'){
+			if (rif.usepause[stime/5]==0){useit=0}
+		}
+		if (useit==1){
+			msg=msg + domen (mcount, rif.iitems[i], rif.iitemstime[i], ftime)
+			mcount++
+		}
+	}
+	tl=getObject('ff2')
+	if (tbro=='ie'){
+		tl.innerHTML="<DIV style='overflow-y:auto;height:100%;'><TABLE border=0 width=100% height=100% cellspacing=0 cellpadding=0><TD align=left valign=bottom>" + msg + "</TD></TABLE></DIV>"
+	}else{
+		cheight=document.body.clientHeight
+		cheight = parent.theleft.document.body.scrollHeight-32
+		tl.innerHTML="<DIV id='dave'><TABLE border=0 width=100% cellspacing=0 cellpadding=0><TD align=left valign=bottom>" + msg + "</TD></TABLE></DIV>"
+		tl2=getObject('dave')
+		ah=tl2.scrollHeight
+		if (ah<cheight){
+			tl2.innerHTML="<DIV id='dave' style='overflow:-moz-scrollbars-none;height:" + cheight + ";'><TABLE border=0 width=100% height=100% cellspacing=0 cellpadding=0><TD align=left valign=bottom>" + msg + "</TD></TABLE></DIV>"
+		}else{
+			tl2.innerHTML="<DIV id='dave' style='overflow:-moz-scrollbars-vertical;height:" + cheight + ";'><TABLE border=0 width=100% height=100% cellspacing=0 cellpadding=0><TD align=left valign=bottom>" + msg + "</TD></TABLE></DIV>"
+		}
+	}
+}
+
+function createmenus2(){
+	msg=""
+	mcount=0
+	for(i=0; i<rif.iitems.length; i++){	
+		stime=rif.iitemstime[i]
+		ftime=false
+		if (i==rif.iitems.length-1){
+			etime=32700
+			ftime=true
+		}else{
+			etime=rif.iitemstime[i+1]
+		}
+		useit=1
+		if(typeof rif.usepause!='undefined'){
+			if (rif.usepause[stime/5]==0){useit=0}
+		}
+		if (useit==1){
+			msg=msg + domen (mcount, rif.iitems[i], rif.iitemstime[i], ftime)
+			mcount++
+		}
+	}
+	tl=getObject('ff2')
+	msg=fur(msg,'200px','100%')
+	msg=fur(msg,'width=200','width=100%')
+	parent.theleft.siv=0
+	if (msg.indexOf('_kpcsss')>-1){parent.theleft.siv=1}
+	return msg
+}
+
+function reallyhidemen(){
+	hideall()
+	clearmover()
+	rescroll()
+}
+
+function hideall(){
+	tla=getObject('chat1')
+	tla.style.visibility='hidden'
+	tla=getObject('chat2')
+	tla.style.visibility='hidden'
+	tla=getObject('chat3')
+	tla.style.visibility='hidden'
+
+	tla=getObject('blog1')
+	tla.style.visibility='hidden'
+	tla=getObject('blog2')
+	tla.style.visibility='hidden'
+	tla=getObject('blog3')
+	tla.style.visibility='hidden'
+
+	tla=getObject('ff2')
+	tla.style.visibility='hidden'
+	tla=getObject('ff2h')
+	tla.style.visibility='hidden'
+	tla.style.left=0
+	tla.style.top=0
+	tla=getObject('ff3')
+	tla.style.visibility='hidden'
+	rif.ucomment=tla.innerHTML
+	tla=getObject('ff3h')
+	tla.style.visibility='hidden'
+	tla=getObject('ff4')
+	tla.style.visibility='hidden'
+	tla=getObject('ff2')
+	tla.innerHTML=""
+	tla=getObject('thumbtable')	
+	tla.style.visibility='hidden'
+	if (tbro=='ienn'){tla.style.height=1}
+	tla=getObject('thumbdiv')
+	tla.style.visibility='hidden'
+	tla=getObject('thumbtext')
+	tla.style.visibility='hidden'
+	tla=getObject('scoretable')	
+	tla.style.visibility='hidden'
+	if (tbro=='ienn'){tla.style.height=1}
+	tla=getObject('scorediv')
+	tla.style.visibility='hidden'
+	tla=getObject('scoretext')
+	tla.style.visibility='hidden'
+	parent.middle.rif.focus()
+}
+var currentname=""
+
+function showmen(theoname, twidth){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	tll=getObject('ff2h')
+	tll2=getObject('ff2')
+	if (tll.style.visibility=='hidden'){
+		cwidth=document.body.clientWidth
+		awidth=rif.cwidth
+		hideall()
+		currentname=theoname
+		createmenus()
+		tl=getObject('ff2')
+		tl.style.visibility='hidden'
+		tl=getObject('ff2h')
+		tl.style.visibility='hidden'
+		document.body.scroll='no'
+		tll=getObject('ff2h')
+		tll2=getObject('ff2')
+		menleft=parseInt(twidth)+202
+		cwidth=document.body.clientWidth
+		if (menleft>cwidth){menleft=cwidth}
+		tll.style.width=menleft
+		tll.style.left=parseInt(document.body.scrollLeft)
+		tll.style.top=parseInt(document.body.scrollTop)
+		tll.style.visibility='visible'
+		tll2.style.visibility='visible'
+	}else{
+		hideall()
+		rescroll()
+	}
+}
+
+function chatit(){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	document.body.scroll='no'
+	tl=getObject('chat1')	
+	tl2=getObject('chat2')
+	tl3=getObject('chat3')
+	if (tl.style.visibility=='hidden'){hideall()}
+	tl=getObject('chat1')	
+	tl2=getObject('chat2')
+	tl3=getObject('chat3')
+	clearmover()
+	currentleft=document.body.clientWidth
+	tl.style.left=currentleft
+	tl.style.top=document.body.scrollTop//+1
+	if (tbro=='ienn'){
+		tl.style.height=parent.theleft.document.body.scrollHeight-36
+		tl2.style.height=parent.theleft.document.body.scrollHeight-36-65
+		tl.style.width=parent.bottom.document.body.clientWidth-2
+		tl2.style.width=parent.bottom.document.body.clientWidth-2
+	}
+	if (tl.style.visibility=='visible'){
+		tl.style.visibility='hidden'
+		tl2.style.visibility='hidden'
+		tl3.style.visibility='hidden'
+		rescroll()
+	}else{
+		tl.style.visibility='visible'
+		tl2.style.visibility='visible'
+		tl3.style.visibility='visible'
+		sendingleft=tl
+		sendinterval=setInterval('senditleft()',20)
+	}
+}
+
+function blogit(){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	document.body.scroll='no'
+	tl=getObject('blog1')	
+	tl2=getObject('blog2')
+	tl3=getObject('blog3')
+	if (tl.style.visibility=='hidden'){hideall()}
+	tl=getObject('blog1')	
+	tl2=getObject('blog2')
+	tl3=getObject('blog3')
+	clearmover()
+	currentleft=document.body.clientWidth
+	tl.style.left=currentleft
+	tl.style.top=document.body.scrollTop//+1
+	if (tbro=='ienn'){
+		tl.style.height=parent.theleft.document.body.scrollHeight-36
+		tl2.style.height=parent.theleft.document.body.scrollHeight-36-65
+		tl.style.width=parent.bottom.document.body.clientWidth-2
+		tl2.style.width=parent.bottom.document.body.clientWidth-2
+	}
+	if (tl.style.visibility=='visible'){
+		tl.style.visibility='hidden'
+		tl2.style.visibility='hidden'
+		tl3.style.visibility='hidden'
+		rescroll()
+	}else{
+		tl.style.visibility='visible'
+		tl2.style.visibility='visible'
+		tl3.style.visibility='visible'
+		sendingleft=tl
+		sendinterval=setInterval('senditleft()',20)
+	}
+}
+
+function commentit(){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	document.body.scroll='no'
+	tl=getObject('ff3h')	
+	tl2=getObject('ff3')
+	tl3=getObject('ff4')
+	if (tl.style.visibility=='hidden'){hideall()}
+	tl=getObject('ff3h')	
+	tl2=getObject('ff3')
+	tl3=getObject('ff4')
+	clearmover()
+	currentleft=document.body.clientWidth
+	tl.style.left=currentleft
+	tl.style.top=document.body.scrollTop//+1
+	if (tbro=='ienn'){
+		tl.style.height=parent.theleft.document.body.scrollHeight-36
+		tl2.style.height=parent.theleft.document.body.scrollHeight-36-65
+		tl.style.width=parent.bottom.document.body.clientWidth-2
+		tl2.style.width=parent.bottom.document.body.clientWidth-2
+	}
+	if (tl.style.visibility=='visible'){
+		tl.style.visibility='hidden'
+		tl2.style.visibility='hidden'
+		tl3.style.visibility='hidden'
+		rescroll()
+	}else{
+		tl.style.visibility='visible'
+		tl2.style.visibility='visible'
+		tl3.style.visibility='visible'
+		sendingleft=tl
+		sendinterval=setInterval('senditleft()',20)
+	}
+	subcomment()
+}
+
+function gtt(ttype, thisisit){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	msg=""
+	scounter=0
+	if (ttype==2){
+		for(i=0; i<rif.iitems.length; i++){	
+			stime=rif.iitemstime[i]
+			useit=1
+			if(typeof rif.usepause!='undefined'){
+				if (rif.usepause[stime/5]==0){useit=0}
+			}
+			if (useit==1){
+				scounter++
+				if (isipod){
+					msg=msg + "<A HREF='javascript:parent.middle.gotoit(" + stime + ")'><IMG border=0 hspace=6 vspace=6 SRC='_thumbnail" + (i+1) + ".jpg' width=180></A> "
+				}else{
+					msg=msg + "<IMG style='cursor:pointer' title='" + rif.iitems[i] + "' onmouseup='parent.middle.gotoit(" + stime + ")' hspace=6 vspace=6 SRC='_thumbnail" + (i+1) + ".jpg' width=180> "
+				}
+			}
+		}
+	}else{
+		for(i=0; i<parent.middle.rif.duration/5; i++){	
+			stime=(i)*5
+			useit=1
+			if(typeof rif.usepause!='undefined'){
+				if (rif.usepause[stime/5]==0){useit=0}
+			}
+			if (useit==1){
+				scounter++
+				if (isipod){
+					msg=msg + "<A HREF='javascript:parent.middle.gotoit(" + stime + ")'><IMG border=0 width=80 hspace=6 vspace=6 SRC='_thumbnail" + (i+1) + ".jpg'> "
+				}else{
+					msg=msg + "<IMG width=80 style='cursor:pointer' title='Step " + (scounter) + "' onmouseup='parent.middle.gotoit(" + stime + ")' hspace=6 vspace=6 SRC='_thumbnail" + (i+1) + ".jpg'> "
+				}
+			}
+		}
+	}
+	return msg
+
+}
+
+function showthumbs(ttype){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	document.body.scroll='no'
+	tl=getObject('thumbtable')	
+	tl2=getObject('thumbdiv')
+	tl3=getObject('thumbtext')
+	if (tl.style.visibility=='hidden'){hideall()}
+	tl=getObject('thumbtable')	
+	tl2=getObject('thumbdiv')
+	tl3=getObject('thumbtext')
+	if (tl2.innerHTML==''){
+		tl2.innerHTML=gtt(ttype)
+	}
+	clearmover()
+	currentleft=document.body.clientWidth
+	tl.style.left=currentleft
+	tl.style.top=document.body.scrollTop//+1
+	if (tbro=='ienn'){
+		tl.style.height=parent.theleft.document.body.scrollHeight-34
+		tl2.style.height=parent.theleft.document.body.scrollHeight-34-65
+		tl.style.width=parent.bottom.document.body.clientWidth-2
+		tl2.style.width=parent.bottom.document.body.clientWidth-2
+	}
+	if (tl.style.visibility=='visible'){
+		tl.style.visibility='hidden'
+		tl2.style.visibility='hidden'
+		tl3.style.visibility='hidden'
+		rescroll()
+	}else{
+		tl2.style.visibility='visible'
+		tl3.style.visibility='visible'
+		tl.style.visibility='visible'
+		sendingleft=tl
+		sendinterval=setInterval('senditleft()',20)
+	}
+	parent.middle.rif.focus()
+}
+
+function fur(rstring,rwith,rwith2){
+	rstring=new String(rstring)
+	do{
+		rstring=rstring.replace(rwith, rwith2)
+	}
+	while (rstring.indexOf(rwith, 1) > 0)
+	return rstring
+}
+
+function showscore(ttype){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	document.body.scroll='no'
+	tl=getObject('scoretable')	
+	tl2=getObject('scorediv')
+	tl3=getObject('scoretext')
+	if (ttype==0){
+		tl3=getObject('ps')
+		tl3.style.display='none'
+	}
+	if (tl.style.visibility=='hidden'){hideall()}
+	tl=getObject('scoretable')	
+	tl2=getObject('scorediv')
+	tl3=getObject('scoretext')
+	clearmover()
+	msg=parent.middle.rif.showResults(false)
+	msg2=parent.middle.rif.mcprint()
+	insertit=msg2 + "&nbsp;<BR>" + msg
+	insertit=fur(insertit,"<P>","<P style='color:#000000;font-family:Candara,Calibri,Verdana,Arial;font-size:11pt;'>")
+	tl2.innerHTML="<TABLE WIDTH=100% height=100% cellspacing=10><TD align=left valign=top><P style='color:#000000;font-family:Candara,Calibri,Verdana,Arial;font-size:11pt;'>" + insertit + "</P></TD></TABLE>"
+	currentleft=document.body.clientWidth
+	tl.style.left=currentleft
+	tl.style.top=document.body.scrollTop//+1
+	if (tbro=='ienn'){
+		tl.style.height=parent.theleft.document.body.scrollHeight-34
+		tl2.style.height=parent.theleft.document.body.scrollHeight-34-65
+		tl.style.width=parent.bottom.document.body.clientWidth-2
+		tl2.style.width=parent.bottom.document.body.clientWidth-2
+	}
+	if (tl.style.visibility=='visible'){
+		tl.style.visibility='hidden'
+		tl2.style.visibility='hidden'
+		tl3.style.visibility='hidden'
+		rescroll()
+	}else{
+		tl2.style.visibility='visible'
+		tl3.style.visibility='visible'
+		tl.style.visibility='visible'
+		sendingleft=tl
+		sendinterval=setInterval('senditleft()',20)
+	}
+}
+
+function printresults(){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	msg=parent.middle.rif.printAllResults(-1)
+}
+
+var currentleft=0
+var sendingleft=0
+var sendinterval=0
+
+function clearmover(){
+	clearInterval(sendinterval)
+	sendinterval=0
+}
+function senditleft(){
+	currentleft=currentleft-40
+	if (currentleft<0){currentleft=0}
+	sendingleft.style.left=currentleft
+	if (currentleft==0){
+		clearmover()
+		tl2=getObject('ff3')
+		if (tl2.style.visibility=='visible'){tl2.focus()}
+	}
+}
+
+function printit(){
+	rif.printit()
+}
+
+function emailit(){
+	rif.emailit()
+}
+
+function submitchat(){
+	reallyhidemen()
+	parent.middle.rif.focus()
+}
+
+function submitblog(){
+	reallyhidemen()
+	parent.middle.rif.focus()
+}
+
+function submitcomment(){
+	reallyhidemen()
+	parent.middle.rif.focus()
+	subcomment()
+}
+
+var thecomment=''
+function subcomment(){
+	tl2=getObject('ff3')
+	if (tl2.value!=thecomment&&parent.middle.rif.APIOK()==false&&parent.middle.rif.totalscore==0){
+		emailname=""
+		emailaddress=""
+		for(i=0; i<parent.middle.rif.f.length; i++){	
+			if (parent.middle.rif.f[i].upevent=='emailresults'||parent.middle.rif.f[i].downevent=='emailresults'){
+				edetails=parent.middle.rif.f[i].parameter.split("|")
+				emailname=edetails[0]
+				emailaddress=edetails[1]
+				break
+			}
+		}
+		if (emailaddress==""){emailaddress=mailemail}
+		if (emailname==""){emailname=mailaccount}
+		if (emailaddress!=''&&emailname!=''){
+			pio=getObject('pi')
+			pio.innerHTML = "<IFRAME style='visibility:visible;top:0;left:0;width:1;height:1;position:absolute;' id='printmainsource'></IFRAME>"
+			pio=getObject('printmainsource')
+			if (tbro=='ie'){
+				piod = pio.document
+			}else{
+				piod = pio.contentDocument
+			}
+			
+			piod.open()
+			piod.write ("<HTML><HEAD><TITLE>Email</TITLE></HEAD>")
+			piod.write ("<BODY onload='loadcomplete()' bgcolor='#FFFFFF' topmargin=0 leftmargin=0 rightmargin=0 bottommargin=0>")
+			piod.write ("<SCR" + "IPT>function loadcomplete(){")         
+				piod.write ("document.LMSDetails.submit()")
+			piod.write ("}")        
+			piod.write ("</SCR" + "IPT>")
+			
+			piod.writeln('<form name="LMSDetails" action="http://quizzes.knowledgepresenter.com/quizmaker/remoteemail.asp" method="POST">')
+			piod.writeln('<input type=hidden value="' + emailname + '" name="Account">');
+			piod.writeln('<input type=hidden value="' + emailaddress + '" name="Email">');
+			piod.writeln('<input type=hidden value="' + tl2.value + '" name="Data">');
+			piod.writeln('<input type=hidden value="' + parent.middle.rif.document.title + '" name="Lesson">');
+			piod.writeln('<input type=hidden value="' + parent.middle.rif.username + '" name="Username">');
+			
+			piod.write ("</BODY></HTML>")
+			piod.close()
+		}
+	}
+	thecomment = tl2.value
+}
+
+function gotoit(thetime){
+	if (parent.middle.rif.LMSInitialzes==false){return}
+	if (parent.middle.rif.thepos==-1){
+		alert ("You cannot navigate to a new step from this step.\n\nPlease follow the on screen instructions.")
+		return
+	}
+	cannav=true
+	if (parent.bottom.overridenav==0){
+		if (parent.bottom.hasscore&&parent.bottom.allowquestion==1){cannav=false}
+		if (parent.bottom.cangoback==false||parent.bottom.cangonext==false||parent.bottom.cannav==false){cannav=false}
+	}
+	if (cannav==false){
+		if(typeof parent.bottom.completemove=='undefined'){parent.bottom.completemove=0}
+		if (parent.bottom.completemove==1&&parent.middle.rif.t_lesson_status=='donenr'){
+			alert ("You have already completed this lesson, and submitted your results.\n\nYou can no longer use the index to move around.")
+		}else{
+			alert ("You cannot navigate to a new step from this step.\n\nPlease follow the on screen instructions.")
+		}
+	}else{
+		reallyhidemen()
+		rif.gotoTime(-thetime)
+	}
+	parent.middle.rif.focus()
+}
+
+function domen(i,thename,thetime, ftime){
+	noi=i+1, ioq=0
+	if (parent.bottom.currentname==thename){
+		rif.iitemsbt[i]=1, ioq=1
+		if (ni==1){
+			thename="<B>" + noi + ". " + thename + "</B>"
+		}else{
+			thename="<B>" + thename + "</B>"
+		}
+	}else{
+		if (ni==1){
+			thename=noi + ". " + thename + "</B>"
+		}else{
+			thename=thename
+		}
+	}
+	binfo="", ainfo=0
+	if (rif.iitemsbt[i]==0&&indicators==1){ainfo=4} //step with no questions done
+	if (rif.iitemsbt[i]!=0&&indicators==1){ainfo=1} //step with no questions done
+	if (rif.iitemssc[i]==2&&indicators==1){ainfo=2} //step with a question completed
+	if (rif.iitemssc[i]==1&&indicators==1){ainfo=3} //step with a question not completed
+	if (rif.iitemssc[i]!=0&&indicators==1&&ioq==1){ainfo=5} //step with a question curreently on
+	if (rif.iitemssc[i]==0&&indicators==1&&ioq==1){ainfo=6} //step curreently on
+	if (parent.bottom.widescreen==1){
+		binfo="border-top-style:solid;border-top-color:#808080;border-top-width:1px;"
+	}else{
+		if (tbro=='ie'){binfo="border-right-style:solid;border-right-color:#808080;border-right-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;cursor:pointer;"}
+		if (tbro=='ienn'&&ftime==false){binfo="border-right-style:solid;border-right-color:#808080;border-right-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;cursor:pointer;"}
+		if (tbro=='ienn'&&ftime==true){binfo="border-bottom-style:solid;border-bottom-color:#808080;border-bottom-width:1px;border-right-style:solid;border-right-color:#808080;border-right-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;cursor:pointer;"}
+	}
+	if (i==0){
+		if (parent.bottom.widescreen==0){
+			binfo="border-right-style:solid;border-right-color:#808080;border-right-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;cursor:pointer;"
+		}else{
+			binfo="cursor:pointer;"
+		}
+	}
+	addidinfo=""
+	if (ioq==1){addidinfo=" id='_kpcsss'"}
+	if (ainfo==0||ainfo==4||ainfo==3){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:200px;' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	if (ainfo==1){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='You have visited this step in this session.'><IMG SRC='_kptickdone.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	if (ainfo==2){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='You have visited this step in this session.'><IMG SRC='_kptickqdone.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	if (ainfo==5){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='You are currently viewing this step.'><IMG SRC='_kptickqdoing.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	if (ainfo==6){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='You are currently viewing this step.'><IMG SRC='_kptickon.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	//if (ainfo==3){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='XZX4'><IMG SRC='_kptickq.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+	//if (ainfo==4){return "<DIV"+addidinfo+"><TABLE cellspacing=0 width=200 cellpadding=0><TD style='" + binfo + "width:22px;' valign=middle align=center><P class=menutext style='cursor:default;' title='XZX4'><IMG SRC='_kptick.png' width=20 height=20></TD><TD width=* style='" + binfo + "' class=menuselect onmouseout='this.className=\"menuselect\"' onmouseover='this.className=\"menuselectover\"' onmouseup='parent.middle.gotoit(" + thetime + ")'><P class=menutext style='cursor:pointer;margin-left:4px;margin-right:4px;margin-top:4px;margin-bottom:4px;'>"+thename+"</TD></TABLE></DIV>"}
+}
+var hasloaded=false
+var canloadfull=true
+if (issafari){
+	document.write("<DIV id='mf' style='width:100%;height:100%'>")
+document.write("<IFRAME id='ff' scrolling='no' frameborder=no src='saltwatercrocodiles.html" + location.search + "' style='width:100%;height:100%'></IFRAME>")
+document.write('</DIV>')
+
+	
+}else{
+	if (1==1){
+document.write("<DIV id='mf' style='width:100%;height:100%'>")
+document.write("<IFRAME id='ff' scrolling='no' frameborder=no src='saltwatercrocodiles.html" + location.search + "' style='width:100%;height:100%'></IFRAME>")
+document.write('</DIV>')
+}else{
+
+	document.write("<IFRAME id='ff' scrolling='no' frameborder=no src='saltwatercrocodiles.html" + location.search + "' style='width:772;height:475'></IFRAME>")
+	}
+
+}
+document.write("</TD></TABLE>")
+document.write("<TABLE id='ff2h' cellspacing=0 cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%'><TD align=right valign=bottom>")
+document.write("<DIV id='ff2' style='visibility:hidden;height:100%;width:200px'></DIV>")
+document.write("</TD></TABLE>")
+
+if (tbro=='ienn'){
+	document.write("<TABLE id='blog1' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-right-style:solid;border-right-color:#FFFFFF;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#FFFFFF;border-bottom-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;'>")
+}else{
+	document.write("<TABLE id='blog1' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;'>")
+}
+document.write("<TR><TD align=center valign=middle>")
+document.write("<DIV id='blog2'></DIV>")
+document.write("</TD></TR>")
+
+document.write("<TR height=65><TD class=slidescreens align=center valign=middle>")
+document.write("<DIV id='blog3'><P style='margin-bottom:6px;'>Participate in the blog for this lesson, above.</P>")
+document.write("<IMG onclick='submitchat()' style='cursor:pointer' SRC='_kpnav_hblog.gif'></DIV>")
+document.write("</TD></TR></TABLE>")
+
+if (tbro=='ienn'){
+	document.write("<TABLE id='chat1' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-right-style:solid;border-right-color:#FFFFFF;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#FFFFFF;border-bottom-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;'>")
+}else{
+	document.write("<TABLE id='chat1' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;'>")
+}
+document.write("<TR><TD align=center valign=middle>")
+
+document.write("<DIV id='chat2'></DIV>")
+document.write("</TD></TR>")
+
+document.write("<TR height=65><TD class=slidescreens align=center valign=middle>")
+document.write("<DIV id='chat3'><P style='margin-bottom:6px;'></P>")
+document.write("<IMG onclick='submitchat()' style='cursor:pointer' SRC='_kpnav_hchat.gif'></DIV>")
+document.write("</TD></TR></TABLE>")
+
+
+
+if (tbro=='ienn'){
+	document.write("<TABLE id='ff3h' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-right-style:solid;border-right-color:#FFFFFF;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#FFFFFF;border-bottom-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;'>")
+}else{
+	document.write("<TABLE id='ff3h' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;'>")
+}
+document.write("<TR><TD align=center valign=middle>")
+document.write("<TEXTAREA id='ff3' style='width:100%;height:100%' value=''></TEXTAREA>")
+document.write("</TD></TR>")
+
+document.write("<TR height=65><TD class=slidescreens align=center valign=middle>")
+document.write("<DIV id='ff4'><P style='margin-bottom:6px;'>Enter your comment above.</P>")
+document.write("<IMG onclick='submitcomment()' style='cursor:pointer' SRC='_kpnav_hc.gif'></DIV>")
+document.write("</TD></TR></TABLE>")
+
+if (tbro=='ienn'){
+	document.write("<TABLE id='thumbtable' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-right-style:solid;border-right-color:#FFFFFF;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#FFFFFF;border-bottom-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;'>")
+	document.write("<TR><TD align=center valign=middle>")
+	document.write("<DIV id='thumbdiv' style='overflow:scroll;overflow:-moz-scrollbars-vertical;width:100%;height:100%' value=''></DIV>")
+	document.write("</TD></TR>")
+}else{
+	document.write("<TABLE id='thumbtable' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;'>")
+	document.write("<TR><TD align=center valign=middle>")
+	document.write("<DIV id='thumbdiv' style='overflow-y:scroll;width:100%;height:100%' value=''></DIV>")
+	document.write("</TD></TR>")
+}
+
+document.write("<TR height=65><TD class=slidescreens align=center valign=middle>")
+document.write("<DIV id='thumbtext'><P style='margin-bottom:6px;'>Select a thumbnail above..</P>")
+document.write("<IMG onclick='submitcomment()' style='cursor:pointer' SRC='_kpnav_ht.gif'></DIV>")
+document.write("</TD></TR></TABLE>")
+if (tbro=='ienn'){
+	document.write("<TABLE id='scoretable' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;border-right-style:solid;border-right-color:#FFFFFF;border-right-width:1px;border-bottom-style:solid;border-bottom-color:#FFFFFF;border-bottom-width:1px;border-top-style:solid;border-top-color:#808080;border-top-width:1px;border-left-style:solid;border-left-color:#808080;border-left-width:1px;'>")
+	document.write("<TR><TD align=left valign=top>")
+	document.write("<DIV id='scorediv' style='overflow:scroll;overflow:-moz-scrollbars-vertical;width:100%;height:100%' value=''></DIV>")
+	document.write("</TD></TR>")
+}else{
+	document.write("<TABLE id='scoretable' border=0 cellspacing=0 bgcolor=white cellpadding=0 style='visibility:hidden;position:absolute;left:0;top:0;width:100%;height:100%;'>")
+	document.write("<TR><TD align=center valign=middle>")
+	document.write("<DIV id='scorediv' style='overflow-y:scroll;width:100%;height:100%' value=''></DIV>")
+	document.write("</TD></TR>")
+}
+document.write("<TR height=65><TD class=slidescreens align=center valign=middle>")
+document.write("<DIV id='scoretext'>")
+document.write("<IMG onclick='submitcomment()' SRC='_kpnav_hs.gif' style='cursor:pointer'>&nbsp;<IMG id='ps' SRC='_kpnav_ps.gif' style='cursor:pointer;display:inline' onclick='printresults()'></DIV>")
+document.write("</TD></TR></TABLE>")
+document.write("<DIV id='pi' style='width:1;height:1;left:0;top:1;'></DIV>")
+</SCRIPT>
+</BODY>
+</HTML>
+
+
+
+
