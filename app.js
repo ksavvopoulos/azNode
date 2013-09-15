@@ -15,7 +15,9 @@ var express = require('express'),
     mimeTypes = require('./mimeTypes.js'),
     fs = require('fs'),
     formidable = require('formidable'),
-    format = require('util').format;
+    format = require('util').format,
+    Zip = require('adm-zip'),
+    streamifier = require('streamifier');
 
 var app = express();
 
@@ -249,7 +251,6 @@ app.post('/upload', function(req, res) {
             uploadDir: __dirname + '/upload'
         });
 
-
     log('Blob Service has been created...');
     log('Initialized Read Stream');
 
@@ -267,7 +268,8 @@ app.post('/upload', function(req, res) {
     });
 
     form.onPart = function(part) {
-        var blobService, lessonfolder, parsedZip, paused = false;
+        var blobService, lessonfolder, writeStream;
+
         log('Received Part');
 
         if (!part.filename) {
@@ -279,54 +281,41 @@ app.post('/upload', function(req, res) {
             return;
         }
 
-
-
-        blobService = azure.createBlobService('indtestblob',
-            '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==');
-
-
         lessonfolder = part.filename.replace('.zip', '');
 
-        parsedZip = part.pipe(unzip.Parse({
-            verbose: true
-        }));
+        writeStream = fs.createWriteStream(__dirname + '/upload/' + part.filename);
 
-        parsedZip.on('entry', function(entry) {
+        part.pipe(writeStream);
 
-            var path = entry.path,
-                ext = path.split('.').pop(),
-                contentType = mimeTypes[ext];
-
-            if (!contentType) {
-                unKnownExtensions.push(ext);
-            }
-            //log('-----------------Parsed Zip is Paused : ' + parsedZip.paused);
-            log('Entry size :' + entry.size);
-
-            log('Entry type: ' + entry.type);
-            log('Entry readable:' + entry.readable);
-            log('Entry path:' + path);
-            log('Extension :' + ext);
-            log('Mime Type : ' + contentType);
+        writeStream.on('finish', function() {
+            log('extract complete');
+            //var readStream = fs.createReadStream(__dirname + '/upload/energy.zip');
+            var zip = new Zip(__dirname + '/upload/' + part.filename),
+                blobService = azure.createBlobService('indtestblob',
+                    '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
 
+            zip.getEntries().forEach(function(entry) {
+                if (entry.isDirectory === false) {
+                    var decompressedData = zip.readFile(entry),
+                        streamedData = streamifier.createReadStream(decompressedData),
+                        path = entry.entryName,
+                        ext = path.split('.').pop(),
+                        contentType = mimeTypes[ext];
 
-            if (entry.type === 'File') {
-                counter += 1;
+                    counter += 1;
 
-                setImmediate(function() {
-                   // req.resume();
-
-                    blobService.createBlockBlobFromStream(container,
+                    blobService.createBlockBlobFromStream('repository',
                         lessonfolder + '/' + path,
-                        entry,
-                        entry.size, {
+                        streamedData,
+                        entry.header.size, {
                             contentTypeHeader: contentType
                         },
                         function(error) {
                             if (!error) {
                                 counter -= 1;
                                 log('Blob ' + path + ' created!');
+                                log('counter: ' + counter);
                                 if (!counter) {
                                     res.send('<body style="background-color: rgb(239, 239, 239);">' +
                                         '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '</p>' +
@@ -339,56 +328,26 @@ app.post('/upload', function(req, res) {
                                         '</script>' +
                                         '</body>');
                                     log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
+                                    fs.unlink(__dirname + '/upload/' + part.filename);
                                 }
                             } else {
                                 log('------------------------Blob Error------------------------------');
                                 log(error);
                                 log('------------------------Error End-------------------------------');
-                                res.send('<body style="background-color: rgb(239, 239, 239);"><p> There was an error: ' + error + error.message + '</p></body>');
+                                res.send(error);
                             }
                         }
                     );
-
-                });
-
-            } else {
-                count += 1;
-                entry.autodrain();
-                log('Folder' + count);
-            }
-        });
-
-        parsedZip.on('end', function() {
-            log('---------------------------Unzipinng Stream completed------------------------------');
-            var len = unKnownExtensions.length,
-                i;
-            if (len) {
-                for (i = 0; i < len; i++) {
-                    log('Unknown Extension: ' + unKnownExtensions[i]);
                 }
-            } else {
-                log('I knew all the extensions mime type');
-            }
+            });
         });
 
-        parsedZip.on('error', function(err) {
-            res.send("<script type='text/javascript'>say(" + err + "); alert('Please try upload again');");
-            log('ZIP ERROR: ' + err);
-        });
+
+
     };
 
     form.on('error', function(error) {
         log("Error in Processing the Form : " + error);
-    });
-
-    form.on('progress', function(bytesReceived, bytesExpected) {
-        log("bytesReceived, bytesExpected : " + bytesReceived +" "+ bytesExpected);
-        req.pause();
-        log("req paused");
-        setTimeout(function(){
-            req.resume();
-            log("req resumed");
-        },500);
     });
 
     form.parse(req);
