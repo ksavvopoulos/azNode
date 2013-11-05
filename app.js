@@ -245,7 +245,7 @@ app.post('/upload', function(req, res) {
     log('---------------------Request to /upload ------------------------------');
     var counter = 0,
         count = 0,
-        container,
+        container = "repository",
         unKnownExtensions = [],
         form = new formidable.IncomingForm({
             uploadDir: __dirname + '/upload'
@@ -305,7 +305,7 @@ app.post('/upload', function(req, res) {
 
                     counter += 1;
 
-                    blobService.createBlockBlobFromStream('repository',
+                    blobService.createBlockBlobFromStream(container,
                         lessonfolder + '/' + path,
                         streamedData,
                         entry.header.size, {
