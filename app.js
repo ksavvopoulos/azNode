@@ -66,7 +66,7 @@ app.get('/', function(req, res) {
     log('---------------------Request to / ------------------------------');
     res.send('<body style="background-color: rgb(239, 239, 239);">' +
         '<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
-        '<img src="/images/ajaxLoader.gif" /> </table>' +
+        '<img src="http://preloaders.net/preloaders/5/Filled%20fading%20balls.gif" /> </table>' +
         '</div>' +
         '<form  method="post" action="/upload" enctype="multipart/form-data">' +
         '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
@@ -318,7 +318,7 @@ app.post('/upload', function(req, res) {
                                 log('counter: ' + counter);
                                 if (!counter) {
                                     res.send('<body style="background-color: rgb(239, 239, 239);">' +
-                                        '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '</p>' +
+                                        '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
                                         '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
                                         '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
                                         '<script type="text/javascript">' +
