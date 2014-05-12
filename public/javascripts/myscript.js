@@ -47,7 +47,7 @@ $('form').on('submit', function(e) {
     } else {
         $this.ajaxSubmit({
             url: '/upload',
-            uploadProgress: function(e, p,) {
+            uploadProgress: function(e, p) {
                 say(e);
                 say(p);
                 $progress.css('width',e+'%');
