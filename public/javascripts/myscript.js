@@ -39,6 +39,7 @@ function say(what) {
 $('form').on('submit', function(e) {
     e.preventDefault();
     var $this = $(this);
+    var $progress = $('#progress');
 
     if (!$("form input[type=file]").val()) {
         alert('You must select a file!');
@@ -46,12 +47,14 @@ $('form').on('submit', function(e) {
     } else {
         $this.ajaxSubmit({
             url: '/upload',
-            uploadProgress: function(e, p, t, p) {
+            uploadProgress: function(e, p,) {
                 say(e);
                 say(p);
-                say(t);
-                say(p);
+                $progress.css('width',e+'%');
             },
+            success:function(data){
+                $('body').html(data);
+            }
         });
 
         $this.hide();

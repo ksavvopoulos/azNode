@@ -326,16 +326,14 @@ app.post('/upload', function(req, res) {
                                 log('Blob ' + path + ' created!');
                                 log('counter: ' + counter);
                                 if (!counter) {
-                                    res.send('<body style="background-color: rgb(239, 239, 239);">' +
-                                        '<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
+                                    res.send('<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
                                         '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
                                         '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
                                         '<script type="text/javascript">' +
                                         ' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' +
                                         lessonfolder +
                                         '" });' +
-                                        '</script>' +
-                                        '</body>');
+                                        '</script>');
                                     log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
                                     fs.unlink(__dirname + '/upload/' + part.filename);
                                 }
