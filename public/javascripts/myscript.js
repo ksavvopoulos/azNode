@@ -26,13 +26,15 @@ $('#submit').click(function () {
         alert('You must select a file!');
         return false;
     } else {
+        getProgress();
 		$form.hide();
 		$('#img').show();
 	}
 });
 
 function getProgress(){
-    $.get('/progress').done(function(){
+    $.get('/progress').done(function(progress){
+        say(progress);
         setTimeout(getProgress,50);
     });
 }
