@@ -100,16 +100,17 @@ app.get('/updateScorm', function(req, res) {
 
 });
 
-app.get('/clear', function(req, res) {
+app.get('/clearContainerContents/:container', function(req, res) {
     var blobService;
+    var container = req.params.container;
 
     blobService = azure.createBlobService('indtestblob',
         '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
 
-    blobService.listBlobs('scorm', function(error, blobs) {
+    blobService.listBlobs(container, function(error, blobs) {
         if (!error) {
             for (var index in blobs) {
-                blobService.deleteBlob('scorm',
+                blobService.deleteBlob(container,
                     blobs[index].name,
                     clearError);
 
@@ -311,6 +312,9 @@ app.post('/upload', function(req, res) {
                 if (!error) {
                     // Container exists and is public
                     cb();
+                }else{
+                    log(error);
+                    res.send(error);
                 }
             });
         }
