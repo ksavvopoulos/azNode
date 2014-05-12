@@ -47,11 +47,12 @@ $('form').on('submit', function(e) {
     } else {
         $this.ajaxSubmit({
             url: '/upload',
-            uploadProgress: function(totalSize, position) {
-                var percent = parseInt(position / totalSize, 10);
-                say(totalSize);
-                say(position);
-                say(percent);
+            uploadProgress: function(progressEvent) {
+                var totalSize = progressEvent.totalSize;
+                var loaded = progressEvent.loaded;
+                var percent = (loaded / totalSize) * 100;
+                
+                percent = parseInt(percent, 10);
                 $progress.css('width', percent + '%');
             },
             success: function(data) {
