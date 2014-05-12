@@ -254,6 +254,13 @@ app.post('/upload', function(req, res) {
     log('Blob Service has been created...');
     log('Initialized Read Stream');
 
+    function containerExists() {
+        if (containers.indexOf(container) !== -1) {
+            return true;
+        }
+        return false;
+    }
+
     form.on('field', function(name, value) {
         log('===================================================================');
         log(name + ' ' + value);
@@ -288,12 +295,33 @@ app.post('/upload', function(req, res) {
         part.pipe(writeStream);
 
         writeStream.on('finish', function() {
+            createBlobService();
+            createContainerIfNotExists(moveScormToContainer);
+        });
+
+        function createBlobService() {
+            blobService = azure.createBlobService('indtestblob',
+                '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
+        }
+
+        function createContainerIfNotExists(cb) {
+            blobService.createContainerIfNotExists(container, {
+                publicAccessLevel: 'container'
+            }, function(error) {
+                if (!error) {
+                    // Container exists and is public
+                    cb();
+                }
+            });
+        }
+
+
+
+        function moveScormToContainer() {
+
             log('extract complete');
             //var readStream = fs.createReadStream(__dirname + '/upload/energy.zip');
-            var zip = new Zip(__dirname + '/upload/' + part.filename),
-                blobService = azure.createBlobService('indtestblob',
-                    '0eg17FS5REKaUBzgoxI3oO4OWw2T83Nph0zh70F8AtfWi5Xug2LAXvdNFFrO80jlpNe9ww8Jd//VJqUWtq9XSg==').withFilter(new azure.ExponentialRetryPolicyFilter());
-
+            var zip = new Zip(__dirname + '/upload/' + part.filename);
 
             zip.getEntries().forEach(function(entry) {
                 if (entry.isDirectory === false) {
@@ -340,10 +368,7 @@ app.post('/upload', function(req, res) {
                     );
                 }
             });
-        });
-
-
-
+        }
     };
 
     form.on('error', function(error) {
