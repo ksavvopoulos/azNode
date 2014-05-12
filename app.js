@@ -24,7 +24,6 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(logErrors);
@@ -51,7 +50,7 @@ function logErrors(err, req, res, next) {
 function clientErrorHandler(err, req, res, next) {
     if (req.xhr) {
         res.send(500, {
-            error: 'egine '
+            error: err
         });
     } else {
         next(err);
@@ -64,23 +63,24 @@ function errorHandler(err, req, res, next) {
 
 app.get('/', function(req, res) {
     log('---------------------Request to / ------------------------------');
-    res.send('<body style="background-color: rgb(239, 239, 239);">' +
-        '<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
-        '<img src="http://preloaders.net/preloaders/5/Filled%20fading%20balls.gif" /> </table>' +
-        '</div>' +
-        '<form  method="post" action="/upload" enctype="multipart/form-data">' +
-        '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
-        '<input type="file" name="file" required/>' +
-        '<input id="submit" type="submit" value="Upload" />' +
-        '</form>' +
-        '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
-        '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
-        '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
-        '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
-        '<script type="text/javascript">' +
-        'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
-        '</script>' +
-        '</body>');
+    // res.send('<body style="background-color: rgb(239, 239, 239);">' +
+    //     '<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
+    //     '<img src="http://preloaders.net/preloaders/5/Filled%20fading%20balls.gif" /> </table>' +
+    //     '</div>' +
+    //     '<form  method="post" action="/upload" enctype="multipart/form-data">' +
+    //     '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
+    //     '<input type="file" name="file" required/>' +
+    //     '<input id="submit" type="submit" value="Upload" />' +
+    //     '</form>' +
+    //     '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
+    //     '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
+    //     '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
+    //     '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
+    //     '<script type="text/javascript">' +
+    //     'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
+    //     '</script>' +
+    //     '</body>');
+    res.sendfile('views/index.html');
 
     log('--------------------Response from / -------------------------');
 });
