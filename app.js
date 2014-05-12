@@ -307,7 +307,7 @@ app.post('/upload', function(req, res) {
 
         function createContainerIfNotExists(cb) {
             blobService.createContainerIfNotExists(container, {
-                publicAccessLevel: 'container'
+                publicAccessLevel: 'blob'
             }, function(error) {
                 if (!error) {
                     // Container exists and is public
@@ -318,8 +318,6 @@ app.post('/upload', function(req, res) {
                 }
             });
         }
-
-
 
         function moveScormToContainer() {
 
