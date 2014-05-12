@@ -20,12 +20,20 @@ function say(what) {
 
 
 $('#submit').click(function () {
+    var $form = $('form');
+
 	if(!$("form input[type=file]").val()) {
         alert('You must select a file!');
         return false;
     } else {
-		$('form').hide();
+		$form.hide();
 		$('#img').show();
 	}
 });
+
+function getProgress(){
+    $.get('/progress').done(function(){
+        setTimeout(getProgress,50);
+    });
+}
 	

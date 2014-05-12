@@ -62,27 +62,7 @@ function errorHandler(err, req, res, next) {
 }
 
 app.get('/', function(req, res) {
-    log('---------------------Request to / ------------------------------');
-    // res.send('<body style="background-color: rgb(239, 239, 239);">' +
-    //     '<div id="img" style="display:none;"> <table width="100%" border="0"> Uploading. Please wait...</br>' +
-    //     '<img src="http://preloaders.net/preloaders/5/Filled%20fading%20balls.gif" /> </table>' +
-    //     '</div>' +
-    //     '<form  method="post" action="/upload" enctype="multipart/form-data">' +
-    //     '<input type="text" name="container" id="container" value="repository" style="display:none;" />' +
-    //     '<input type="file" name="file" required/>' +
-    //     '<input id="submit" type="submit" value="Upload" />' +
-    //     '</form>' +
-    //     '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
-    //     '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
-    //     '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
-    //     '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
-    //     '<script type="text/javascript">' +
-    //     'SendMessage({"theFunction":"tellMeTheOrganizationName", "thaData":""});' +
-    //     '</script>' +
-    //     '</body>');
     res.sendfile('views/index.html');
-
-    log('--------------------Response from / -------------------------');
 });
 
 app.get('/updateScorm', function(req, res) {
@@ -239,7 +219,6 @@ app.post('/scormUpdated', function(req, res) {
     };
 
     form.parse(req);
-
 });
 
 app.post('/upload', function(req, res) {
@@ -378,7 +357,10 @@ app.post('/upload', function(req, res) {
     });
 
     form.parse(req);
+});
 
+app.get('/progress',function(req,res){
+    res.send({progress:'10'});
 });
 
 http.createServer(app).listen(app.get('port'), function() {
