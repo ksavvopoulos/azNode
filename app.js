@@ -223,23 +223,14 @@ app.post('/scormUpdated', function(req, res) {
 
 app.post('/upload', function(req, res) {
     log('---------------------Request to /upload ------------------------------');
-    var counter = 0,
-        count = 0,
-        container = "repository",
-        unKnownExtensions = [],
-        form = new formidable.IncomingForm({
+    var container = "repository";
+    var form = new formidable.IncomingForm({
             uploadDir: __dirname + '/upload'
         });
+    var tempFileName = Date.now().toString() +'.zip';
 
     log('Blob Service has been created...');
     log('Initialized Read Stream');
-
-    function containerExists() {
-        if (containers.indexOf(container) !== -1) {
-            return true;
-        }
-        return false;
-    }
 
     form.on('field', function(name, value) {
         log('===================================================================');
@@ -268,6 +259,11 @@ app.post('/upload', function(req, res) {
             return;
         }
 
+        // res.writeHead(200, {
+        //     'Content-Type': 'text/html',
+        //     'Transfer-Encoding': 'chunked'
+        // });
+
         lessonfolder = part.filename.replace('.zip', '');
 
         writeStream = fs.createWriteStream(__dirname + '/upload/' + part.filename);
@@ -291,7 +287,7 @@ app.post('/upload', function(req, res) {
                 if (!error) {
                     // Container exists and is public
                     cb();
-                }else{
+                } else {
                     log(error);
                     res.send(error);
                 }
@@ -303,49 +299,70 @@ app.post('/upload', function(req, res) {
             log('extract complete');
             //var readStream = fs.createReadStream(__dirname + '/upload/energy.zip');
             var zip = new Zip(__dirname + '/upload/' + part.filename);
+            var entries = zip.getEntries();
+            var files = [];
+            var totalFiles;
+            var remainingFiles;
 
-            zip.getEntries().forEach(function(entry) {
+            entries.forEach(function(entry) {
                 if (entry.isDirectory === false) {
-                    var decompressedData = zip.readFile(entry),
-                        streamedData = streamifier.createReadStream(decompressedData),
-                        path = entry.entryName,
-                        ext = path.split('.').pop(),
-                        contentType = mimeTypes[ext];
-
-                    counter += 1;
-
-                    blobService.createBlockBlobFromStream(container,
-                        lessonfolder + '/' + path,
-                        streamedData,
-                        entry.header.size, {
-                            contentTypeHeader: contentType
-                        },
-                        function(error) {
-                            if (!error) {
-                                counter -= 1;
-                                log('Blob ' + path + ' created!');
-                                log('counter: ' + counter);
-                                if (!counter) {
-                                    res.send('<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
-                                        '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
-                                        '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
-                                        '<script type="text/javascript">' +
-                                        ' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' +
-                                        lessonfolder +
-                                        '" });' +
-                                        '</script>');
-                                    log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
-                                    fs.unlink(__dirname + '/upload/' + part.filename);
-                                }
-                            } else {
-                                log('------------------------Blob Error------------------------------');
-                                log(error);
-                                log('------------------------Error End-------------------------------');
-                                res.send(error);
-                            }
-                        }
-                    );
+                    files.push(entry);
                 }
+            });
+
+            totalFiles = files.length;
+            remainingFiles = totalFiles;
+
+            files.forEach(function(file) {
+                var decompressedData = zip.readFile(file),
+                    streamedData = streamifier.createReadStream(decompressedData),
+                    path = file.entryName,
+                    ext = path.split('.').pop(),
+                    contentType = mimeTypes[ext];
+
+                blobService.createBlockBlobFromStream(container,
+                    lessonfolder + '/' + path,
+                    streamedData,
+                    file.header.size, {
+                        contentTypeHeader: contentType
+                    },
+                    function(error) {
+                        if (!error) {
+                            remainingFiles -= 1;
+                            // log('totalFiles :' + totalFiles);
+                            // log('remainingFiles :' + remainingFiles);
+                            // log('Blob ' + path + ' created!');
+                            
+                            if (!remainingFiles) {
+                                // res.write('<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
+                                //     '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
+                                //     '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
+                                //     '<script type="text/javascript">' +
+                                //     ' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' +
+                                //     lessonfolder +
+                                //     '" });' +
+                                //     '</script>');
+                                // res.end();
+                                res.send('<p>Lesson uploaded in ' + container + '/' + lessonfolder + '<br/>Please wait for page redirect...</p>' +
+                                    '<script type="text/javascript" src="/javascripts/json2.js"></script>' +
+                                    '<script type="text/javascript" src="/javascripts/postMessages.js"></script>' +
+                                    '<script type="text/javascript">' +
+                                    ' SendMessage( { "theFunction" : "zipUploaded", "theData" : "' +
+                                    lessonfolder +
+                                    '" });' +
+                                    '</script>');
+                                //log('------------------Blobs Creation was succesfull.  Response from /upload  -------------------');
+                                fs.unlink(__dirname + '/upload/' + part.filename);
+                            }
+                        } else {
+                            // log('------------------------Blob Error------------------------------');
+                            // log(error);
+                            // log('------------------------Error End-------------------------------');
+                            res.send(error);
+                        }
+                    }
+                );
+
             });
         }
     };
@@ -357,8 +374,10 @@ app.post('/upload', function(req, res) {
     form.parse(req);
 });
 
-app.get('/progress',function(req,res){
-    res.send({progress:'10'});
+app.get('/progress', function(req, res) {
+    res.send({
+        progress: '10'
+    });
 });
 
 http.createServer(app).listen(app.get('port'), function() {

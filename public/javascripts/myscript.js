@@ -48,12 +48,16 @@ $('form').on('submit', function(e) {
         $this.ajaxSubmit({
             url: '/upload',
             uploadProgress: function(progressEvent) {
-                var totalSize = progressEvent.totalSize;
+                var totalSize = progressEvent.totalSize || progressEvent.total;
                 var loaded = progressEvent.loaded;
                 var percent = (loaded / totalSize) * 100;
                 
                 percent = parseInt(percent, 10);
                 $progress.css('width', percent + '%');
+
+                if(loaded>=totalSize){
+                    unzipProgress();
+                } 
             },
             success: function(data) {
                 $('body').html(data);
@@ -61,6 +65,11 @@ $('form').on('submit', function(e) {
         });
 
         $this.hide();
-        $('#img').show();
+        $('#progress').show();
     }
-});
+
+    function unzipProgress(){
+        $('#unzipping').hide();
+        $('#uploading').show();
+    }
+}); 
