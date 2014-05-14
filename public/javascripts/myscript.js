@@ -42,6 +42,8 @@ $('form').on('submit', function(e) {
     var $progress = $('#progress');
     var $uploading = $('#uploading');
     var $unzipping = $('#unzipping');
+    var $uploadText = $('#uploadText');
+    var $unzipText = $('#unzipText');
     var $bar = $('#bar');
 
     if (!$("form input[type=file]").val()) {
@@ -54,13 +56,13 @@ $('form').on('submit', function(e) {
                 var totalSize = progressEvent.totalSize || progressEvent.total;
                 var loaded = progressEvent.loaded;
                 var percent = (loaded / totalSize) * 100;
-                
+
                 percent = parseInt(percent, 10);
                 $bar.css('width', percent + '%');
 
-                if(loaded>=totalSize){
+                if (loaded >= totalSize) {
                     unzipProgress();
-                } 
+                }
             },
             success: function(data) {
                 $('body').html(data);
@@ -71,8 +73,10 @@ $('form').on('submit', function(e) {
         $progress.show();
     }
 
-    function unzipProgress(){
-        $uploading.css('display','none');
-        $unzipping.css('opacity','1');
+    function unzipProgress() {
+        $uploadText.text('Uploading...Done');
+        $unzipText.text('Unzipping...');
+        $uploading.css('display', 'none');
+        $unzipping.css('opacity', '1');
     }
-}); 
+});

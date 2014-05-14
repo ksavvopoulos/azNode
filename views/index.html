@@ -7,17 +7,19 @@
 <body>
     <div id="progress" style="display:none;">
     	<div id="uploading">
-            <div id="barbackground" style="height:5px;width:100%;background-color:rgb(100,148,237);position:absolute;"></div>
-            <div id="bar" style="height:5px;width:0%;background-color:blue;position:absolute;"></div>
-            <br/><br/>
-            <div>Uploading. Please wait...</div>
+            <div id="barbackground" style="height:12px;width:100%;background-color:rgb(182,205,246);position:absolute;"></div>
+            <div id="bar" style="height:12px;width:0%;background-color:blue;position:absolute;"></div>
         </div>
     	<div id="unzipping" width="100%" style="opacity:0;" >
-            <div>Unzipping. Please wait...</div>
     		<div>
-                <img src="http://preloaders.net/preloaders/5/Filled%20fading%20balls.gif" />
+                <img src="/images/loading.gif" />
             </div>
     	</div>
+        <br/><br/>
+        <div>
+            <div id="uploadText">Uploading...</div>
+            <div id="unzipText"></div>
+        </div>
     </div>
     <form  method="post" action="/upload" enctype="multipart/form-data">
     	<input type="text" name="container" id="container" value="repository" style="display:none;" />
