@@ -42,6 +42,7 @@ $('form').on('submit', function(e) {
     var $progress = $('#progress');
     var $uploading = $('#uploading');
     var $unzipping = $('#unzipping');
+    var $bar = $('#bar');
 
     if (!$("form input[type=file]").val()) {
         alert('You must select a file!');
@@ -55,7 +56,7 @@ $('form').on('submit', function(e) {
                 var percent = (loaded / totalSize) * 100;
                 
                 percent = parseInt(percent, 10);
-                $uploading.css('width', percent + '%');
+                $bar.css('width', percent + '%');
 
                 if(loaded>=totalSize){
                     unzipProgress();
@@ -71,7 +72,7 @@ $('form').on('submit', function(e) {
     }
 
     function unzipProgress(){
+        $uploading.css('display','none');
         $unzipping.css('opacity','1');
-        $uploading.css('opacity','0');
     }
 }); 
