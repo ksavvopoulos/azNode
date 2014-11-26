@@ -374,6 +374,10 @@ app.post('/upload', function(req, res) {
     form.parse(req);
 });
 
+app.get('/tincan/activities',function(req,res){
+    res.send("ok");
+});
+
 app.get('/progress', function(req, res) {
     res.send({
         progress: '10'
