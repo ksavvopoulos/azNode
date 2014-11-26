@@ -377,6 +377,9 @@ app.post('/upload', function(req, res) {
 app.get('/tincan/activities',function(req,res){
     res.send("ok");
 });
+app.get('/tincan/activities/state',function(req,res){
+    res.send("ok");
+});
 
 app.get('/progress', function(req, res) {
     res.send({
