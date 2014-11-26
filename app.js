@@ -380,6 +380,9 @@ app.get('/tincan/activities',function(req,res){
 app.get('/tincan/activities/state',function(req,res){
     res.send("ok");
 });
+app.options('/tincan/activities/state',function(req,res){
+    res.send("ok");
+});
 
 app.get('/progress', function(req, res) {
     res.send({
