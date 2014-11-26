@@ -34,10 +34,11 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.all('*', function(req, res) {
+app.all('*', function(req, res,next) {
     res.header('Access-Control-Allow-Origin', req.headers.origin || "*");
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
 });
 
 app.use(express.errorHandler());
@@ -380,7 +381,11 @@ app.post('/upload', function(req, res) {
     form.parse(req);
 });
 
-app.all('/tincan/activities/state',function(req,res){
+app.get('/tincan/activities/state',function(req,res){
+    res.send("ok");
+});
+
+app.options('/tincan/activities/state',function(req,res){
     res.send("ok");
 });
 
