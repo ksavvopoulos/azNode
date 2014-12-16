@@ -81,7 +81,6 @@ app.get('/updateScorm', function(req, res) {
         '</form>' +
         '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
 		'<script type="text/javascript" src="/javascripts/jquery.form.min.js"></script>' +
-        '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
         '<br/><br/><br/><br/>' +
         '<a href="/clearContainerContents/scormplayer">Clear ScormPlayer Folder</a>' +
         '</body>');
