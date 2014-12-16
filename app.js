@@ -83,7 +83,7 @@ app.get('/updateScorm', function(req, res) {
 		'<script type="text/javascript" src="/javascripts/jquery.form.min.js"></script>' +
         '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
         '<br/><br/><br/><br/>' +
-        '<a href="/clearContainerContents/scormPlayer">Clear ScormPlayer Folder</a>' +
+        '<a href="/clearContainerContents/scormplayer">Clear ScormPlayer Folder</a>' +
         '</body>');
 });
 
@@ -132,7 +132,6 @@ app.post('/scormUpdated', function(req, res) {
     log('Blob Service has been created...');
     log('Initialized Read Stream');
 
-
     form.on('end', function() {
         log('--------------------Completed Parsing the Form----------------------------');
     });
@@ -169,7 +168,7 @@ app.post('/scormUpdated', function(req, res) {
 
             if (entry.type === 'File') {
                 counter += 1;
-                blobService.createBlockBlobFromStream('scorm',
+                blobService.createBlockBlobFromStream('scormplayer',
                     path,
                     entry,
                     entry.size, {
