@@ -80,11 +80,11 @@ app.get('/updateScorm', function(req, res) {
         '<input type="submit" id="submit" value="Upload" />' +
         '</form>' +
         '<script type="text/javascript" src="/javascripts/jquery-1-10-min.js"></script>' +
+		'<script type="text/javascript" src="/javascripts/jquery.form.min.js"></script>' +
         '<script type="text/javascript" src="/javascripts/myscript.js"></script>' +
         '<br/><br/><br/><br/>' +
-        '<a href="/clear">Clear Scorm Folder</a>' +
+        '<a href="/clearContainerContents/scormPlayer">Clear ScormPlayer Folder</a>' +
         '</body>');
-
 });
 
 app.get('/clearContainerContents/:container', function(req, res) {
